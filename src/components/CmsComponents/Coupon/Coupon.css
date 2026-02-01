@@ -1,0 +1,51 @@
+.coupon-regbutton {
+  margin-top: 55px !important;
+  width: 95% !important;
+}
+.coupon-regbutton svg {
+  transform: rotate(180deg);
+  font-size: 1.2cqi !important;
+  color: var(--white);
+  margin: 8px;
+}
+.coupon-regbutton span {
+  font-size: 1cqi;
+  font-family: Yekan, calibri !important;
+}
+.coupon-expir-div .rmdp-day-picker > div {
+  width: 300px !important;
+}
+
+.coupon-expir-div .rmdp-day-picker span {
+  border-radius: 50%;
+  bottom: -8px;
+  font-size: 12px;
+  left: -8px;
+  position: absolute;
+  right: 4px;
+  top: 3px;
+  margin: 1px;
+}
+.coupon-offstate-select {
+  border: 1px solid rgba(168, 168, 168, 0.550000011920929);
+  margin: 20px;
+  font-size: 20px;
+  text-align: center;
+  width: 80%;
+  border-radius: 8px;
+}
+
+@media (max-width: 570px) {
+  .coupon-expir-div span {
+    font-size: 15px;
+  }
+  .coupon-regbutton {
+    margin-bottom: 15px !important;
+  }
+  .coupon-regbutton svg {
+    font-size: 25px !important;
+  }
+  .coupon-regbutton span {
+    font-size: 18px !important;
+  }
+}

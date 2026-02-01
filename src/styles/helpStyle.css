@@ -1,0 +1,55 @@
+.centerc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.centerr {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.centercc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.centerrc {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.boxSh {
+  box-shadow: 0 0 15px -10px rgb(0, 0, 0, 0.75);
+}
+
+
+.disable{
+  pointer-events: none !important;
+  opacity: 0.5 !important;
+}
+
+@font-face {
+  font-family: "Yekan";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../fonts/Yekan.woff") format("woff2");
+}
+@font-face {
+  font-family: "vazir";
+  src: url(../../fonts/webfonts/Vazirmatn-RD-FD-NL-Regular.woff2);
+}
+@font-face {
+  font-family: "BMitra";
+  src: url(../../fonts/BMitra.woff);
+}
+@font-face {
+  font-family: "BTITRBD";
+  src: url(../../fonts/BTITRBD.woff);
+}
+@font-face {
+  font-family: "BNazanin";
+  src: url(../../fonts/BNazanin.woff);
+}

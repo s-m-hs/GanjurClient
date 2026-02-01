@@ -1,0 +1,191 @@
+.row-main{
+    margin: 0 auto;
+    }
+    .col-main{
+        width: 80%;
+        min-height: 500px;
+        border-radius: 8px;
+        background-color: var(--white1ffffff);
+        margin-left: 10%;
+    }
+    .paziresh-code{
+        justify-content: flex-start;
+        position: relative;
+    }
+    .button_code{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+        /* font-size: 1.5cqi; */
+        font-weight: 600 !important;
+     
+    }
+    .pcborder-table-id-td:hover button{
+      color: #fff !important;
+    }
+
+    .input{
+        position: relative;
+        margin: 20px;
+        width: 80%;
+    }
+    
+     /* input[type=number] {
+        -moz-appearance: textfield;
+      } */
+    
+      .input    input[type=number]::-webkit-inner-spin-button,
+      .input input[type=number]::-webkit-outer-spin-button {
+        pointer-events:none;
+      /* background-color: #14a5af !important; */
+      opacity: 0;
+    }
+    .input  input {
+        padding-left: 40px; /* Adjust input padding to make space for the icon */
+      }
+
+  
+     
+    .icon {
+        position: absolute;
+        left: 10px; /* Position the icon inside the input */
+        top: 60%;
+        transform: translateY(-50%); /* Center the icon vertically */
+        pointer-events: none; /* Ensure the icon does not interfere with input interactions */
+      }
+
+
+      .textarea_div{
+    
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+
+      }
+      .textarea_div label{
+        position: absolute;
+        top: -10px;
+        right: 10px;
+      }
+      .textarea_div button{
+        font-size: 0.8cqi;
+        font-weight: bold;
+      }
+      .textarea_div textarea{
+        width: 100%;
+      }
+.pcb-table{
+  text-align: center;
+}
+      .pcb-table td{
+font-size: 14px;
+      }
+      .pcborder-table-userid-td{
+        width: 10% !important;
+      }
+      .pcborder-table-id-td{
+        position: relative;
+      }
+      .pcborder-table-status-span{
+        text-align: center;
+/* position: absolute; */
+width: fit-content;
+height: fit-content;
+/* border: 1px solid blueviolet; */
+border-radius: 10px; 
+font-size: 15px;    
+ }
+
+
+ .row-pcbform input{
+text-align: center;
+font-weight: 600;
+ }
+ .row-pcbform label{
+  font-size: 15px !important;
+font-weight: 6  00 !important; 
+}
+
+.pcb-stats-col{
+justify-content: space-between !important;
+align-items: center !important;
+}
+.pcb-stats-col div{
+width: 50%;
+}
+
+.pcborder-select{
+  font-size: 1cqi;
+  border: 1px solid rgba(168, 168, 168, 0.550000011920929);
+  border-radius: 3px;
+width: 30%;
+padding: 2px;
+margin: 5px;
+outline: none;
+}
+
+.pcb-table-message-div{
+  position: relative;
+  cursor: pointer;
+
+}
+.pcb-table-message-span{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer !important
+}
+.sphere-pcb {
+  padding: 4px;
+  width: 45px !important;
+  height: 45px;
+  background-color:green;
+  background: radial-gradient(circle at 30% 50%, #ffffff 10%, #d0d0d0 70%);
+  border-radius: 50%;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  left: 15px;
+  /* top: -40px; */
+  cursor: pointer !important
+}
+
+.pcb-message-show{
+  visibility: visible !important;
+  pointer-events: all !important;
+}
+
+.pcb-right-message-div{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width:100% ;
+  height: 100%;
+  border-radius: 8px;
+  background-color: beige;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.pcbHidden{
+  display: none;
+  pointer-events: none;
+}
+.pcborder-table-id-td{
+  position: relative;
+}
+.pcborder-table-id-td svg{
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  color: #ff0303 !important;
+  font-size: 40px;
+  background-color: transparent !important;
+  pointer-events: none;
+}

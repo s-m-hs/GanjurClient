@@ -1,0 +1,37 @@
+.errorpage-container{
+    direction: rtl;
+    /* width: 100% !important; */
+    min-width:100vw ;
+
+    /* min-width: -webkit-fill-available; */
+}
+
+.errorpage-container{
+   position: absolute;
+    width: 100% !important;
+    height: max-content;
+    z-index: 0;
+    /* background-image: url("./1698.jpg") */
+    /* min-width:100vw ; */
+    /* background-image: url('./1698.jpg'); */
+    /* min-width: -webkit-fill-available; */
+}
+.errorpage-col span{
+    font-size: 2cqi;
+    color: #ff7104;
+    position: relative;
+    font-weight: 600;
+}
+
+.errorpage-type-div{
+    position: absolute;
+    z-index: 1;
+}
+.errorpage-type{
+    margin: 50px 50px;
+}
+.errorpage-button{
+    margin-top: 50px;
+    position: absolute;
+
+}

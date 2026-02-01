@@ -1,0 +1,98 @@
+.user-col3 {
+  box-shadow: 0 0 15px -10px rgb(0, 0, 0, 0.75);
+  min-height: 430px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.user-col9 {
+}
+
+.user-col3-selectlabel {
+  align-self: flex-start;
+  margin: 5px;
+  font-size: 1cqi;
+  color: #555;
+}
+.user-col3-select {
+  /* font-size: 1cqi; */
+  border: 1px solid rgba(168, 168, 168, 0.550000011920929);
+  align-self: flex-start;
+  border-radius: 3px;
+  width: 95%;
+  padding: 2px;
+  margin: 5px;
+  outline: none;
+}
+.user-regbutton {
+  margin-top: 55px !important;
+  width: 95% !important;
+}
+.user-regbutton svg {
+  transform: rotate(180deg);
+  font-size: 1.2cqi !important;
+  color: var(--white);
+  margin: 8px;
+}
+.user-regbutton span {
+  font-size: 1cqi;
+  font-family: Yekan, calibri !important;
+}
+.user-editbut {
+  font-size: 0.8cqi !important;
+  margin: 2px;
+}
+.user-deletbut {
+  font-size: 0.8cqi !important;
+  margin: 2px;
+}
+.user-table {
+  width: 100% !important;
+}
+.user-table th {
+  font-size: 1cqi;
+}
+.user-table td {
+  font-size: 0.9cqi;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.user-colsm9-div {
+  display: flex;
+  justify-content: center;
+}
+.user-resticon {
+  text-align: center;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+@media (max-width: 570px) {
+  .user-col3-selectlabel {
+    font-size: 15px;
+  }
+  .user-col3-select option {
+    font-size: 14px !important;
+  }
+  .user-regbutton span {
+    font-size: 18px;
+  }
+  .user-regbutton svg {
+    font-size: 18px !important;
+  }
+  .user-table th {
+    font-size: 10px !important;
+  }
+  .user-table td {
+    font-size: 12px !important;
+    white-space: normal;
+    max-width: 60px !important;
+  }
+  .user-editbut,
+  .user-deletbut {
+    width: 40px !important;
+    font-size: 9px !important;
+  }
+}

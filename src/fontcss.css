@@ -1,0 +1,21 @@
+.editor {
+    border: 1px solid #ccc;
+    padding: 10px;
+    min-height: 300px; /* Set a minimum height for the editor */
+    background-color: #f9f9f9; /* Light background for better visibility */
+  }
+  
+  .resizable-image {
+    position: relative; /* Position relative for the resize handle */
+    display: inline-block; /* Allow inline display with text */
+  }
+  
+  .resize-handle {
+    width: 10px; /* Size of the resize handle */
+    height: 10px; /* Size of the resize handle */
+    background-color: blue; /* Color of the resize handle */
+    position: absolute; /* Position it absolutely within the image */
+    bottom: 0; /* Align to the bottom */
+    right: 0; /* Align to the right */
+    cursor: nwse-resize; /* Change cursor to indicate resizing */
+  }

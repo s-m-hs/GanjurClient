@@ -1,0 +1,228 @@
+.CmsSystemAsembly-row {
+  height: 792px;
+}
+
+.CmsSystemAsembly-list {
+  /* direction: ltr !important; */
+  padding: 5px;
+}
+.CmsSystemAsembly-list table {
+  direction: ltr !important;
+  margin: 0 auto;
+  width: 100%;
+  font-family: "Times New Roman", Times, serif;
+}
+/* .CmsSystemAsembly-list table tbody tr  :nth-child(1){
+    width: 20px;
+    font-weight: 600;
+} */
+.CmsSystemAsembly-list table tbody tr :nth-child(1) {
+  width: 50px;
+  font-weight: 600;
+}
+.CmsSystemAsembly-list table tbody tr :nth-child(2) div {
+  width: 100%;
+}
+.CmsSystemAsembly-list-div table tbody tr :nth-child(2) input {
+  outline: none;
+  border: none;
+  width: 100%;
+}
+.CmsSystemAsembly-list table tbody tr :nth-child(3) input {
+  width: 20px;
+  border: none;
+  outline: none;
+  background-color: unset;
+}
+/* .CmsSystemAsembly-list table tbody tr :nth-child(2) div :nth-child(2) {
+    background-color: var(--gray2);
+
+    width: 100px;
+} */
+
+.CmsSystemAsembly-list table tbody tr :nth-child(4) input {
+  width: 100px;
+}
+
+.systemAs-searchtd div :nth-child(2) {
+  display: none;
+}
+
+.CmsSystemAsembly-header-div {
+  justify-content: space-between;
+}
+.CmsSystemAsembly-header-div img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.CmsSystemAsembly-header-div input {
+  width: 80px;
+  border: 1px dotted #0d8b85;
+  color: #73889b;
+  font-weight: 600;
+}
+.CmsSystemAsembly-header-div svg {
+  color: #0d8b85;
+}
+.CmsSystemAsembly-header-div h3 {
+  font-weight: 600;
+  font-style: italic;
+}
+.systemAs-bottom-maindiv {
+  width: 100%;
+  background-color: var(--gray2);
+}
+.CmsSystemAsembly-user {
+  text-align: right;
+}
+.CmsSystemAsembly-user input {
+  border: none;
+  outline: none;
+}
+
+.systemAs-total-but {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  width: 100%;
+}
+.systemAs-total-but h6 {
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+.systemAs-total-but input {
+  background-color: inherit;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  font-weight: 600;
+}
+.systemAs-total-but input::placeholder {
+}
+.systemAs-detail-input {
+  width: 100%;
+  height: 30px;
+  border: none;
+  outline: none;
+  border-bottom: 1px dotted;
+}
+.systemAs-detail-div {
+  display: flex;
+  align-items: center;
+}
+
+.systemAs-bottom-divright {
+  width: 50%;
+  height: 100%;
+}
+.systemAs-bottom-divleft {
+  width: 50%;
+  height: 100%;
+  background-color: aquamarine;
+}
+.systemAs-bottom-divright img {
+  width: 80%;
+  height: 100px;
+  border-radius: 8px;
+  margin: 0 auto;
+}
+
+.systemAs-bottom-detail-div {
+  display: flex;
+  flex-direction: column;
+  text-align: start !important;
+  position: relative;
+}
+.systemAs-bottom-detail-div ul {
+  padding-right: 10px;
+}
+.systemAs-bottom-detail-div span {
+  font-weight: 600;
+}
+.systemAs-bottom-detail-div div {
+  justify-content: space-around;
+}
+.systemAs-button-panel div {
+  width: 100%;
+  height: 30px;
+}
+.systemAs-button-panel input {
+  opacity: 0;
+  width: 30px;
+  height: 30px;
+}
+
+.dropdown-containerB {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: 100%; /* Adjust as needed */
+}
+
+.dropdown-optionsB {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  border: 1px solid #ccc;
+  background-color: white;
+  z-index: 10;
+  max-height: 800px;
+  overflow-y: auto;
+  font-size: 12px;
+}
+
+.dropdown-optionB {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.dropdown-optionB:hover,
+.dropdown-optionB.active {
+  background-color: #f0f0f0;
+}
+
+.dropdown-optionB.no-options {
+  color: #999;
+}
+.sistemAssembly-input2 {
+  background-color: var(--gray2);
+  width: 100px !important;
+}
+
+.cmsAssembly-factorsDiv {
+  height: 750px;
+  overflow-y: auto;
+  flex-wrap: wrap;
+}
+
+@media print {
+  html,
+  body {
+    direction: rtl !important;
+    text-align: right !important;
+  }
+
+  .CmsSystemAsembly-list-div {
+    direction: rtl !important; /* اگر فرم باید چپ‌چین باشد */
+    text-align: right !important;
+  }
+  .CmsSystemAsembly-list-div table tbody tr :nth-child(2) input {
+    outline: none;
+    border: none;
+    width: 100%;
+    text-align: left !important;
+  }
+  .CmsSystemAsembly-list-div table tbody tr :nth-child(3) input {
+    width: 20px !important;
+    border: none;
+    outline: none;
+    background-color: unset;
+  }
+  /* جلوگیری از تغییر display یا padding */
+  * {
+    box-sizing: border-box !important;
+  }
+}

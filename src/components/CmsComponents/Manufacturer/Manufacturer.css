@@ -1,0 +1,135 @@
+.manufactur-col3{
+    box-shadow: 0 0 15px -10px rgb(0,0,0,0.75);
+  min-height:380px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  }
+  .manufactur-col9{
+
+  }
+
+
+.manufactur-col3-selectlabel{
+    align-self: flex-start;
+    margin: 5px;
+    font-size: 1cqi;
+    color: #555;
+}
+.manufactur-col3-select{
+    font-size: 1cqi;
+    border: 1px solid rgba(168, 168, 168, 0.550000011920929);
+    align-self: flex-start;
+    border-radius: 3px;
+  width: 95%;
+  padding: 2px;
+  margin: 5px;
+  outline: none;
+}
+.manufactur-regbutton{
+    margin-top: 55px !important;
+    width: 95% !important;
+}
+.manufactur-regbutton svg{
+    transform: rotate(180deg);
+    font-size: 1.2cqi !important;
+    color: var(--white);
+    margin: 8px;
+}
+.manufactur-regbutton span{
+    font-size: 1cqi;
+    font-family:Yekan,calibri !important;
+
+}
+.manufactur-editbut {
+    font-size: 0.8cqi !important;
+    margin: 2px;
+
+}
+.manufactur-deletbut{
+    font-size: 0.8cqi !important;
+    margin: 2px;
+
+}
+.manufactur-table th{
+    font-size: 1cqi;
+}
+.manufactur-table td{
+    font-size: 0.9cqi;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.manufactur-colsm9-div{
+    display: flex;
+  justify-content: center;
+}
+.manufactur-resticon{
+    text-align: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.manufactur-img-input{
+    width:50% !important;
+  }
+  .manufactur-img-image{
+    width: 3.5cqi;
+    border-radius: 10px;
+    margin-right: 15px;
+  }
+  .manufactur-table img{
+width: 2cqi;
+border-radius: 4px;
+  }
+  .manufacture-search-div{
+    margin: 0 auto;
+    width: fit-content;
+    min-width: 50%;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  .manufacture-search-div i{
+    position: absolute;
+    left:3%;
+    padding: 10px;
+  }
+  .manufacture-search{
+    width: 100%;
+    height: 50px;
+    border: 1px solid rgb(168 168 168 / 55%);
+    border-radius: 8px;
+    outline: none;
+    margin: 10px 10px;
+    font-size: 1cqi;
+    }
+
+
+    .manufacture-uploade-div{
+      margin-top: 10px;
+      height: 100px;
+      position: relative;
+      width: 100%;
+  }
+  .manufacture-uploade-div input{
+      position: absolute;
+      width: 100% !important;
+      opacity: 0;
+  
+  }
+  .manufacture-uploade-div span{
+      width: 100%;
+      height: 50%;
+      border-radius: 8px;
+      background-color: #9fb9f7;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  .manufacture-uploade-div svg {
+      color: #fff;
+      font-size: 35px;
+  }
+  

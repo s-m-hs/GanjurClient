@@ -1,0 +1,46 @@
+/* dark-quill-theme.css */
+
+.ql-toolbar {
+    background-color: #333; /* Dark background for the toolbar */
+    color: #ddd; /* Light text color */
+}
+
+.ql-toolbar .ql-stroke {
+    stroke: #ddd; /* Light color for icons */
+}
+
+.ql-toolbar .ql-fill,
+.ql-toolbar .ql-picker,
+.ql-toolbar button {
+    color: #ddd; /* Light color for toolbar items */
+}
+
+.ql-toolbar .ql-picker-options {
+    background-color: #444; /* Dark background for dropdowns */
+    color: #ddd;
+}
+
+.ql-editor {
+    background-color: #222; /* Dark background for the editor */
+    color: #ddd; /* Light text color */
+    font-family: 'Arial', sans-serif;
+    min-height: 400px;
+    border-radius: 8px;
+}
+
+.ql-container.ql-snow {
+    border: 1px solid #555; /* Darker border color */
+}
+
+.ql-editor a {
+    color: #4da6ff; /* Lighter color for links */
+}
+
+.ql-snow .ql-picker.ql-expanded .ql-picker-options {
+    background-color: #444;
+}
+
+.ql-snow .ql-picker {
+    color: #ddd;
+}
+

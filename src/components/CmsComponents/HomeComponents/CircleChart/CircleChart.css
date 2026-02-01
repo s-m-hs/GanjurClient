@@ -1,0 +1,10 @@
+.circlechart-div{
+    margin-top: 20px;
+    padding: 20px;
+    border: none !important;
+    justify-content: flex-start !important;
+    background-color: var(--white1) !important;
+}
+.circlechart-div-chart{
+    /* height: 50% !important; */
+}

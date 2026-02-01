@@ -1,0 +1,202 @@
+.cke_image_resizer {
+  border: 1px solid #c0c0c0;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAgMAAAB3n8CbAAAACVBMVEUAAACAAIABVSlWAAAAB3RJTUUH5AQUEwsLoSGcfQAAAAlwSFlzAAALEgAACxIB0t1+/AAAAA9QTFRFAAAAaWZnMzMyfHx8AQGAAAZTVQAAAAV0Uk5T/////////wDPlkzRAAAADElEQVQI12NgYGBgA2BjYGBgZQAAASIAAQAAI8AC2AAAAABJRU5ErkJggg==);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.newsubject {
+  display: flex;
+}
+
+.newsubject-form-col9 {
+  box-shadow: 0 0 15px -10px rgb(0, 0, 0, 0.75);
+  min-height: 430px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.newsubject-col3 {
+  text-align: center;
+}
+.newsubject-form-col3 {
+  box-shadow: 0 0 15px -10px rgb(0, 0, 0, 0.75);
+  min-height: 430px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.newsubject-editor {
+  direction: ltr;
+  /* box-shadow: 0 0 15px -10px rgb(0,0,0,0.75); */
+  min-height: 300px;
+  font-size: 0.8cqi;
+}
+
+.newsubject-radio {
+  display: flex;
+  align-self: flex-start;
+  font-size: 1cqi;
+}
+.newsubject-category {
+  font-size: 1cqi;
+  border: 1px solid rgba(168, 168, 168, 0.550000011920929);
+  align-self: flex-start;
+  border-radius: 3px;
+  width: 95%;
+  padding: 2px;
+  margin: 5px;
+  outline: none;
+}
+.newsubject-category-selectlabel {
+  align-self: flex-start;
+  margin: 5px;
+  font-size: 1cqi;
+  color: #555;
+}
+.newsubject-radio input {
+  padding: 5px;
+  margin: 5px;
+}
+.newsubject-radio label {
+  margin: 8px;
+}
+
+.newsubject-login-label-float {
+  position: relative;
+  padding-top: 13px;
+  width: 97%;
+}
+
+.newsubject-login-label-float input {
+  background-color: var(--white);
+  color: var(--black0);
+  border-radius: 8px;
+  width: 100%;
+  border: 1px solid rgba(168, 168, 168, 0.550000011920929);
+  outline: none;
+  padding: 12px 10px;
+  font-size: 16px;
+  transition: all 0.1s linear;
+  -webkit-transition: all 0.1s linear;
+  -moz-transition: all 0.1s linear;
+  -webkit-appearance: none;
+}
+.newsubject-editor {
+  margin: 0 auto;
+  margin-top: 15px;
+}
+.newsubject-form-hidden {
+  display: none;
+}
+.newsubject-editor-span {
+  cursor: pointer;
+}
+.newsubject-editor-span:hover {
+  opacity: 0.7;
+}
+.newsubject-regbutton {
+  margin-bottom: 55px !important;
+  width: 95% !important;
+}
+.newsubject-regbutton svg {
+  transform: rotate(180deg);
+  font-size: 1.2cqi !important;
+  color: var(--white);
+  margin: 8px;
+}
+.newsubject-regbutton span {
+  font-size: 1cqi;
+  font-family: Yekan, calibri !important;
+}
+.newsubject-form-col3-p {
+  align-self: flex-start;
+  margin: 5px;
+  font-size: 0.8cqi;
+  color: #555;
+}
+
+.custom-input {
+  border-radius: 15px;
+  font-family: sans-serif !important;
+}
+
+.newsubject-form-col3-span {
+  font-size: 0.8cqi;
+  align-self: flex-start !important;
+}
+.newsubject-form-col3-date-div {
+  display: flex !important;
+  justify-content: space-between !important;
+  width: 100%;
+}
+
+.newsubject-login-label-float input::placeholder {
+  color: transparent;
+}
+
+.newsubject-login-label-float label {
+  border-radius: 10px;
+  pointer-events: none;
+  position: absolute;
+  top: calc(50% - 8px);
+  right: 15px;
+  font-size: 1cqi;
+  color: var(--white3);
+  transition: all 0.1s linear;
+  -webkit-transition: all 0.1s linear;
+  -moz-transition: all 0.1s linear;
+  /* background-color: white; */
+  padding: 5px;
+  box-sizing: border-box;
+  opacity: 0.7;
+}
+
+.newsubject-login-label-float input:required:invalid + label {
+  color: red;
+}
+.newsubject-login-label-float input:focus:required:invalid {
+  border: 2px solid red;
+}
+.newsubject-login-label-float input:required:invalid + label:before {
+  content: "*";
+}
+.newsubject-login-label-float input:focus + label,
+.newsubject-login-label-float input:not(:placeholder-shown) + label {
+  font-size: 13px;
+  top: 0;
+  color: #d2d3da;
+}
+
+@media only screen and (max-width: 500px) {
+  .newsubject-login-label-float input {
+    height: 50px;
+    border-radius: 8px;
+    width: 100%;
+    border: 1px solid rgba(168, 168, 168, 0.550000011920929);
+    outline: none;
+    padding: 15px 20px;
+    font-size: 16px;
+    transition: all 0.1s linear;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+  }
+
+  .newsubject-login-label-float label {
+    border-radius: 10px;
+    pointer-events: none;
+    position: absolute;
+    top: calc(50% - 9px);
+    right: 17px;
+    font-size: small;
+    transition: all 0.1s linear;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    background-color: white;
+    padding: 5px;
+    box-sizing: border-box;
+  }
+}
+.ck-editor__editable_inline {
+  min-height: 120px;
+}

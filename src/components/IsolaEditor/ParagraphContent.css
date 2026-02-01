@@ -1,0 +1,150 @@
+/* src/components/ParagraphContent/ParagraphContent.css */
+.text-element {
+  transition: all 0.2s ease;
+  outline: none;
+  font-family: inherit;
+}
+
+.text-element:focus {
+  border-color: #4dabf7;
+  box-shadow: 0 0 0 2px rgba(77, 171, 247, 0.2);
+}
+
+.text-element.active-text {
+  border-color: #4dabf7;
+  background-color: #e6f7ff !important;
+}
+
+.text-element.view-mode {
+  border: none;
+  background-color: transparent !important;
+  resize: none;
+  pointer-events: none;
+  user-select: text;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+.image-element {
+  transition: all 0.2s ease;
+  max-width: 100%;
+}
+
+.image-element.active-image {
+  border-color: #4dabf7 !important;
+  box-shadow: 0 0 0 2px rgba(77, 171, 247, 0.2);
+}
+
+.image-element img {
+  transition: all 0.2s ease;
+  max-width: 100%;
+  height: auto;
+}
+
+.image-element.view-mode {
+  padding: 0;
+  border: none !important;
+  box-shadow: none;
+}
+
+.image-element.view-mode img {
+  max-width: 100%;
+  height: auto;
+}
+
+.row-element {
+  transition: all 0.2s ease;
+}
+
+.row-element.active-row {
+  border-color: #4dabf7 !important;
+  box-shadow: 0 0 0 2px rgba(77, 171, 247, 0.2);
+}
+
+.row-element.view-mode {
+  border: none !important;
+  padding: 0;
+  box-shadow: none;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .text-element,
+  .image-element,
+  .row-element {
+    width: 100% !important;
+  }
+
+  .row-element {
+    flex-direction: column !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .text-element,
+  .image-element,
+  .row-element {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .text-element.view-mode {
+    color: #000 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .image-element img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+}
+
+/* RTL Support */
+[dir="rtl"] .text-element,
+[dir="rtl"] .row-element {
+  direction: rtl;
+}
+
+/* Accessibility */
+.text-element:focus-visible {
+  outline: 2px solid #4dabf7;
+  outline-offset: 2px;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .text-element.view-mode {
+    color: #fff;
+  }
+
+  .text-element.active-text {
+    background-color: rgba(77, 171, 247, 0.2) !important;
+  }
+
+  .text-element:focus {
+    border-color: #4dabf7;
+    box-shadow: 0 0 0 2px rgba(77, 171, 247, 0.3);
+  }
+}
+
+/* Animation for active states */
+.active-text,
+.active-image,
+.active-row {
+  animation: highlight 0.2s ease-out;
+}
+
+@keyframes highlight {
+  0% {
+    transform: scale(0.98);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

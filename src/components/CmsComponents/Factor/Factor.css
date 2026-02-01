@@ -1,0 +1,363 @@
+.Factor-container {
+  font-family: vazir !important;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: "Tahoma", sans-serif;
+  background-color: #fff;
+  /* border: 1px dotted; */
+}
+.Factor-header select {
+  background-color: #fff;
+}
+.Factor-header {
+  background: #fff;
+  padding: 2px;
+  border-radius: 8px;
+  margin-bottom: 2px;
+  border: 1px solid;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.factor-modal-table td {
+  font-size: 15px;
+}
+.factor-img-logo {
+  border-radius: 50%;
+  width: 30px;
+}
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+
+.header-row input {
+  border-radius: 5px;
+  height: 25px;
+}
+.header-row span {
+  font-size: 18px;
+  font-family: "vazirEn";
+}
+.header-row label {
+  width: 150px;
+}
+.header-row-title {
+  justify-self: center;
+}
+.items-table {
+  border: 1px solid;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 10px;
+}
+.items-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+.items-table th,
+.items-table td {
+  border: 1px solid #ddd;
+  text-align: center;
+  font-size: 13px;
+  height: 15px !important;
+}
+.items-table th {
+  background: #efefef;
+  color: rgb(15, 14, 14);
+  font-weight: 600;
+}
+.items-table input,
+.items-table textarea {
+  width: 100%;
+  border: none;
+  padding: 1px;
+}
+.totals-box {
+  width: 200px;
+  /* background: #e9ecef; */
+  padding: 5px;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  border:1px dotted
+}
+.totals-box input {
+  border: none;
+}
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.grand-total {
+  font-size: 1.5em;
+  color: #dc3545;
+  text-align: left;
+  font-weight: 600;
+}
+.factor-footerBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 10px;
+  margin-top: 2px;
+}
+
+.factor-footerBox-divRight {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  width: 100%;
+}
+.factor-footerBox-divRight-div-ul {
+  padding-right: 20px;
+}
+.factor-footerBox-divRight-span {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.factor-adress {
+  font-weight: 600;
+  margin-top: 5px;
+  list-style: none;
+}
+.notes-section textarea {
+  width: 100%;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.error-message {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.add-btn {
+  background: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.remove-btn {
+  background: #dc3545;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.submit-btn {
+  background: #007bff;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.submit-btn:hover {
+  background: #0056b3;
+}
+.footer-section {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.Factor-spanCate {
+  border: 1px solid;
+  width: 80%;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 1px;
+  border-radius: 5px;
+  padding: 2px;
+  font-weight: 600;
+}
+.Factor-spanCate:hover {
+  opacity: 0.5;
+}
+
+.Factor-Active {
+  background-color: #28a745;
+}
+
+.factor-q-th {
+  width: 80px;
+}
+
+.dnaa-div{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none !important;
+  z-index: 10000000 ;
+  opacity: 0.8;
+  background-color: #ddd;
+}
+.dnaaa {
+  position: fixed;
+  left: 40%;
+  top: 30%;
+  z-index: 1000000;
+}
+
+.factor-checkbox-ul {
+  list-style: none;
+}
+
+.hhhhh input {
+  font-family: vazir !important;
+}
+.foctor-btn-section {
+  height: 250px;
+}
+.foctor-btn-section button {
+  width: 80%;
+  margin: 5px;
+}
+.allFactor-date {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.factor-modal-categiry-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.factor-InputNumber {
+  font-family: vazir !important;
+}
+@font-face {
+  font-family: vazir;
+  src: url(../../../../fonts/webfonts/Vazirmatn-RD-FD-NL-Regular.woff2);
+}
+@font-face {
+  font-family: vazirEn;
+  src: url(../../../../fonts/webfonts/Vazirmatn-Regular.woff2);
+}
+@media print {
+  .no-print {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  .footer-section {
+    flex-direction: column;
+  }
+}
+
+@media print {
+  .Factor-container {
+    padding: 0;
+     background-color: #fff !important;
+  }
+  button {
+    display: none;
+  }
+}
+@media print {
+  body {
+    background: white !important;
+  }
+
+  .Factor-container {
+    width: 100%;
+    font-size: 12px;
+    direction: rtl;
+  }
+
+  /* مخفی کردن دکمه‌ها و input ها */
+  .no-print {
+    display: none !important;
+  }
+
+  /* جدول فاکتور */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+  }
+
+  table th,
+  table td {
+    border: 1px solid #000;
+    padding: 1px;
+    text-align: center;
+  }
+
+  /* جلوگیری از نصف شدن جدول */
+  table,
+  tr,
+  td {
+    page-break-inside: avoid;
+  }
+
+.header-row input{
+  background-color: #fff !important;
+  font-size: 10px;
+}
+.header-row-minInput{
+  width: 100px;
+}
+
+.header-row-minInput input{
+  width: 100px !important;
+}
+.Factor-userName input{
+  border: none;
+ 
+}
+.items-table th , td , input{
+padding: 1px !important ;
+font-size: 10px !important;
+
+}
+
+.items-table  input{
+border: none !important;
+}
+
+
+.totals-box {
+  width: 150px;
+margin: 1px;
+  padding: 5px;
+  font-size: 10px !important;
+  line-height: 0.5 !important;
+}
+.Factor-container{
+  padding: 10px;
+}
+.factor-quntity {
+  width: 30px !important;
+  padding: 0  !important;
+  margin: 0 !important;
+  text-align: center;
+}
+
+}
+@media print {
+  p {
+    line-height: 1.6;
+  }
+}
+

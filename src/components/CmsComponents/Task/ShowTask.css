@@ -1,0 +1,45 @@
+.TaskTable-modal-div p {
+  font-weight: 600;
+}
+.taskTable-span-but {
+  padding: 5px !important;
+  font-size: smaller !important;
+  transition: all 0.2s ease-in-out !important;
+}
+.taskTable-span-but:hover {
+  opacity: 0.5;
+  transform: scale(1.2);
+}
+
+.taskTable-title {
+  color: var(--black0);
+}
+.TaskTable-modal-div p {
+  color: var(--black0);
+}
+.taskTable-tbody td {
+  /* max-width: 100px;
+  overflow-x: auto;
+  height: 50px !important;
+  overflow-y: auto !important; */
+}
+.taskTable-title-span {
+  max-width: 100px;
+  overflow-x: auto;
+
+  display: block;
+  height: 30px !important;
+  overflow-y: hidden;
+}
+
+.taskTable-important-span {
+  font-size: 8px;
+  position: absolute;
+  border: 1px dotted red;
+  width: 50px;
+  height: 12px;
+  border-radius: 30px;
+  bottom: 0;
+  right: 0;
+  font-weight: bold;
+}

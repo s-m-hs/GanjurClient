@@ -1,0 +1,124 @@
+.category-col3{
+    box-shadow: 0 0 15px -10px rgb(0,0,0,0.75);
+
+}
+
+.category-select-row{
+    box-shadow: 0 0 15px -10px rgb(0,0,0,0.75);
+
+}
+.category-regbutton{
+    margin-top: 55px !important;
+    width: 95% !important;
+}
+.category-regbutton svg {
+    transform: rotate(180deg);
+    font-size: 1.2cqi !important;
+    color: var(--white);
+    margin: 8px;
+
+}
+.category-regbutton span{
+    font-size: 1.3cqi;
+    font-family:Yekan,calibri !important;
+
+}
+.category-select-row :nth-child(1){
+    margin-bottom: 10px;
+}
+.category-editbut {
+    font-size: 0.5cqi !important;
+    margin: 2px;
+
+}
+.category-deletbut{
+    font-size: 0.5cqi !important;
+    margin: 2px;
+
+}
+.category-table th{
+    font-size: .7cqi;
+}
+.category-table td{
+font-size: .9cqi;
+ max-width: 150px;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+}
+.category-table img{
+width: 2cqi;
+border-radius: 4px;
+}
+.category-img-image{
+    width: 3.5cqi;
+    border-radius: 10px;
+    margin-right: 15px;
+  }
+  .category-img-input{
+    width: 50% !important;
+  }
+.category-col-sm-9-div{
+    display: flex;
+    justify-content: center;
+}
+
+.category-resticon{
+    text-align: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.category-resticon:hover{
+    opacity: 0.8;
+}
+
+.categor-select-row-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width: 25%;
+    height: 50px;
+    border-radius: 4px;
+    padding: 5px 15px;
+    min-width: 64px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    border: 1px solid rgba(25, 118, 210, 0.5);
+    color: #1976d2;
+}
+.categor-select-row-link:hover{
+border-color: #1976d2;
+background-color: rgba(25, 118, 210, 0.04);
+}
+.categor-select-row-button{
+    font-family:Yekan,calibri !important;}
+
+
+    .category-uploade-div{
+        margin-top: 10px;
+        height: 100px;
+        position: relative;
+        width: 100%;
+    }
+    .category-uploade-div input{
+        position: absolute;
+        width: 100% !important;
+        opacity: 0;
+    
+    }
+    .category-uploade-div span{
+        width: 100%;
+        height: 50%;
+        border-radius: 8px;
+        background-color: #9fb9f7;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    .category-uploade-div svg {
+        color: #fff;
+        font-size: 35px;
+    }
+    

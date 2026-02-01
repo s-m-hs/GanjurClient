@@ -1,0 +1,130 @@
+.mainmenu-regbutton {
+  margin-top: 55px !important;
+  width: 95% !important;
+}
+.mainmenu-regbutton svg {
+  transform: rotate(180deg);
+  font-size: 1.2cqi !important;
+  color: var(--white);
+  margin: 8px;
+}
+.mainmenu-regbutton span {
+  font-size: 1.3cqi;
+  font-family: Yekan, calibri !important;
+}
+.mainmenu-col3 {
+  box-shadow: 0 0 15px -10px rgb(0, 0, 0, 0.75);
+}
+.mainmenu-table th {
+  font-size: 1cqi;
+}
+
+.mainmenu-table td {
+  font-size: 1.1cqi;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mainmenu-editbut {
+  margin: 2px;
+  font-size: 0.7cqi !important;
+}
+.mainmenu-img-input {
+  width: 50% !important;
+}
+
+.mainmenu-addbut {
+  margin: 2px;
+  font-size: 0.7cqi !important;
+}
+.mainmenu-deletbut {
+  margin: 2px;
+  font-size: 0.7cqi !important;
+}
+
+.modal-content {
+  direction: rtl;
+}
+.mainmenu-img-image {
+  width: 3.5cqi;
+  border-radius: 10px;
+  margin-right: 15px;
+}
+
+.a {
+  border: 1px solid green !important;
+}
+.b {
+  border: 1px solid red !important;
+}
+.mainmenu-colsm9-div {
+  display: flex;
+  justify-content: center;
+}
+.mainmenu-resticon {
+  text-align: center;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.mainmenu-resticon:hover {
+  opacity: 0.8;
+}
+
+.mainmenu-uploade-div {
+  margin-top: 10px;
+  height: 100px;
+  position: relative;
+  width: 100%;
+}
+.mainmenu-uploade-div input {
+  position: absolute;
+  width: 100% !important;
+  opacity: 0;
+}
+.mainmenu-uploade-div span {
+  width: 100%;
+  height: 50%;
+  border-radius: 8px;
+  background-color: #9fb9f7;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mainmenu-uploade-div svg {
+  color: #fff;
+  font-size: 35px;
+}
+
+@media (max-width: 570px) {
+  .mainmenu-regbutton {
+    margin-bottom: 15px !important;
+  }
+  .mainmenu-regbutton svg {
+    font-size: 25px !important;
+  }
+  .mainmenu-regbutton span {
+    font-size: 18px !important;
+  }
+
+  .mainmenu-table th {
+    font-size: 10px;
+  }
+
+  .mainmenu-table td {
+    font-size: 10px;
+    /* max-width: 100px; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .mainmenu-addbut {
+    padding: 1px !important;
+    font-size: 10px !important;
+  }
+  .mainmenu-editbut {
+    padding: 1px !important;
+    font-size: 10px !important;
+  }
+}

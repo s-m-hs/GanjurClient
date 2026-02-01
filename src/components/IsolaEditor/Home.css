@@ -1,0 +1,251 @@
+/* src/pages/Home/Home.css */
+.home-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.home-header h1 {
+  font-size: 28px;
+  color: #212529;
+  margin: 0;
+}
+
+.edit-button {
+  background-color: #228be6;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
+}
+
+.edit-button:hover {
+  background-color: #1c7ed6;
+}
+
+.no-content {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.no-content p {
+  font-size: 18px;
+  color: #868e96;
+  margin-bottom: 24px;
+}
+
+.create-content-button {
+  background-color: #40c057;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
+}
+
+.create-content-button:hover {
+  background-color: #37b24d;
+}
+
+.content-wrapper {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* View mode specific styles */
+.content-area.view-mode {
+  padding: 0;
+  background-color: transparent;
+}
+
+.paragraph-block.view-mode {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  transition: none;
+}
+
+.paragraph-block.view-mode:hover {
+  transform: none;
+}
+
+/* Text content in view mode */
+.view-mode .text-element {
+  border: none;
+  background-color: transparent;
+  resize: none;
+  cursor: default;
+  padding: 0;
+}
+
+.view-mode .text-element:focus {
+  outline: none;
+}
+
+/* Image content in view mode */
+.view-mode .image-element {
+  border: none;
+  padding: 0;
+}
+
+.view-mode .row-element {
+  border: none;
+  padding: 0;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .home-page {
+    padding: 20px 16px;
+  }
+
+  .home-header {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .home-header h1 {
+    font-size: 24px;
+  }
+
+  .edit-button,
+  .create-content-button {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .no-content {
+    padding: 40px 16px;
+  }
+
+  .no-content p {
+    font-size: 16px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .home-header,
+  .edit-button,
+  .create-content-button {
+    display: none;
+  }
+
+  .home-page {
+    padding: 0;
+  }
+
+  .content-wrapper {
+    box-shadow: none;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .home-page {
+    background-color: #1a1a1a;
+    color: #ffffff;
+  }
+
+  .home-header {
+    border-bottom-color: #333;
+  }
+
+  .home-header h1 {
+    color: #ffffff;
+  }
+
+  .edit-button {
+    background-color: #1c7ed6;
+  }
+
+  .edit-button:hover {
+    background-color: #1971c2;
+  }
+
+  .no-content {
+    background-color: #252525;
+  }
+
+  .no-content p {
+    color: #adb5bd;
+  }
+
+  .content-wrapper {
+    background-color: #252525;
+  }
+
+  .view-mode .text-element {
+    color: #ffffff;
+  }
+}
+
+/* RTL Support */
+[dir="rtl"] .home-header,
+[dir="rtl"] .content-wrapper {
+  direction: rtl;
+}
+
+/* Animations */
+.home-page {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Focus styles for accessibility */
+.edit-button:focus,
+.create-content-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(34, 139, 230, 0.3);
+}
+
+/* Loading state */
+.content-wrapper.loading {
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #228be6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

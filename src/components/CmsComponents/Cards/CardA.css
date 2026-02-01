@@ -1,0 +1,12 @@
+.cardA-mainDiv {
+  /* background-color: #000000; */
+  position: relative;
+  min-width: 250px;
+  min-height: 300px;
+  border-radius: 8px;
+}
+.cardA-mainDiv span {
+  font-family: "vazirEn";
+  color: #0fb2ff;
+  font-size: 13px;
+}

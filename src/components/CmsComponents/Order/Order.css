@@ -1,0 +1,429 @@
+.order--state-selectlabel{
+    align-self: flex-start;
+    margin: 5px;
+    font-size: 1cqi;
+    color:var(--black0);
+  }
+  .order-state{
+    font-size: 1cqi;
+    border: 1px solid rgba(168, 168, 168, 0.550000011920929);
+    align-self: flex-start;
+    border-radius: 3px;
+  width: 20%;
+  padding: 2px;
+  margin: 5px;
+  outline: none;
+  
+  }
+  .order-rghit-maindiv{
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    height: auto;
+    box-shadow: 0 0 15px -10px rgb(0,0,0,0.75);
+  }
+  .order-left-maindiv{
+    direction: rtl;
+    box-shadow: 0 0 15px -10px rgb(0,0,0,0.75);
+    min-height: 600px;
+
+
+  }
+  .order-table-container{
+    box-shadow: none !important;
+  }
+  .order-basket th{
+    font-size: 0.6cqi ;
+    /* font-weight: 600 !important; */
+  }
+  .order-basket td{
+font-size: 1cqi ;
+  }
+.order-basket__id{
+  width: 20px;
+}
+.basket-table__id{
+  width: 20px !important;
+}
+.basket-table th{
+  font-size: 0.6cqi ;
+
+}
+  .basket-table td{
+    /* width: 8%; */
+    font-size: 1cqi;
+  }
+  .basket-table img{
+    width: 50px;
+    height: 50px;
+  }
+  .basket-table input{
+    border: none;
+border-bottom:1px dotted;
+outline: none;
+width: 100%;
+/* background-color:var(--gray1); */
+border-radius: 2px;
+  }
+  .basket-table-radio{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: baseline;
+
+  }
+
+  .basket-table-radio-div{
+    /* font-size: 10px !important; */
+
+display: flex;
+justify-content: space-evenly   ;
+  }
+  .basket-table-radio-div input{
+    /* width: 12%; */
+  }
+.basket-table-quntity{
+  width: 10% !important;
+  text-align: center;
+  position: relative;
+}
+.basket-table-quntity input{
+  background-color: var(--white);
+  color: var(--black0);
+}
+.basket-table-data{
+  font-size: 12px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.basket-table-price{
+  width: 20% !important;
+  text-align: center;
+  position: relative;
+}
+.basket-table-price input{
+  background-color: var(--white);
+  color: var(--black0);
+}
+
+
+  .order-finaliz-button{
+    width: 80%;
+  }
+
+  .order-colsm9-div{
+    display: flex;
+    justify-content: center;
+    margin: 50%;
+  }
+  .basket-table-message-div{
+    position: relative;
+  }
+  .basket-table-message-span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    /* background-color: aqua; */
+    cursor: pointer;
+  }
+  .order-right-message-div{
+    display: flex;
+  
+    flex-direction: column;
+    /* position: absolute; */
+    width:100% ;
+    height: 100%;
+    border-radius: 8px;
+    /* background-color: beige; */
+    /* visibility: hidden;
+    pointer-events: none; */
+  }
+.order-message-show{
+  visibility: visible;
+  pointer-events: all;
+}
+
+  .order-right-message-divA{
+    overflow: auto;
+    width: 100%;
+    height: 80%;
+    /* background-color: aliceblue; */
+    background-color: var(--blue0);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10Px;
+    padding-top: 30px;
+
+  }
+  .order-right-message-divB{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 20%;
+    /* background-color: blanchedalmond; */
+  }
+  .order-right-message-divB textarea{
+    background-color: var(--white);
+    font-size: x-large;
+    height: 80%;
+    border: none;
+    outline: none;
+  }
+  .order-right-message-divB  button{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+
+
+  .order-sms-input{
+
+margin-right: 5px;
+    width: 25px;
+    height: 80% !important;
+  }
+.order-sendMessage-sms-div{
+  position: relative;
+  align-items: center;
+}
+  .order-sendMessage-sms-div i{
+    position: absolute;
+    left: -5px;
+    top: 0;
+  }
+  .order-sendMessage-sms-div svg{
+    transform: rotate(180deg);
+    font-size: 1.2cqi !important;
+    color: var(--white);
+    margin: 8px;
+  }
+ .order-right-message-closeicon{
+  width: fit-content;
+  /* position: absolute; */
+  left: 20px;
+  cursor: pointer;
+  padding: 10px;
+  top: -10px;
+  margin-left: 5px;
+ }
+ .order-right-message-refresh{
+  justify-content: space-evenly !important;
+  width: 100%;
+  /* position: absolute; */
+  left: 0px;
+  cursor: pointer;
+  padding: 10px;
+  top: -10px;
+ }
+ .order-right-message-closeicon:hover{
+  opacity: 0.7;
+ }
+.sms-div{
+  text-align: center;
+  width: 100%;
+  background-color:#ffc107;
+  border-radius: 5px;
+  padding: 2px;
+  margin: 5px;
+  font-weight: 600;
+}
+
+ .sphere {
+  padding: 4px;
+  width: 45px !important;
+  height: 45px;
+  background-color:green;
+  background: radial-gradient(circle at 30% 50%, #ffffff 10%, #d0d0d0 70%);
+  border-radius: 50%;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  left: 15px;
+  cursor: pointer;
+}
+.sphere:hover{
+  opacity: 0.7;
+}
+
+.order__btn__pagination{
+  display: flex;
+margin: 0 auto;
+width: fit-content;
+}
+.order-messeage-desc-div-sender{
+  position: relative;
+  margin-bottom: 10px;
+  justify-content: flex-end !important;
+  margin-bottom: 30px;
+}
+.order-messeage-desc-div{
+  position: relative;
+  margin-bottom: 10px;
+  justify-content: flex-start !important;
+  margin-bottom: 30px;
+
+}
+
+
+.order-messeage-desc-date{
+  position: absolute;
+  top: -24px;
+  right: 30%;
+  background-color: #d0d0d0;
+  border-radius: 5px;
+  font-size: smaller;
+  color: #fff;
+}
+
+.order-messeage-desc-sendername{
+  font-size: 12px;
+  border-radius: 15px;
+  padding: 5px;
+  color: black;
+  /* color: #fff; */
+  /* background-color: #cad0d9; */
+  position: absolute;
+  top: -20px;
+  right: 0;
+}
+
+.pagination-button{
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  margin: 1px;
+  /* border-radius: 50%; */
+  
+}
+.order-messeage-desc-sender{
+  min-height: 50px;
+  width: 50%;
+  padding: 5px;
+  border: 1px dotted;
+  border-radius: 10px;
+  background-color: var(--gray1); 
+  position: relative;
+  color: #fff;
+  /* justify-self: flex-start !important; */
+}
+.order-messeage-desc{
+  min-height: 50px;
+
+  width: 50%;
+  padding: 5px;
+  border: 1px dotted;
+  border-radius: 10px;
+  background-color: var(--white); 
+  position: relative;
+  color: var(--gray1);
+  /* justify-self: flex-end !important; */
+
+}
+.pagination-ref{
+  display: none !important;
+}
+.order-right-message-file-div{
+  margin-bottom: 5px;
+  border-radius: 5px;
+  width: 100%;
+  height: 50px;
+  background-color: #9fb9f7;
+  position: relative;
+}
+.order-right-message-file-input{
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  font-size: 20px;
+}
+.order-file-i{
+
+  display: inline;
+}
+.order-right-message-file-div svg{
+  position: absolute;
+  left: 50%;
+  color: var(--white);
+}
+.order-hide{
+  display: none;
+}
+.order-downlod-button{
+  position: absolute;
+  bottom: -18px;
+  border: none;
+  outline: none;
+  left: 0;
+}
+.order_disble{
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+
+.order-modal-container{
+  direction: rtl;
+  height: 100%;
+}
+.order-modal-row{
+  height: 100%;
+}
+
+.basket-table-statustext-td{
+  text-align: center;
+}
+.basket-table-statustext-td input{
+  background-color: var(--white);
+  color: var(--black0);
+}
+.basket-table-statustext-button{
+padding: 0 !important;
+  width: 30%;
+  height: 25px;
+}
+
+.statustext-hidden{
+  display: none !important;
+}
+.basket-table-statustext-span{
+  width: 25%;
+  font-size: 10px;
+  background-color: #dfe5f6;
+  border-radius: 8px;
+}
+.statustext-input{
+  color: brown;
+  background-color: aqua !important ;
+  opacity: 0.2;
+}
+.p-sidebar-header{
+  background-color: var(--white) !important;
+
+}
+.p-sidebar-content{
+  background-color:var(--white) !important;
+}
+
+.order-button-notifi-td{
+  position: relative;
+}
+.order-button-notifi-td svg{
+position: absolute;
+right: 0;
+top: 0;
+color: #ff0303;
+}

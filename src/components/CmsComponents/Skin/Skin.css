@@ -1,0 +1,72 @@
+.skin-col3{
+    box-shadow: 0 0 15px -10px rgb(0,0,0,0.75);
+  min-height:380px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  }
+  .skin-col9{
+
+  }
+
+
+.skin-col3-selectlabel{
+    align-self: flex-start;
+    margin: 5px;
+    font-size: 1cqi;
+    color: #555;
+}
+.skin-col3-select{
+    font-size: 1cqi;
+    border: 1px solid rgba(168, 168, 168, 0.550000011920929);
+    align-self: flex-start;
+    border-radius: 3px;
+  width: 95%;
+  padding: 2px;
+  margin: 5px;
+  outline: none;
+}
+.skin-regbutton{
+    margin-top: 55px !important;
+    width: 95% !important;
+}
+.skin-regbutton svg{
+    transform: rotate(180deg);
+    font-size: 1.2cqi !important;
+    color: var(--white);
+    margin: 8px;
+}
+.skin-regbutton span{
+    font-size: 1cqi;
+    font-family:Yekan,calibri !important;
+
+}
+.skin-editbut {
+    font-size: 0.8cqi !important;
+    margin: 2px;
+
+}
+.skin-deletbut{
+    font-size: 0.8cqi !important;
+    margin: 2px;
+
+}
+.skin-table th{
+    font-size: 1cqi;
+}
+.skin-table td{
+    font-size: 0.9cqi;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.skin-colsm9-div{
+    display: flex;
+  justify-content: center;
+}
+.skin-resticon{
+    text-align: center;
+    margin-top: 20px;
+    cursor: pointer;
+}

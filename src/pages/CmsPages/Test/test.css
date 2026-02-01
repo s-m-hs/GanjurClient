@@ -1,0 +1,23 @@
+iframe{
+    display: block;
+    height: auto;
+    border: none;
+}
+
+/* .content-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .text-element {
+    margin: 0;
+    text-align: right;
+    direction: rtl;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: normal;
+    width: 200px;
+    padding: 0;
+    border: none;
+  }
+   */

@@ -1,0 +1,483 @@
+.editor-wrapper {
+  width: 1500px; /* عرض ثابت 1500 پیکسل */
+  max-width: 100%; /* جلوگیری از سرریز شدن در صفحه‌های کوچک‌تر */
+  margin: 0 auto; /* متمرکز کردن ظرف در صفحه */
+  box-sizing: border-box; /* اطمینان از محاسبه صحیح عرض با padding و border */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 2rem !important;
+  font-family: "Vazirmatn", sans-serif;
+  direction: rtl;
+}
+.editor-wrapper .ProseMirror {
+  min-height: 300px;
+  height: auto;
+  overflow-y: visible;
+  /* تغییر بکگراند ادیتور  {}  */
+  /* background-color: #75429c;   */
+}
+.ProseMirror {
+  min-height: 200px;
+  outline: none;
+  direction: rtl;
+  text-align: right;
+}
+
+/* Toolbar styles */
+.toolbar {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background-color: var(--white);
+  /* background: linear-gradient(to bottom, #ffffff, #f8f9fa); */
+  border-bottom: 1px solid #e9ecef;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+.ProseMirror table {
+  width: 100% !important; /* Ensure the table takes up 100% of the container width */
+  table-layout: fixed; /* Prevent the table from shrinking to fit content */
+}
+.output-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto; /* Allow horizontal scrolling if needed */
+}
+.output-container .ProseMirror table {
+  width: 100% !important; /* Force the table to take up 100% of the container width */
+  table-layout: fixed; /* Prevent the table from shrinking to fit content */
+}
+/* Toolbar button hover animation */
+.toolbar button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: #f0f0f0;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.toolbar button:hover {
+  background: #ddd;
+  transform: scale(1.1); /* Slight zoom effect */
+}
+
+.toolbar button.active {
+  background: #0070f3;
+  color: white;
+  animation: pulse 1s infinite; /* Pulsing effect for active buttons */
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 5px #0070f3;
+  }
+  50% {
+    box-shadow: 0 0 15px #0070f3;
+  }
+}
+
+/* Toolbar input color animation */
+.toolbar input[type="color"] {
+  padding: 0.4rem 0.7rem;
+  border: none;
+  border-radius: 6px;
+  background: #f0f0f0;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.toolbar input[type="color"]:hover {
+  background: #ddd;
+  transform: rotate(10deg); /* Slight rotation effect */
+}
+
+/* Editor content fade-in animation */
+.ProseMirror {
+  text-align: right;
+  direction: rtl;
+  min-height: 200px;
+  outline: none;
+  line-height: 2;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Table row hover animation */
+.ProseMirror table tr:hover {
+  background-color: #f0f8ff;
+  transition: background-color 0.3s;
+}
+
+/* Table striped row animation */
+.ProseMirror table.table-striped tr:nth-child(even) td {
+  background-color: #f0f0ff;
+  animation: stripeFade 1s ease-in-out;
+}
+
+@keyframes stripeFade {
+  from {
+    background-color: #ffffff;
+  }
+  to {
+    background-color: #f0f0ff;
+  }
+}
+
+/* Button click animation */
+.toolbar button:active {
+  transform: scale(0.95); /* Shrink effect on click */
+  transition: transform 0.1s;
+}
+
+.toolbar button i {
+  font-size: 16px;
+}
+
+.toolbar select {
+  padding: 0.3rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: var(--white);
+  /* background: #f9f9f9; */
+}
+
+.ProseMirror span {
+  font-family: inherit;
+}
+
+.ProseMirror span[style*="font-size"] {
+  all: unset;
+}
+
+.ProseMirror table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  overflow: hidden;
+}
+
+.ProseMirror td,
+.ProseMirror th {
+  min-width: 1em;
+  border: 1px solid #ddd;
+  padding: 3px 5px;
+  vertical-align: top;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.ProseMirror th {
+  font-weight: bold;
+  text-align: center;
+  background-color: #f5f5f5;
+}
+
+.ProseMirror .selectedCell:after {
+  z-index: 2;
+  position: absolute;
+  content: "";
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(200, 200, 255, 0.4);
+  pointer-events: none;
+}
+
+.ProseMirror table {
+  margin: 1em 0;
+}
+
+/* Table with no border */
+.ProseMirror table[style*="border: none"] td,
+.ProseMirror table[style*="border: none"] th {
+  border: none;
+}
+
+/* Table with border */
+.ProseMirror table[style*="border:"] {
+  border-style: solid;
+  border-color: black;
+}
+
+/* Striped table */
+.ProseMirror table.table-striped tr:nth-child(even) td {
+  background-color: #f8f9fa;
+}
+
+/* === جدول حرفه‌ای === */
+
+.ProseMirror table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.ProseMirror th,
+.ProseMirror td {
+  border: 1px solid #eee;
+  padding: 10px 12px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.ProseMirror th {
+  background-color: #f4f6fa;
+  font-weight: 600;
+  color: #333;
+}
+
+.ProseMirror td {
+  background-color: #fff;
+  color: #444;
+}
+
+.ProseMirror tr:nth-child(even) td {
+  background-color: #fafbfc;
+}
+
+.ProseMirror td:focus,
+.ProseMirror th:focus {
+  outline: 2px solid #0070f3;
+}
+
+@media (max-width: 768px) {
+  .ProseMirror table {
+    font-size: 12px;
+    overflow-x: auto;
+  }
+  .toolbar {
+    padding: 12px 8px;
+    gap: 8px;
+  }
+}
+
+.ProseMirror .tableWrapper {
+  overflow-x: auto;
+}
+
+.ProseMirror .selectedCell {
+  outline: 2px solid #0070f3;
+  outline-offset: -1px;
+}
+.ProseMirror table.table-striped tr:nth-child(even) td {
+  background-color: #f0f0ff;
+}
+/* جدول بدون کادر */
+.ProseMirror table[style*="border-width: 0px"],
+.ProseMirror table[style*="border-width: 0"] {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* تغییر ضخامت کادر */
+.ProseMirror table[style*="border-width: 1px"] {
+  border: 1px solid #ddd !important;
+}
+
+.ProseMirror table[style*="border-width: 3px"] {
+  border: 3px solid #ddd !important;
+}
+
+/* رنگ کادر جدول */
+.ProseMirror table[style*="border-color"] {
+  border-color: var(--border-color, inherit) !important;
+}
+
+/* استایل راه‌راه */
+.ProseMirror table.table-striped tr:nth-child(even) td {
+  background-color: #f0f0ff;
+}
+
+/* Visual indicator for when cursor is in a table */
+.ProseMirror table:focus-within {
+  outline: 2px solid #0070f3;
+  outline-offset: 2px;
+}
+
+.table-borderless td,
+.table-borderless th {
+  border: none !important;
+}
+
+/* Emoji Picker Dropdown */
+.emoji-picker {
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.emoji-button {
+  font-size: 20px;
+  padding: 5px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.emoji-button:hover {
+  transform: scale(1.2);
+}
+
+.ProseMirror {
+  min-height: 300px;
+  border: 1px solid #ccc;
+  padding: 2rem !important;
+  border-radius: 8px;
+  outline: none;
+}
+
+/* جهت‌دهی کلی */
+.editor-wrapper[dir="rtl"] .ProseMirror {
+  direction: rtl;
+  text-align: right;
+}
+
+.editor-wrapper[dir="ltr"] .ProseMirror {
+  direction: ltr;
+  text-align: left;
+}
+
+/* جدول‌ها ریسپانسیو */
+.ProseMirror .tableWrapper {
+  overflow-x: auto;
+}
+
+.ProseMirror table {
+  width: 100% !important;
+  border-collapse: collapse;
+}
+
+.ProseMirror th,
+.ProseMirror td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  word-break: break-word;
+}
+
+.ProseMirror {
+  white-space: pre-wrap; /* حفظ فاصله‌ها و تبدیل آن‌ها به `&nbsp;` در HTML */
+}
+
+/* عکس‌ها ریسپانسیو */
+.ProseMirror img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  height: auto;
+  display: block;
+}
+
+/* کادر والد تصویر + نمایش ابزارک */
+.image-node {
+  position: relative;
+}
+
+/* نوار ابزار روی عکس */
+.image-node .image-toolbar {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 4px 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  z-index: 5;
+}
+
+.image-node:hover .image-toolbar,
+.image-node.is-selected .image-toolbar {
+  display: flex;
+}
+
+.image-toolbar button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+}
+
+.image-toolbar button:hover {
+  background: #f0f0f0;
+}
+
+.image-toolbar button.active {
+  background: #0070f3;
+  color: #fff;
+}
+
+/* خود تصویر ریسپانسیو */
+img.resizable-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* .resizable-img {
+  width: 300px;
+  height: auto;
+} */
+/* .resizable-image {
+  display: inline-block;
+  width: 100%;
+}
+
+.resizable-img {
+  max-width: 100%;
+  height: auto;
+} */
+/* @media (max-width: 550px) {
+  .resizable-img {
+    width: 100% !important;
+  }
+} */

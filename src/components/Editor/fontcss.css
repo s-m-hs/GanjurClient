@@ -1,0 +1,191 @@
+@font-face {
+    font-family: 'Yekan';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../../../fonts/Yekan.woff') format('woff2');
+}
+@font-face {
+    font-family: 'vazir';
+    src: url(../../../fonts/webfonts/Vazirmatn-RD-FD-NL-Regular.woff2);
+  }
+  @font-face {
+    font-family: 'BMitra';
+    src: url(../../../fonts/BMitra.woff);
+  }
+  @font-face {
+    font-family: 'BTITRBD';
+    src: url(../../../fonts/BTITRBD.woff
+    );
+  }
+  @font-face {
+    font-family: 'BNazanin';
+    src: url(../../../fonts/BNazanin.woff
+    );
+  }
+
+  
+
+  .ql-font-serif {
+    font-family: serif;
+  }
+  
+  .ql-font-monospace {
+    font-family: monospace;
+  }
+  
+  .ql-font-vazir {
+    font-family: 'vazir',sans-serif;
+  }
+  
+  .ql-font-Yekan {
+    font-family: 'Yekan';
+  }
+  
+  .ql-font-BMitra {
+    font-family: 'BMitra';
+  }
+  .ql-font-BTITRBD {
+    font-family: 'BTITRBD';
+  }
+  .ql-font-BNazanin {
+    font-family: 'BNazanin';
+  }
+
+
+.quill-dark .ql-editor {
+    /* background-color: white; */
+    color: rgb(252, 251, 251);
+}
+.quill-dark .ql-toolbar {
+    background-color: #333;
+    border-color: #555;
+}
+
+.quill-dark .ql-toolbar button {
+    color: #fffbfb !important;
+}
+.quill-dark .ql-toolbar .ql-picker-item {
+    color: #373636;
+}
+.quill-dark .ql-toolbar .ql-picker-label{
+    color: #f0ecec;
+
+}
+
+#toolbar .ql-custom-image {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  #toolbar button {
+    margin: 0 5px;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .textEditor-img-div{
+    position: relative;
+  }
+  .textEditor-img-input{
+    width: 100px;
+    position: absolute;
+    right: 25px;
+    opacity: 0;
+    cursor: pointer !important;
+    z-index: 1000;
+}
+.textEditor-img-icon{
+    position: absolute;
+    right: 20px;
+}
+.textEditor-img-input:hover{
+    background-color: aqua;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* گالری تصاویر */
+.gallery-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-modal.open {
+  display: flex;
+}
+
+.gallery-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.gallery-content img {
+  width: 100px;
+  cursor: pointer;
+}
+
+/* استایل‌های ویرایشگر */
+.textEditor-img-div {
+  position: relative;
+}
+
+.textEditor-img-input {
+  position: absolute;
+  right: 25px;
+  opacity: 0;
+  cursor: pointer !important;
+  z-index: 1000;
+}
+
+.textEditor-alttext-input{
+  margin: 5px;
+  position: absolute;
+  right: 60px;
+outline: none;
+  z-index: 1000;}
+
+.textEditor-img-icon {
+  position: absolute;
+  right: 20px;
+}
+.ql-editor div[data-embed="true"] {
+  background-color: #f0f0f0;
+  border: 1px dashed #ccc;
+  padding: 10px;
+}
+
+
+
+.quill-editor .ql-resizable {
+  position: relative;
+  display: inline-block;
+  border: 1px solid #ccc;
+}
+
+.quill-editor .ql-resizable div {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  background-color: #000;
+  cursor: nwse-resize;
+}

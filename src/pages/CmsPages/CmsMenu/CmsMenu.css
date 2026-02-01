@@ -1,0 +1,12 @@
+.nav-link {
+  color: var(--gray3) !important ;
+}
+.nav-link:hover {
+  background-color: var(--gray1);
+}
+
+@media (max-width: 570px) {
+  .container-menu {
+    margin-top: 50px;
+  }
+}

@@ -1,0 +1,296 @@
+
+.bom-right-message-div{
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width:30cqi ;
+  height: 800px;
+  border-radius: 8px;
+
+  z-index: 1000;
+}
+
+  .bom-order-right-message-divA{
+    overflow: auto;
+    width: 100%;
+    height: 80%;
+    /* background-color: aliceblue; */
+    background-color: var(--blue0);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10Px;
+    padding-top: 30px;
+
+  }
+  .Modal-container-row{
+padding-right: 20px;
+  }
+  .bom-order-right-message-divB{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 20%;
+    /* background-color: blanchedalmond; */
+  }
+  .bom-order-right-message-divB textarea{
+    background-color: var(--white);
+    font-size: x-large;
+    height: 80%;
+    border: none;
+    outline: none !important;
+  }
+  .bom-order-right-message-divB  button{
+    /* height: 20%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+
+ .bom-right-message-closeicon{
+  width: fit-content;
+  /* position: absolute; */
+  left: 20px;
+  cursor: pointer;
+  padding: 10px;
+  top: -10px;
+  margin-left: 5px;
+ }
+ .bom-order-right-message-refresh{
+  justify-content: space-evenly;
+
+  width: 100%;
+  /* position: absolute; */
+  left: 0px;
+  cursor: pointer;
+  padding: 10px;
+  top: -10px;
+ }
+ .bom-right-message-closeicon:hover{
+  opacity: 0.7;
+ }
+ .sphere {
+  padding: 4px;
+  width: 45px !important;
+  height: 45px;
+  background-color:green;
+  background: radial-gradient(circle at 30% 50%, #ffffff 10%, #d0d0d0 70%);
+  border-radius: 50%;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  left: 15px;
+  cursor: pointer;
+}
+.sphere:hover{
+  opacity: 0.7;
+}
+
+
+.bom-order-messeage-desc-div-sender{
+  position: relative;
+  margin-bottom: 10px;
+  justify-content: flex-end !important;
+  margin-bottom: 30px;
+}
+.bom-order-messeage-desc-div{
+  position: relative;
+  margin-bottom: 10px;
+  justify-content: flex-start !important;
+  margin-bottom: 30px;
+
+}
+
+
+.bom-order-messeage-desc-date{
+  position: absolute;
+  top: -24px;
+  right: 30%;
+  background-color: #d0d0d0;
+  border-radius: 5px;
+  font-size: smaller;
+  color: #fff;
+}
+
+.bom-order-messeage-desc-sendername{
+  font-size: 12px;
+  border-radius: 15px;
+  padding: 5px;
+  color: black;
+  /* color: #fff; */
+  /* background-color: #cad0d9; */
+  position: absolute;
+  top: -20px;
+  right: 0;
+}
+
+
+.bom-order-messeage-desc-sender{
+  min-height: 50px;
+  width: 50%;
+  padding: 5px;
+  border: 1px dotted;
+  border-radius: 10px;
+  background-color: var(--gray1); 
+  position: relative;
+  color: #fff;
+  /* justify-self: flex-start !important; */
+}
+.bom-order-messeage-desc{
+  min-height: 50px;
+
+  width: 50%;
+  padding: 5px;
+  border: 1px dotted;
+  border-radius: 10px;
+  background-color: var(--white); 
+  position: relative;
+  color: var(--gray1);
+  /* justify-self: flex-end !important; */
+
+}
+.bom-pagination-ref{
+  display: none !important;
+}
+.bom-order-right-message-file-div{
+  width: 100%;
+  height: 50px;
+  background-color: #9fb9f7;
+  position: relative;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+.bom-order-right-message-file-div svg{
+  color: var(--white);
+  position: absolute;
+  left: 50%;
+  font-size: 30px;
+}
+.bom-order-right-message-file-input{
+  opacity: 0;
+  width: 100%;
+  font-size: 20px;
+}
+.bom-order-file-i{
+  position: absolute;
+  left: 20px;
+  top: 0;
+  display: inline;
+}
+
+.bom-hide{
+  display: none;
+}
+.bom-order-downlod-button{
+  position: absolute;
+  bottom: -18px;
+  border: none;
+  outline: none;
+  left: 0;
+}
+.bom-select{
+  font-size: 1cqi;
+  border: 1px solid rgba(168, 168, 168, 0.550000011920929);
+  border-radius: 3px;
+width: 30%;
+padding: 2px;
+margin: 5px;
+outline: none;
+}
+.bom-select-option{
+}
+
+.p-sidebar-header{
+  background-color: var(--white) !important;
+
+}
+.p-sidebar-content{
+  background-color:var(--white) !important;
+}
+
+.bom-table{
+    width: fit-content !important;
+    margin: 0 auto !important;
+}
+
+.bom-table th {
+    font-size: 20px !important;
+}
+.bom-table td {
+    font-size: 20px !important;
+}
+.bomDisable{
+    pointer-events: none;
+    opacity: 0.6;
+}
+.bom-upload-div{
+    cursor: pointer;
+    width: 100px;
+    position: relative;
+}
+.bom-upload{
+    position: absolute;
+opacity: 0;}
+
+.bom-upload-span{
+    position: absolute;
+}
+
+
+.bomHidden{
+  display: none;
+  visibility: none;
+  pointer-events: none;
+}
+
+.bom-sendMessage-sms-div{
+  background-color: #fff;
+  position: relative;
+  width: 100%;
+  align-items: center;
+}
+  .bom-sendMessage-sms-div i{
+    position: absolute;
+    left: -5px;
+    top: 0;
+  }
+  .bom-sendMessage-sms-div button{
+    width: 80%;
+  }
+
+  .bom-sendMessage-sms-div svg{
+    transform: rotate(180deg);
+    font-size: 1.2cqi !important;
+    color: var(--white);
+    margin: 8px;
+  }
+  .bom-sms-div{
+    position: relative;
+  }
+  .bom-sms-input{
+
+    margin-right: 5px;
+        width: 25px;
+        height: 80% !important;
+      }
+
+
+ 
+.Modal-container{
+  direction: rtl;
+}
+
+.bom-table-id-td{
+  position: relative;
+
+}
+
+.bom-table-id-td svg{
+    position: absolute;
+    /* right: -5px;
+    top: -5px; */
+    color: #ff0303 !important;
+    font-size: 30px;
+    background-color: transparent !important;
+    pointer-events: none;
+}

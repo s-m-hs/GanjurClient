@@ -1,0 +1,12 @@
+.datatable-container{
+    margin-bottom: 15px;
+    box-shadow: 0 0 15px -10px rgb(0,0,0,0.75);
+}
+.datatable-title{
+    margin-bottom: 15px;
+}
+.datatable-title span{
+  font-weight: 600;
+  color: var(--gray3);
+
+}

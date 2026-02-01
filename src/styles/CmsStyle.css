@@ -1,0 +1,159 @@
+.app-container {
+  max-width: none !important;
+}
+.cms-container {
+  min-height: 100vh;
+  /* background-color: var(--white0); */
+  background: linear-gradient(90deg, #bfc2c7 0%, #e6e7e9 50%, #bfc2c7 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: vazir;
+  direction: rtl;
+  font-size: 11px;
+  /* font-size: 0.7cqi; */
+}
+
+@keyframes metalMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@font-face {
+  font-family: vazir;
+  src: url(../../fonts/webfonts/Vazirmatn-RD-FD-NL-Regular.woff2);
+}
+@font-face {
+  font-family: vazirEn;
+  src: url(../../fonts/webfonts/Vazirmatn-Regular.woff2);
+}
+/* @font-face { */
+/* font-family: 'Vazirmatn-RD-FD-NL-Regular'; */
+/* font-family: 'Yekan'; */
+/* font-style: normal;
+    font-weight: normal; */
+/* src: url('../../fonts/Vazirmatn-RD-FD-NL-Regular.woff2') format('woff2'); */
+/* src: url('../../fonts/Yekan.woff') format('woff2'); */
+/* } */
+
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+  --bs-gutter-x: 0 !important;
+  --bs-gutter-y: 0;
+  width: 100%;
+  padding-right: 1cqi !important;
+  padding-left: 1cqi !important;
+  margin-right: 1cqi !important;
+  margin-left: 1cqi !important;
+  max-width: none !important;
+}
+.css-i4bv87-MuiSvgIcon-root {
+  color: var(--gray3);
+}
+:root {
+  --white0: #dfe7ef;
+  --white: #e5e7eb;
+  --white2: #ffffff;
+  --white1: #f0f8ff;
+  --white3: #555;
+  --gray1: #bbbbbc;
+  --gray2: #f0f0ff;
+  --gray3: #555;
+  /* --black:#101011; */
+  --black0: #000000;
+  --black: #464646;
+  --black2: #2e2e2e;
+  --white-50: rgb(230, 230, 230);
+  --blue0: #f0f8ff;
+  --blue1: #2f3437;
+  --blue2: #b9b9b9;
+  --them: #7c6a0a;
+
+  --bg-metallic-glass: linear-gradient(135deg, rgba(223, 231, 239, 0.6), rgba(201, 210, 220, 0.35));
+
+  --glass-blur: blur(16px) saturate(150%);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.45);
+  --glass-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.7), 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* .p-sidebar-mask.p-component-overlay{
+    width: 80% !important;
+ } */
+
+.rmdp-week div {
+  height: 1.2cqi;
+  width: 1.2cqi;
+}
+.rmdp-week-day {
+}
+
+.nav-tabs .nav-link.active {
+  background-color: var(--white) !important;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #49b329;
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b91919;
+}
+
+/* برای  نمایش مدال و عدم تداخل با سایدبار */
+.fade {
+  z-index: 20000 !important;
+  /* background-color: var(--white) !important; */
+}
+.p-sidebar-full {
+  z-index: 20000 !important;
+}
+.modal {
+  --bs-modal-bg: var(--white) !important;
+}
+
+.rmdp-input {
+  font-family: sans-serif !important ;
+  margin: 3px !important;
+  background-color: var(--white);
+  color: var(--black0);
+}
+.icon-tabler-calendar-event {
+  color: var(--black0) !important;
+}
+@media only screen and (max-width: 768px) {
+  .rmdp-week div {
+    height: 30px;
+    width: 19px;
+  }
+}
+@media (max-width: 1100px) {
+  .element-hide {
+    display: none !important;
+  }
+}

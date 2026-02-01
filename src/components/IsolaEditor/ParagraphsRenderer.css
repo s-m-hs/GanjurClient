@@ -1,0 +1,37 @@
+/* src/components/ParagraphsRenderer/ParagraphsRenderer.css */
+.content-area {
+  padding: 24px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  direction: rtl;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.content-area.view-mode {
+  padding: 24px;
+  margin: 20px auto;
+  max-width: 1200px;
+  background-color: #ffffff;
+}
+
+.paragraph-block {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px; /* ایجاد فاصله بین پاراگراف‌ها */
+}
+
+.text-element,
+.image-element {
+  margin: 10px !important; /* اضافه کردن فاصله بین عناصر */
+}
+
+@media (max-width: 800px) {
+  .paragraph-block {
+    flex-direction: column !important;
+  }
+  
+  .content-area {
+    padding: 16px;
+  }
+}

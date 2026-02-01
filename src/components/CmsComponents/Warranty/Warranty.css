@@ -1,0 +1,62 @@
+.warranty-right-row{
+    justify-content: flex-start;
+
+}
+.warranty-main-form{
+    justify-content: flex-start;
+}
+
+
+.warranty-main-row input{
+    height: 80px;
+    margin-bottom: 30px;
+}
+.warranty-name-botton{
+    width: 100%;
+    font-weight: 600 !important;
+    font-size: 25px !important;
+    
+}
+
+
+.textarea_div span{
+    justify-self: flex-start;
+    align-self: flex-start;
+padding: 10px;
+font-size: 20px;
+color: var(--gray3);
+
+  }
+  .textarea_div textarea{
+    height: 120px;
+    outline: none;
+    border-color: rgb(168 168 168 / 55%);
+    font-size: 20px;
+  }
+
+.warranty-right-row-ok-button{
+    align-items: center;
+}
+
+
+.warranty-input-disable{
+    pointer-events: none;
+    background-color: var(--gray1);
+}
+
+
+.warranty-right-row-ok-button label{
+    font-size: 15px;
+}
+
+.warranty-dateformat {
+    height: -webkit-fill-available;
+
+    font-size: 15px ;
+    background-color: var(--gray1);
+    border-radius: 7px;
+    align-items: center;
+}
+.allwarranty-button-right{
+    justify-content: space-around !important;
+}

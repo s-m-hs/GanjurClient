@@ -1,0 +1,51 @@
+/* src/styles/RichTextEditor.css */
+.rich-text-editor {
+    width: 100%;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .editor-buttons {
+    margin: 10px 0;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .save-button,
+  .view-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  .save-button {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .save-button:hover {
+    background-color: #218838;
+  }
+  
+  .view-button {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .view-button:hover {
+    background-color: #0069d9;
+  }
+  .reach_img_div{
+    min-width: 400px;
+    background-color: #edeeee;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 50px;
+    z-index: 1500;
+  }

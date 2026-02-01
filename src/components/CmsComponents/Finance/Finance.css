@@ -1,0 +1,22 @@
+.hhhhh input {
+  height: 50px !important;
+}
+
+.finance-accountA-div {
+  padding: 5px;
+}
+
+.finance-accountA-div ul {
+  padding: 10px;
+  margin-right: 15px;
+}
+
+.finance-accountA-div li {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+.finance-accountA-div li > span {
+  font-size: 20px;
+  font-weight: 600;
+  color: brown;
+}

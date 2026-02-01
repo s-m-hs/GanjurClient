@@ -1,0 +1,145 @@
+.itemmenu-col3 {
+  box-shadow: 0 0 15px -10px rgb(0, 0, 0, 0.75);
+}
+
+.itemmenu-select-row {
+  box-shadow: 0 0 15px -10px rgb(0, 0, 0, 0.75);
+}
+.itemmenu-regbutton {
+  margin-top: 55px !important;
+  width: 95% !important;
+}
+.itemmenu-regbutton svg {
+  transform: rotate(180deg);
+  font-size: 1.2cqi !important;
+  color: var(--white);
+  margin: 8px;
+}
+.itemmenu-regbutton span {
+  font-size: 1.3cqi;
+  font-family: Yekan, calibri !important;
+}
+.itemmenu-select-row :nth-child(1) {
+  margin-bottom: 10px;
+}
+.itemmenu-editbut {
+  font-size: 0.5cqi !important;
+  margin: 2px;
+}
+.itemmenu-deletbut {
+  font-size: 0.5cqi !important;
+  margin: 2px;
+}
+.itemmenu-img-image {
+  width: 3.5cqi;
+  border-radius: 10px;
+  margin-right: 15px;
+}
+
+.itemmenu-img-input {
+  width: 50% !important;
+}
+
+.itemmenu-table img {
+  border-radius: 4px;
+  width: 2cqi;
+}
+.itemmenu-table th {
+  font-size: 0.7cqi;
+}
+.itemmenu-table td {
+  font-size: 0.9cqi;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.itemmenu-resticon {
+  text-align: center;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.itemmenu-resticon:hover {
+  opacity: 0.8;
+}
+.itemmenu--category-selectlabel {
+  align-self: flex-start;
+  margin: 5px;
+  font-size: 1cqi;
+  color: #555;
+}
+.itemmenu-category {
+  font-size: 1cqi;
+  border: 1px solid rgba(168, 168, 168, 0.550000011920929);
+  align-self: flex-start;
+  border-radius: 3px;
+  width: 95%;
+  padding: 2px;
+  margin: 5px;
+  outline: none;
+}
+.itemmenu-select-row-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  width: 25%;
+  height: 50px;
+  border-radius: 4px;
+  padding: 5px 15px;
+  min-width: 64px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  border: 1px solid rgba(25, 118, 210, 0.5);
+  color: #1976d2;
+}
+.itemmenu-select-row-link:hover {
+  border-color: #1976d2;
+  background-color: rgba(25, 118, 210, 0.04);
+}
+.itemmenu-select-row-button {
+  font-family: Yekan, calibri !important;
+}
+
+.itemmenu-col-sm-9-div {
+  display: flex;
+  justify-content: center;
+}
+/* .itemmenu-table-divv {
+  overflow-x: auto !important;
+} */
+
+@media (max-width: 570px) {
+  .itemmenu-regbutton {
+    margin-bottom: 15px !important;
+  }
+  .itemmenu-regbutton svg {
+    font-size: 25px !important;
+  }
+  .itemmenu-regbutton span {
+    font-size: 18px !important;
+  }
+  .itemmenu-table {
+    zoom: 0.8;
+  }
+
+  .itemmenu-table th {
+    font-size: 10px;
+  }
+
+  .itemmenu-table td {
+    font-size: 10px;
+    /* max-width: 100px; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .itemmenu-addbut {
+    padding: 1px !important;
+    font-size: 10px !important;
+  }
+  .itemmenu-editbut {
+    padding: 1px !important;
+    font-size: 10px !important;
+  }
+}

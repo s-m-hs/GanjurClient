@@ -1,0 +1,50 @@
+pagination states 
+import Pagination from '@mui/material/Pagination';
+  
+
+   const [page, setPage] = React.useState(1);
+  const [paginationArray, setPaginationArray] = useState([]);
+  const pageCount=10
+  const [allCount, setAllCount] = useState([]);
+  const goToTop=()=>{
+    window.scrollTo({
+      top:0,
+      behavior:'smooth'
+    })
+  }
+  const handleChange = (event, value) => {
+    goToTop()
+    setPage(value);
+    let code=mainCategory?.item.code
+    let obj = {
+      cat: code,
+      pageNumber: value-1,
+      pageSize: pageCount
+    
+  }
+    getproductByCat(obj);
+};
+useEffect(() => {
+  if (productByCat?.length != 0 ) {
+    let x = allCount;
+    let countInPage = pageCount; 
+    let z = Math.ceil(x / countInPage);
+    z
+      ? setPaginationArray(Array.from({ length: z }))
+      : setPaginationArray([]);
+  }
+}, [productByCat]);
+
+
+{
+   paginationArray.length > 1 &&
+             
+   <div className='pagination-div' >
+   <Pagination count={ paginationArray.length}  page={page}
+    //  ref={classRefB}
+    onChange={handleChange}
+    color="primary"
+     shape="rounded"
+    style={{direction:'ltr'}}
+     />
+   </div>}

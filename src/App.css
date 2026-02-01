@@ -1,0 +1,52 @@
+@import "./styles/CmsStyle.css";
+@import "./styles/InputField.css";
+@import "./styles/helpStyle.css";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+iframe {
+  display: none;
+}
+
+.App {
+  min-height: 100vh;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+.a {
+  text-decoration: none;
+  color: inherit;
+  list-style: none;
+}
+
+.darkthem-color {
+  color: var(--black0);
+}
+.darkthem-background {
+  background-color: var(--white);
+}
+
+.table_no {
+  border: none;
+  color: none;
+  background-color: none;
+}
+
+@media (max-width: 768px) {
+  .blog-content table {
+    font-size: 12px;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 1100px) {
+  .element-hide {
+    display: none !important;
+  }
+}

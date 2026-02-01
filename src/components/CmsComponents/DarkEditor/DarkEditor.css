@@ -1,0 +1,59 @@
+/* editorThemes.css */
+
+
+@font-face {
+    /* font-family: 'Vazirmatn-RD-FD-NL-Regular'; */
+    font-family: 'Yekan';
+    font-style: normal;
+    font-weight: normal;
+    /* src: url('../fonts/Vazirmatn-RD-FD-NL-Regular.woff2') format('woff2'); */
+    src: url('../../../../fonts/Yekan.woff') format('woff2');
+}
+@font-face {
+    font-family: vazir;
+    src: url(../../../../fonts/webfonts/Vazirmatn-RD-FD-NL-Regular.woff2);
+  }
+.ql-editor {
+
+    /* background-color: var(--white0);
+    color: var(--black0); */
+
+    font-family: 'Yekan', sans-serif !important; 
+    font-family: 'vazir', vazir !important; 
+}
+.quill-light .ql-editor {
+    background-color: white;
+    color: rgb(148, 146, 146);
+}
+
+.quill-dark .ql-editor {
+    background-color: #1e1e1e;
+    color: #cfcfcf;
+}
+.quill-light .ql-toolbar {
+    background-color: #ffffff;
+    border-color: #0a0a0a;
+}
+.quill-light .ql-toolbar button {
+    color: #ffffff;
+}
+
+.quill-light .ql-toolbar .ql-picker-label, 
+.quill-light .ql-toolbar .ql-picker-item {
+    color: #000000;
+}
+
+
+/* Toolbar styling for dark mode */
+.quill-dark .ql-toolbar {
+    background-color: #333;
+    border-color: #555;
+}
+
+.quill-dark .ql-toolbar button {
+    color: #cfcfcf;
+}
+.quill-dark .ql-toolbar .ql-picker-label, 
+.quill-dark .ql-toolbar .ql-picker-item {
+    color: #cfcfcf;
+}
