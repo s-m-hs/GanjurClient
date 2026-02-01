@@ -32,6 +32,8 @@ export default function Finance() {
     const [accountBDetail, setAccountBDetail] = useState({})
     const [voucherDate, setVochurDate] = useState(new Date())
     const [vouchurDetail, setVouchurDetail] = useState([])
+    const [voucherId, setVoucherId] = useState('')
+    const [editVoucherDetail, setEditVoucherDetail] = useState({})
     const {
         register,
         handleSubmit,
@@ -150,6 +152,35 @@ export default function Finance() {
         }
     }, [])
 
+    useEffect(() => {
+        if (editVoucherDetail?.items?.length != 0) {
+            console.log(editVoucherDetail);
+            editVoucherDetail?.items?.forEach(element => {
+                if (element.credit != 0) {
+                    setAccountADetail([])
+                    ApiGetX2(`/api/Account/accountBalance?accountId=${element?.accountId}`, setAccountADetail)
+                } else if (element.debit != 0) {
+                    setAccountBDetail([])
+                    ApiGetX2(`/api/Account/accountBalance?accountId=${element?.accountId}`, setAccountBDetail)
+                }
+            });
+        }
+
+    }, [editVoucherDetail])
+
+    
+console.log(editVoucherDetail,vouchurDetail);
+    useEffect(() => {
+        if (editVoucherDetail?.items?.length != 0) {
+            editVoucherDetail?.items?.forEach(element => {
+                if (element.credit != 0) {
+                    setXtSearchI(element.accountId)
+                } else if (element.debit != 0) {
+                    setXtSearchJ(element.accountId)
+                }
+            });
+        }
+    }, [accountADetail, accountBDetail])
 
 
     return (
@@ -318,17 +349,49 @@ export default function Finance() {
 
 
 
-                <div className="col-12 col-lg-5 finance-accountA-div boxSh">
+                <div className="col-12 col-lg-3 finance-accountA-div boxSh">
                     <h2 className='mb-5 mt-3' > جزییات سند :</h2>
 
                     <ul>
-                        <li>تاریخ : <span><DateFormat dateString={`${vouchurDetail.voucherDate}`} /> </span></li>
-                        <li>شناسه :<span>{vouchurDetail.id}</span> </li>
-                        <li>عنوان : <span>{vouchurDetail.referenceType}</span></li>
-                        <li>شرح : <span>{vouchurDetail.description}</span></li>
-                        <li>مبلغ انتقالی :<span>{vouchurDetail.length != 0 && vouchurDetail?.items[0]?.credit?.toLocaleString()} ریال</span> </li>
+                        <li>تاریخ : <span><DateFormat dateString={editVoucherDetail?.items?.length == 0 ? `${vouchurDetail.voucherDate}` : `${editVoucherDetail.voucherDate}`} /> </span></li>
+                        <li>شناسه :<span>{editVoucherDetail?.items?.length == 0 ? vouchurDetail.id : editVoucherDetail.id}</span> </li>
+
+                        <li>عنوان : <span>{editVoucherDetail?.items?.length == 0 ? vouchurDetail.referenceType : editVoucherDetail.referenceType}</span></li>
+
+                        <li>شرح : <span>{editVoucherDetail?.items?.length == 0 ? vouchurDetail.description : editVoucherDetail.description}</span></li>
+
+                        <li>مبلغ انتقالی :<span>
+                            {(vouchurDetail?.length != 0 && editVoucherDetail?.items?.length == 0) ? vouchurDetail?.items?.[0]?.credit?.toLocaleString() :
+                            editVoucherDetail?.items?.length != 0 ?
+                                editVoucherDetail?.items?.[0]?.credit?.toLocaleString()
+                                : 0} ریال</span> </li>
 
                     </ul>
+                </div>
+
+                <div className="col-12 col-lg-2 finance-accountA-div boxSh">
+                    <div className="login-label-float">
+                        <input
+                            value={voucherId}
+                            onChange={(e) => setVoucherId(e.target.value)}
+                            type="number"
+                            placeholder=""
+                        />
+                        <label>شماره سند</label>
+                    </div>
+
+
+                    <div className='centerrc'>
+                        <button className="btn btn-success mt-3 "
+                            onClick={() => {
+                                setEditVoucherDetail([])
+                                ApiGetX2(`/api/Voucher/${voucherId}`, setEditVoucherDetail)
+                            }
+                            }>
+                            نمایش سند
+
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
