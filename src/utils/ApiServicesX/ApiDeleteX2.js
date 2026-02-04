@@ -32,17 +32,11 @@ const ApiDeleteX2 = (url, func) => {
           })
             .then((res) => {
               console.log(res);
+              if(res.ok){
+     func()
+            }
             })
-            .then((result) => {
-              swalWithBootstrapButtons
-                .fire({
-                  title: "حذف انجام شد!",
-                  icon: "success",
-                })
-                .then((result) => {
-                  func();
-                });
-            })
+   
             .catch((err) => console.log(err));
         }
         myAppDelete();

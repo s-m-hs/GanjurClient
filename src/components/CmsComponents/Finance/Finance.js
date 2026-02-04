@@ -19,6 +19,10 @@ import alertA from '../../../utils/AlertFunc/AlertA';
 import apiUrl from '../../../utils/ApiConfig';
 import DateFormat from "../../../utils/DateFormat";
 import AlertError from '../../../utils/AlertFunc/AlertError';
+import { Blocks } from 'react-loader-spinner';
+import ApiDeleteX2 from '../../../utils/ApiServicesX/ApiDeleteX2';
+import { Dangerous, DangerousOutlined, DangerousRounded, DangerousSharp, DangerousTwoTone } from '@mui/icons-material';
+import { MdDangerous } from 'react-icons/md';
 export default function Finance() {
     let { xtSearchI, setXtSearchI,
         xtSearchJ, setXtSearchJ, setResetSearchbox } = useContext(CmsContext)
@@ -28,12 +32,14 @@ export default function Finance() {
     const [flagUpdate, setFlagUpdate] = useState(false);
     const [allAccount, setAllAccount] = useState([])
     const [value1, setValue1] = useState(0);
-    const [accountADetail, setAccountADetail] = useState({})
-    const [accountBDetail, setAccountBDetail] = useState({})
+    const [accountADetail, setAccountADetail] = useState([])
+    const [accountBDetail, setAccountBDetail] = useState([])
     const [voucherDate, setVochurDate] = useState(new Date())
     const [vouchurDetail, setVouchurDetail] = useState([])
-    const [voucherId, setVoucherId] = useState('')
+    const [voucherId, setVoucherId] = useState(0)
     const [editVoucherDetail, setEditVoucherDetail] = useState({})
+        const [dnaflag, setDnaflag] = useState(false)
+    
     const {
         register,
         handleSubmit,
@@ -66,6 +72,8 @@ export default function Finance() {
         setAccountADetail([])
         setAccountBDetail([])
         setVouchurDetail([])
+        setEditVoucherDetail({})
+        setVoucherId(0)
     }
 
     const voucherTitle = [
@@ -75,49 +83,112 @@ export default function Finance() {
         { id: 4, status: "چک", statusId: 4 }
     ]
     const handleRegistration = (data) => {
-
-        let obj = {
-            voucherDate: voucherDate,
-            description: data.description,
-            referenceType: data.referenceType,
-            items: [
-                {
-                    accountId: xtSearchI,
-                    toAccountId: xtSearchJ,
-                    debit: 0,
-                    credit: value1
-                },
-                {
-                    accountId: xtSearchJ,
-                    toAccountId: xtSearchI,
-                    debit: value1,
-                    credit: 0
-                }
-            ]
-        }
-        console.log(obj)
-        async function myApp() {
-            const res = await fetch(`${apiUrl}/api/Voucher`, {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(obj),
-            }).then(res => {
-                if (res.ok) return res.json().then(result => {
-                    setVouchurDetail(result)
-
-                    reset(setValue(''))
-                    setVochurDate(new Date())
-                    setValue1(0)
-                    alertA("سند با موفقیت ثبت شد ")
-                    setResetSearchbox(true)
+        setDnaflag(true)
+        if (voucherId==0) {
+            let obj = {
+                voucherDate: voucherDate,
+                description: data.description,
+                referenceType: data.referenceType,
+                items: [
+                    {
+                        accountId: xtSearchI,
+                        toAccountId: xtSearchJ,
+                        debit: 0,
+                        credit: value1
+                    },
+                    {
+                        accountId: xtSearchJ,
+                        toAccountId: xtSearchI,
+                        debit: value1,
+                        credit: 0
+                    }
+                ]
+            }
+            async function myApp() {
+                const res = await fetch(`${apiUrl}/api/Voucher`, {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(obj),
+                }).then(res => {
+                    if (res.ok) return res.json().then(result => {
+                        // setVouchurDetail(result)
+                        setAccountADetail([])
+                        setAccountBDetail([])
+                        reset(setValue(''))
+                        setVochurDate(new Date())
+                        setValue1(0)
+                        alertA("سند با موفقیت ثبت شد ")
+                        setResetSearchbox(true)
+                        setDnaflag(false)
+                    })
                 })
-            })
-        }
-        myApp()
-    }
+            }
+            myApp()
+        } else if (editVoucherDetail?.items?.length != 0 && voucherId>0 ) {
+            let creditId = 0
+            let debitId = 0
 
+            editVoucherDetail?.items?.forEach(element => {
+                if (element.credit != 0) {
+                    return creditId = element.id
+                } else if (element.debit != 0) {
+                    return debitId = element.id
+                }
+            });
+
+            let obj = {
+                id: voucherId,
+                voucherDate: voucherDate ? voucherDate : editVoucherDetail.voucherDate,
+                description: data.description,
+                referenceType: data.referenceType,
+                items: [
+                    {
+                        id: creditId,
+                        accountId: xtSearchI,
+                        toAccountId: xtSearchJ,
+                        debit: 0,
+                        credit: value1
+                    },
+                    {
+                        id: debitId,
+                        accountId: xtSearchJ,
+                        toAccountId: xtSearchI,
+                        debit: value1,
+                        credit: 0
+                    }
+                ]
+            }
+            async function myApp() {
+                const res = await fetch(`${apiUrl}/api/Voucher/editeVoucher`, {
+                    method: 'PUT',
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(obj),
+                }).then(res => {
+                    if (res.ok) return res.json().then(result => {
+                        // setVouchurDetail(result)
+                        setEditVoucherDetail({})
+                        reset(setValue(''))
+                        setXtSearchI('')
+                        setXtSearchJ('')
+                        setResetSearchbox(true)
+                        setVochurDate(new Date())
+                        setValue1(0)
+                        setAccountADetail([])
+                        setAccountBDetail([])
+                        alertA("سند با موفقیت ویرایش شد ")
+                         setDnaflag(false)
+                    })
+                })
+            }
+            myApp()
+        }
+
+
+    }
     useEffect(() => {
         cmsContext.setFlagClass(false);
         homeContext.setSideMenueFlag(false)
@@ -148,13 +219,14 @@ export default function Finance() {
 
     useEffect(() => {
         return () => {
+            setXtSearchI('')
+            setXtSearchJ('')
             setResetSearchbox(true)
         }
     }, [])
-
     useEffect(() => {
-        if (editVoucherDetail?.items?.length != 0) {
-            console.log(editVoucherDetail);
+        if (editVoucherDetail?.items?.length > 0) {
+            setVochurDate('')
             editVoucherDetail?.items?.forEach(element => {
                 if (element.credit != 0) {
                     setAccountADetail([])
@@ -164,42 +236,62 @@ export default function Finance() {
                     ApiGetX2(`/api/Account/accountBalance?accountId=${element?.accountId}`, setAccountBDetail)
                 }
             });
-        }
+            setDnaflag(false)
+        }else{
+ setVochurDate(new Date())     
+   }
 
     }, [editVoucherDetail])
 
-    
-console.log(editVoucherDetail,vouchurDetail);
-    useEffect(() => {
-        if (editVoucherDetail?.items?.length != 0) {
-            editVoucherDetail?.items?.forEach(element => {
-                if (element.credit != 0) {
-                    setXtSearchI(element.accountId)
-                } else if (element.debit != 0) {
-                    setXtSearchJ(element.accountId)
-                }
-            });
-        }
-    }, [accountADetail, accountBDetail])
+
+    // useEffect(() => {
+    //     if (editVoucherDetail?.items?.length != 0) {
+    //         editVoucherDetail?.items?.forEach(element => {
+    //             if (element.credit != 0) {
+    //                 setXtSearchI(element.accountId)
+    //             } else if (element.debit != 0) {
+    //                 setXtSearchJ(element.accountId)
+    //             }
+    //         });
+    //     }
+    // }, [accountADetail, accountBDetail])
 
 
     return (
         <div className="container">
+                               {dnaflag &&
+                                        <div className='dnaa-div'>
+                                            <span className='dnaaa'>
+                                                <Blocks
+                                                    height="300"
+                                                    width="300"
+                                                    color="#4fa94d"
+                                                    ariaLabel="blocks-loading"
+                                                    wrapperStyle={{}}
+                                                    wrapperClass="blocks-wrapper"
+                                                    visible={true}
+                                                />
+                                            </span>
+                                        </div>
+                                    }
             <div className="row">
 
-                <div className="col-12 col-lg-3 user-col3">
+                <div className="col-12 col-lg-3 user-col3"
+                style={{backgroundColor:!voucherId ? '' :'#ffb93f'}}
+                >
 
                     <form
                         action=""
                         onSubmit={handleSubmit(handleRegistration)}
                     >
                         <span className="newsubject-form-col3-span">تاریخ سند:</span>
+                      {editVoucherDetail?.items?.length!=0 &&  <span style={{color:'red', fontWeight:700}}><DateFormat dateString={editVoucherDetail.voucherDate} /></span>} 
                         <DatePicker
                             className="custom-input"
                             calendar={persian}
                             locale={persian_fa}
                             calendarPosition="bottom-right"
-                            value={voucherDate}
+                            value={ voucherDate}
                             onChange={handleChange}
                             animations={[
                                 opacity(),
@@ -212,9 +304,7 @@ console.log(editVoucherDetail,vouchurDetail);
                         <div className='mb-2'>
                             <SearchBox
                                 array={allAccount}
-
                                 id="accountArrayA"
-                                classs={"accountArrayA"}
                             />
                         </div>
 
@@ -231,24 +321,6 @@ console.log(editVoucherDetail,vouchurDetail);
 
                         <hr />
 
-
-                        {/* <div className="login-label-float">
-                            <input
-                                name="userName"
-                                type="text"
-                                placeholder=""
-                                maxLength={15}
-
-                                className={errors.referenceType ? "formerror" : ""}
-                                {...register(
-                                    !flagUpdate ? "referenceType" : "update.referenceType",
-                                    registerOptions.referenceType
-                                )}
-                            />
-                            <label>عنوان سند </label>
-
-
-                        </div> */}
 
 
                         <label className="user-col3-selectlabel"> عنوان سند </label>
@@ -297,6 +369,8 @@ console.log(editVoucherDetail,vouchurDetail);
 
                         <div className='centerrc'>
                             <button className="btn btn-danger "
+                                type='button'
+
                                 onClick={() => resetAllSatates()
                                 }>
                                 RESET
@@ -310,10 +384,10 @@ console.log(editVoucherDetail,vouchurDetail);
                             className={(typeof xtSearchI === "number" && typeof xtSearchJ === "number" && value1) ? "user-regbutton " : "user-regbutton disable"}
                             type="submit"
                             variant="contained"
-                            color="info"
+                            color={!voucherId? "info" : 'secondary'}
                             endIcon={<SendIcon />}
                         >
-                            {!flagUpdate ? <span> افزودن </span> : <span> ویرایش </span>}
+                            {!voucherId ? <span> افزودن </span> : <span> ویرایش </span>}
                         </Button>
                     </form>
                 </div>
@@ -362,9 +436,9 @@ console.log(editVoucherDetail,vouchurDetail);
 
                         <li>مبلغ انتقالی :<span>
                             {(vouchurDetail?.length != 0 && editVoucherDetail?.items?.length == 0) ? vouchurDetail?.items?.[0]?.credit?.toLocaleString() :
-                            editVoucherDetail?.items?.length != 0 ?
-                                editVoucherDetail?.items?.[0]?.credit?.toLocaleString()
-                                : 0} ریال</span> </li>
+                                editVoucherDetail?.items?.length != 0 ?
+                                    editVoucherDetail?.items?.[0]?.credit?.toLocaleString()
+                                    : 0} ریال</span> </li>
 
                     </ul>
                 </div>
@@ -381,16 +455,39 @@ console.log(editVoucherDetail,vouchurDetail);
                     </div>
 
 
-                    <div className='centerrc'>
+                    <div className='centercc'>
                         <button className="btn btn-success mt-3 "
+                            type='button'
                             onClick={() => {
+                                setDnaflag(true)
                                 setEditVoucherDetail([])
+                                setXtSearchI("")
+                                setXtSearchJ("")
+                                setResetSearchbox(true)
+                                setAccountADetail([])
+                                setAccountBDetail([])
                                 ApiGetX2(`/api/Voucher/${voucherId}`, setEditVoucherDetail)
                             }
                             }>
                             نمایش سند
 
                         </button>
+
+                        
+                      {editVoucherDetail?.items?.length >0 &&
+                       <button className='btn btn-danger mt-5'
+                       type='button'
+                       onClick={()=>{
+                        const func=()=>{
+                            alertA('حذف با موفقیت انجام شد')
+resetAllSatates()
+                        } 
+                        ApiDeleteX2(`/api/Voucher/deleteVoucher?id=${voucherId}`,func)
+                       }}
+                       >
+حذف سند<MdDangerous size={25}/>
+                        </button>
+                      } 
                     </div>
                 </div>
             </div>

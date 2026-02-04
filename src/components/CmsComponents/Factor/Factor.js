@@ -502,7 +502,7 @@ const Factor = (props) => {
                                                     <th className='factor-q-th'>تعداد</th>
                                                     <th> واحد(ریال)</th>
                                                     <th>مجموع(ریال)</th>
-                                                    <th>شرح</th>
+                                                    <th className='no-print'>شرح</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -621,7 +621,7 @@ const Factor = (props) => {
 
 
 
-                                                        <td>
+                                                        <td className='no-print'>
                                                             {!flagShowFactor ? <input value={item.Information || ''} onChange={e => updateItemField(item.ID, 'Information', e.target.value)} /> :
                                                                 <span>{item?.information}</span>
                                                             }

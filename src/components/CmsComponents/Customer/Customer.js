@@ -185,7 +185,7 @@ return (
       width: 200,
       cellRenderer: (params) => <DateFormat dateString={params.value} />,
     },
-    { field: "id", headerName: "شناسه سند", Width: 200 },
+    { field: "id", headerName: "شناسه آیتم", Width: 200 },
   ])
 
 
