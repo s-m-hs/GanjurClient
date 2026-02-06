@@ -69,8 +69,6 @@ export default function IndexH() {
         .then((res) => {
           if (res.ok) {
             return res.json().then((result) => {
-              console.log(result);
-              // localStorage.setItem("loginToken", JSON.stringify(result));
               localStorage.setItem("user", data.userName);
               setUserId(result.userId)
               setIsLogin(true);
@@ -103,7 +101,6 @@ export default function IndexH() {
     }
     myAppPost();
   };
-  // console.log(errors.password);
   const button1 = () => {
     setFlag(true);
   };

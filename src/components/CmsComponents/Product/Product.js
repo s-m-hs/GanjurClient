@@ -124,7 +124,10 @@ export default function Product() {
     // partNo: { required: "partNo is required" },
     manufacture: { required: "manufacture is required" },
     category: { required: "category is required" },
-    search: { required: "category is required" },
+    price: { required: "category is required" },
+    price2: { required: "category is required" },
+    price3: { required: "category is required" },
+    price4: { required: "category is required" },
   };
   const alertS = (position, icon, title, timer, state) =>
     Swal.fire({
@@ -239,7 +242,6 @@ export default function Product() {
         }
       )
         .then((res) => {
-          console.log(res);
           if (res.status == 200) {
             return res.json();
           }
@@ -300,7 +302,7 @@ export default function Product() {
         body: JSON.stringify(obj),
       })
         .then((res) => {
-          // console.log(res)
+          console.log(res)
           if (res.ok) {
             Swal.fire({
               position: "center",
@@ -434,7 +436,7 @@ export default function Product() {
         supply: data.supply ? data.supply : 0,
         mainImage: file2.name ? `${apiUrl}/${imgUrl2}` : imgUrl2,
         smallImage: file.name ? `${apiUrl}/${imgUrl}` : imgUrl,
-        images: imgArray.join("*,*"),
+        images: imgArray?.join("*,*"),
         cyManufacturerId: data.manufacture,
         cyCategoryId: data.category,
         cyProductCategoryId: data.categoryB,
@@ -508,6 +510,11 @@ export default function Product() {
           name: data.update.name,
           description: data.update.description,
           price: data.update.price,
+          price2: data.update.price2,
+          price3: data.update.price3,
+          price4: data.update.price4,
+                    shopPrice: Number(data.update.shopPrice),
+
           noOffPrice: data.update.noOffPrice,
           productCode: data.update.productCode,
           partNo: data.update.partNo,
@@ -516,7 +523,7 @@ export default function Product() {
           supply: data.update.supply ? data.update.supply : 0,
           mainImage: file2.name ? `${apiUrl}/${imgUrl2}` : imgUrl2,
           smallImage: file.name ? `${apiUrl}/${imgUrl}` : imgUrl,
-          images: imgArray.join("*,*"),
+          images: imgArray?.join("*,*"),
           cyManufacturerId: !xtSearchG
             ? data.update.manufacture
             : data.manufacture,
@@ -529,12 +536,15 @@ export default function Product() {
         handelUpdate(obj);
       } else if (productById[0] == null) {
         // let mergedArray2 = [...new Set([...obj2.flat(), ...productById[0]])];
-
         let obj = {
           id: putId,
           name: data.update.name,
           description: data.update.description,
-          price: data.update.price,
+          price: Number(data.update.price),
+          price2: Number(data.update.price2),
+          price3: Number(data.update.price3),
+          price4: Number(data.update.price4),
+          shopPrice: Number(data.update.shopPrice),
           noOffPrice: data.update.noOffPrice,
           productCode: data.update.productCode,
           partNo: data.update.partNo,
@@ -726,9 +736,14 @@ export default function Product() {
       supply: data[13],
       categoryB: data[14],
       productCode: data[15],
+      price2: data[16],
+      price3: data[17],
+      price4: data[18],
+      shopPrice:data[19]
+
     });
     setCteArray((prev) => [...prev, data[9], data[14], data[8]]);
-    setImageArray(data[12].split("*,*"));
+    setImageArray(data[12]?.split("*,*"));
     // console.log(data[12])
   };
   /////////////////////////
@@ -941,6 +956,99 @@ export default function Product() {
                 <label>توضیحات </label>
               </div>
 
+              <div className={!flagUpdate ? "producted-login-label-float disable" :"producted-login-label-float"} >
+                <input
+                  name="price"
+                  type="number"
+                  placeholder=""
+                  {...register(
+                    !flagUpdate ? "price" : "update.price",
+                    registerOptions.price
+                  )}
+                />
+                <label>مشتری قیمت </label>
+              </div>
+
+              <div className={!flagUpdate ? "producted-login-label-float disable" :"producted-login-label-float"}>
+                <input
+                  name="price2"
+                  type="number"
+                  placeholder=""
+                  {...register(
+                    !flagUpdate ? "price2" : "update.price2",
+                    registerOptions.price2
+                  )}
+                />
+                <label>همکار2 قیمت </label>
+              </div>
+
+              <div className={!flagUpdate ? "producted-login-label-float disable" :"producted-login-label-float"}>
+                <input
+                  name="price3"
+                  type="number"
+                  placeholder=""
+                  {...register(
+                    !flagUpdate ? "price3" : "update.price3",
+                    registerOptions.price3
+                  )}
+                />
+                <label>همکار3 قیمت </label>
+              </div>
+
+              <div className={!flagUpdate ? "producted-login-label-float disable" :"producted-login-label-float"}>
+                <input
+                  name="price4"
+                  type="number"
+                  placeholder=""
+                  {...register(
+                    !flagUpdate ? "price4" : "update.price4",
+                    registerOptions.price4
+                  )}
+                />
+                <label>همکار4 قیمت </label>
+              </div>
+
+              <div style={{display:'none'}} className="producted-login-label-float">
+                <input
+                  name="noOffPrice"
+                  type="text"
+                  placeholder=""
+                  {...register(
+                    !flagUpdate ? "noOffPrice" : "update.noOffPrice",
+                    registerOptions.noOffPrice
+                  )}
+                />
+                <label>قیمت بدون تخفیف </label>
+              </div>
+
+              <div className="producted-login-label-float">
+                <input
+                disabled
+                  name="supply"
+                  type="number"
+                  placeholder=""
+                  {...register(
+                    !flagUpdate ? "supply" : "update.supply",
+                    registerOptions.supply
+                  )}
+                />
+                <label> موجودی </label>
+              </div>
+
+              
+              <div className="producted-login-label-float">
+                <input
+                disabled
+                  name="shopPrice"
+                  type="text"
+                  placeholder=""
+                  {...register(
+                    !flagUpdate ? "shopPrice" : "update.shopPrice",
+                  )}
+                />
+                <label>قیمت  خرید </label>
+              </div>
+
               <div className="producted-login-label-float">
                 <input
                   name="partNo"
@@ -969,65 +1077,6 @@ export default function Product() {
               </div>
 
               <div className="producted-login-label-float">
-                <input type="text" onChange={fileChange4} value={imgUrl2} />
-                <label>عکس اصلی </label>
-                <div className="product-uploade-maindiv centerr">
-                  <div className="product-uploade-div">
-                    <span>
-                      <UploadFileIcon />
-                    </span>
-                    <input
-                      type="file"
-                      placeholder="عکس اصلی"
-                      className="producted-img-input"
-                      onChange={fileChange3}
-                    />
-                  </div>
-                  <span>
-                    <img
-                      className="producted-img-image"
-                      src={!flagUpdate ? `${apiUrl}/${imgUrl2}` : imgUrl2}
-                      alt=""
-                    />{" "}
-                  </span>
-                  <img
-                    className="producted-img-image"
-                    src={!flagUpdate ? imgUrl2 : `${apiUrl}/${imgUrl2}`}
-                    alt=""
-                  />
-                </div>
-              </div>
-              <div className="producted-login-label-float">
-                <input type="text" onChange={fileChange2} value={imgUrl} />
-                <label>عکس کوچک </label>
-                <div className="product-uploade-maindiv centerr">
-                  <div className="product-uploade-div">
-                    <span>
-                      <UploadFileIcon />
-                    </span>
-                    <input
-                      type="file"
-                      placeholder="عکس کوچک"
-                      className="producted-img-input"
-                      onChange={fileChange}
-                    />
-                  </div>
-                  <span>
-                    <img
-                      className="producted-img-image"
-                      src={!flagUpdate ? `${apiUrl}/${imgUrl}` : imgUrl}
-                      alt=""
-                    />{" "}
-                  </span>
-                  <img
-                    className="producted-img-image"
-                    src={!flagUpdate ? imgUrl : `${apiUrl}/${imgUrl}`}
-                    alt=""
-                  />
-                </div>
-              </div>
-
-              <div className="producted-login-label-float">
                 <input
                   name="mfrNo"
                   type="text"
@@ -1052,43 +1101,8 @@ export default function Product() {
                 <label>دیتاشیت </label>
               </div>
 
-              <div className="producted-login-label-float">
-                <input
-                  name="price"
-                  type="text"
-                  placeholder=""
-                  {...register(
-                    !flagUpdate ? "price" : "update.price",
-                    registerOptions.price
-                  )}
-                />
-                <label> قیمت </label>
-              </div>
-              <div className="producted-login-label-float">
-                <input
-                  name="noOffPrice"
-                  type="text"
-                  placeholder=""
-                  {...register(
-                    !flagUpdate ? "noOffPrice" : "update.noOffPrice",
-                    registerOptions.noOffPrice
-                  )}
-                />
-                <label>قیمت بدون تخفیف </label>
-              </div>
 
-              <div className="producted-login-label-float">
-                <input
-                  name="supply"
-                  type="number"
-                  placeholder=""
-                  {...register(
-                    !flagUpdate ? "supply" : "update.supply",
-                    registerOptions.supply
-                  )}
-                />
-                <label> موجودی </label>
-              </div>
+
             </div>
 
             <div className="col-lg-5 producted-col3 ">
@@ -1195,6 +1209,69 @@ export default function Product() {
                     ""
                   )}
                 </div>
+
+
+
+                <div className="producted-login-label-float">
+                  <input type="text" onChange={fileChange4} value={imgUrl2} />
+                  <label>عکس اصلی </label>
+                  <div className="product-uploade-maindiv centerr">
+                    <div className="product-uploade-div">
+                      <span>
+                        <UploadFileIcon />
+                      </span>
+                      <input
+                        type="file"
+                        placeholder="عکس اصلی"
+                        className="producted-img-input"
+                        onChange={fileChange3}
+                      />
+                    </div>
+                    <span>
+                      <img
+                        className="producted-img-image"
+                        src={!flagUpdate ? `${apiUrl}/${imgUrl2}` : imgUrl2}
+                        alt=""
+                      />{" "}
+                    </span>
+                    <img
+                      className="producted-img-image"
+                      src={!flagUpdate ? imgUrl2 : `${apiUrl}/${imgUrl2}`}
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="producted-login-label-float">
+                  <input type="text" onChange={fileChange2} value={imgUrl} />
+                  <label>عکس کوچک </label>
+                  <div className="product-uploade-maindiv centerr">
+                    <div className="product-uploade-div">
+                      <span>
+                        <UploadFileIcon />
+                      </span>
+                      <input
+                        type="file"
+                        placeholder="عکس کوچک"
+                        className="producted-img-input"
+                        onChange={fileChange}
+                      />
+                    </div>
+                    <span>
+                      <img
+                        className="producted-img-image"
+                        src={!flagUpdate ? `${apiUrl}/${imgUrl}` : imgUrl}
+                        alt=""
+                      />{" "}
+                    </span>
+                    <img
+                      className="producted-img-image"
+                      src={!flagUpdate ? imgUrl : `${apiUrl}/${imgUrl}`}
+                      alt=""
+                    />
+                  </div>
+                </div>
+
+
 
                 <div className="producted-keyvalue-div">
                   <button
@@ -1311,6 +1388,9 @@ export default function Product() {
 
             <div className="col-lg-2 producted-col2">
               <div className="producted-newimg-main-div">
+
+
+
                 <div className="producted-newimg-div">
                   {imgArray.length != 0 &&
                     imgArray.map((item) => (
@@ -1638,7 +1718,12 @@ export default function Product() {
                                   item.images,
                                   item.supply,
                                   item.cyProductCategoryId,
-                                  item.productCode
+                                  item.productCode,
+                                  item.price2,
+                                  item.price3,
+                                  item.price4,
+                                                                    item.shopPrice
+
                                 );
                                 //  console.log(item)
                               }}
@@ -1736,7 +1821,6 @@ export default function Product() {
                                   window.scrollTo(0, 0);
                                   const row = document?.getElementById(`@j${item.id}`);
                                   if (row) {
-                                    console.log("رکورد کلیک شده:", row.id);
                                     row.classList.add('disable')
                                   }
                                   editHandler(
@@ -1755,7 +1839,12 @@ export default function Product() {
                                     item.images,
                                     item.supply,
                                     item.cyProductCategoryId,
-                                    item.productCode
+                                    item.productCode,
+                                        item.price2,
+                                  item.price3,
+                                  item.price4,
+                                                                    item.shopPrice
+
                                   );
                                   //  console.log(item)
                                 }}
@@ -1865,7 +1954,11 @@ export default function Product() {
                                     item.images,
                                     item.supply,
                                     item.cyProductCategoryId,
-                                    item.productCode
+                                    item.productCode,
+                                        item.price2,
+                                  item.price3,
+                                  item.price4,
+                                  item.shopPrice
                                   );
                                   //  console.log(item)
                                 }}
@@ -1968,7 +2061,7 @@ export default function Product() {
                 <div className="product-dateailmodal-imagesarray">
                   {detailProduct[10] &&
                     detailProduct[10]
-                      .split("*,*")
+                      ?.split("*,*")
                       .map((item) => <img src={item} alt="" />)}
                 </div>
               </div>
