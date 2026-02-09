@@ -7,6 +7,7 @@ import User from '../../../components/CmsComponents/User/User';
 import Factor from '../../../components/CmsComponents/Factor/Factor';
 import FactorB from '../../../components/CmsComponents/Factor/FactorB';
 import FactorComponent from '../../../components/CmsComponents/Factor/FactorComponent';
+import PishFactor from '../../../components/CmsComponents/Factor/PishFactor';
 
 
 export default function CmsFactor() {
@@ -60,10 +61,10 @@ export default function CmsFactor() {
 
                         </Tab>
 
-                        {/* <Tab eventKey="pishFactor" title="پیش فاکتور" style={{ background: 'inherit' }}>
-                            {tabId == "pishFactor" && <Factor sarBarg="پیش فاکتور" orderMode={5} />}
+                        <Tab eventKey="pishFactor" title="پیش فاکتور" style={{ background: 'inherit' }}>
+                            {tabId == "pishFactor" && <PishFactor sarBarg="پیش فاکتور" orderMode={5} />}
 
-                        </Tab> */}
+                        </Tab>
 
                     </Tabs>
 

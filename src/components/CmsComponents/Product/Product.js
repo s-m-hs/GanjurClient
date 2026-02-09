@@ -124,10 +124,7 @@ export default function Product() {
     // partNo: { required: "partNo is required" },
     manufacture: { required: "manufacture is required" },
     category: { required: "category is required" },
-    price: { required: "category is required" },
-    price2: { required: "category is required" },
-    price3: { required: "category is required" },
-    price4: { required: "category is required" },
+
   };
   const alertS = (position, icon, title, timer, state) =>
     Swal.fire({
@@ -442,6 +439,7 @@ export default function Product() {
         cyProductCategoryId: data.categoryB,
         spec: obj2,
       };
+      console.log(obj)
       async function myAppPost() {
         const res = await fetch(`${apiUrl}/api/CyProducts`, {
           method: "POST",
@@ -513,7 +511,7 @@ export default function Product() {
           price2: data.update.price2,
           price3: data.update.price3,
           price4: data.update.price4,
-                    shopPrice: Number(data.update.shopPrice),
+          shopPrice: Number(data.update.shopPrice),
 
           noOffPrice: data.update.noOffPrice,
           productCode: data.update.productCode,
@@ -739,7 +737,7 @@ export default function Product() {
       price2: data[16],
       price3: data[17],
       price4: data[18],
-      shopPrice:data[19]
+      shopPrice: data[19]
 
     });
     setCteArray((prev) => [...prev, data[9], data[14], data[8]]);
@@ -956,89 +954,84 @@ export default function Product() {
                 <label>توضیحات </label>
               </div>
 
-              <div className={!flagUpdate ? "producted-login-label-float disable" :"producted-login-label-float"} >
+              <div className={!flagUpdate ? "producted-login-label-float disable" : "producted-login-label-float"} >
                 <input
                   name="price"
-                  type="number"
+                  type="text"
                   placeholder=""
                   {...register(
                     !flagUpdate ? "price" : "update.price",
-                    registerOptions.price
                   )}
                 />
                 <label>مشتری قیمت </label>
               </div>
 
-              <div className={!flagUpdate ? "producted-login-label-float disable" :"producted-login-label-float"}>
+              <div className={!flagUpdate ? "producted-login-label-float disable" : "producted-login-label-float"}>
                 <input
                   name="price2"
-                  type="number"
+                  type="text"
                   placeholder=""
                   {...register(
                     !flagUpdate ? "price2" : "update.price2",
-                    registerOptions.price2
+                    flagUpdate ? registerOptions.price2 : ''
                   )}
                 />
                 <label>همکار2 قیمت </label>
               </div>
 
-              <div className={!flagUpdate ? "producted-login-label-float disable" :"producted-login-label-float"}>
+              <div className={!flagUpdate ? "producted-login-label-float disable" : "producted-login-label-float"}>
                 <input
                   name="price3"
-                  type="number"
+                  type="text"
                   placeholder=""
                   {...register(
                     !flagUpdate ? "price3" : "update.price3",
-                    registerOptions.price3
-                  )}
+                    flagUpdate ? registerOptions.price2 : '')}
                 />
                 <label>همکار3 قیمت </label>
               </div>
 
-              <div className={!flagUpdate ? "producted-login-label-float disable" :"producted-login-label-float"}>
+              <div className={!flagUpdate ? "producted-login-label-float disable" : "producted-login-label-float"}>
                 <input
                   name="price4"
-                  type="number"
+                  type="text"
                   placeholder=""
                   {...register(
                     !flagUpdate ? "price4" : "update.price4",
-                    registerOptions.price4
-                  )}
+                    flagUpdate ? registerOptions.price2 : '')}
                 />
                 <label>همکار4 قیمت </label>
               </div>
 
-              <div style={{display:'none'}} className="producted-login-label-float">
+              <div style={{ display: 'none' }} className="producted-login-label-float">
                 <input
                   name="noOffPrice"
                   type="text"
                   placeholder=""
                   {...register(
                     !flagUpdate ? "noOffPrice" : "update.noOffPrice",
-                    registerOptions.noOffPrice
-                  )}
+                    flagUpdate ? registerOptions.price2 : '')}
                 />
                 <label>قیمت بدون تخفیف </label>
               </div>
 
               <div className="producted-login-label-float">
                 <input
-                disabled
+                  disabled
                   name="supply"
                   type="number"
                   placeholder=""
                   {...register(
                     !flagUpdate ? "supply" : "update.supply",
-                    registerOptions.supply
                   )}
                 />
                 <label> موجودی </label>
               </div>
 
-              
+
               <div className="producted-login-label-float">
                 <input
-                disabled
+                  disabled
                   name="shopPrice"
                   type="text"
                   placeholder=""
@@ -1057,7 +1050,6 @@ export default function Product() {
                   className={errors.partNo ? "formerror" : ""}
                   {...register(
                     !flagUpdate ? "partNo" : "update.partNo",
-                    registerOptions.partNo
                   )}
                 />
                 <label>پارت نامبر</label>
@@ -1070,7 +1062,6 @@ export default function Product() {
                   placeholder=""
                   {...register(
                     !flagUpdate ? "productCode" : "update.productCode",
-                    registerOptions.productCode
                   )}
                 />
                 <label>کد محصول </label>
@@ -1083,7 +1074,6 @@ export default function Product() {
                   placeholder=""
                   {...register(
                     !flagUpdate ? "mfrNo" : "update.mfrNo",
-                    registerOptions.mfrNo
                   )}
                 />
                 <label>شماره سازنده </label>
@@ -1095,7 +1085,6 @@ export default function Product() {
                   placeholder=""
                   {...register(
                     !flagUpdate ? "datasheetUrl" : "update.datasheetUrl",
-                    registerOptions.datasheetUrl
                   )}
                 />
                 <label>دیتاشیت </label>
@@ -1722,7 +1711,7 @@ export default function Product() {
                                   item.price2,
                                   item.price3,
                                   item.price4,
-                                                                    item.shopPrice
+                                  item.shopPrice
 
                                 );
                                 //  console.log(item)
@@ -1840,10 +1829,10 @@ export default function Product() {
                                     item.supply,
                                     item.cyProductCategoryId,
                                     item.productCode,
-                                        item.price2,
-                                  item.price3,
-                                  item.price4,
-                                                                    item.shopPrice
+                                    item.price2,
+                                    item.price3,
+                                    item.price4,
+                                    item.shopPrice
 
                                   );
                                   //  console.log(item)
@@ -1955,10 +1944,10 @@ export default function Product() {
                                     item.supply,
                                     item.cyProductCategoryId,
                                     item.productCode,
-                                        item.price2,
-                                  item.price3,
-                                  item.price4,
-                                  item.shopPrice
+                                    item.price2,
+                                    item.price3,
+                                    item.price4,
+                                    item.shopPrice
                                   );
                                   //  console.log(item)
                                 }}
