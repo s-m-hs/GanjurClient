@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import "./Repairs.css";
 import { useForm } from "react-hook-form";
 import apiUrl from "../../../utils/ApiConfig";
@@ -14,6 +14,7 @@ import transition from "react-element-popper/animations/transition";
 import opacity from "react-element-popper/animations/opacity";
 import InputIcon from "react-multi-date-picker/components/input_icon";
 import DateFormat from "../../../utils/DateFormat";
+import { useReactToPrint } from "react-to-print";
 
 export default function Repairs() {
   const [flagReg, setFlagReg] = useState(false);
@@ -94,13 +95,14 @@ export default function Repairs() {
     handleSubmit,
     reset,
     setValue,
+    getValues,
     formState: { errors },
   } = useForm({
     defaultValues: {
       name: "",
     },
   });
-  const handleError = (errors) => {};
+  const handleError = (errors) => { };
   const registerOptions = {
     ItemCategoryTitle: { required: "Name is required" },
     itemOrderValue: { required: "nameCode is required" },
@@ -262,8 +264,8 @@ export default function Repairs() {
           : data.update.productProblem,
         details:
           data.update.productDetailRepair ||
-          data.update.productDetailRepair2 ||
-          data.update.productDetailRepair3
+            data.update.productDetailRepair2 ||
+            data.update.productDetailRepair3
             ? ` ${data.update.productDetailRepair2} ${data.update.productDetailRepair3} ${data.update.productDetailRepair}  ${data.update.details}`
             : data.update.details,
         companyExplaination: data.update.companyExplaination,
@@ -477,25 +479,36 @@ export default function Repairs() {
         }
       });
   };
+
+  const printRef = useRef();
+
+  const handlePrint = useReactToPrint({
+    contentRef: printRef,
+    documentTitle: "factor",
+  });
+
+  console.log(getValues("productErrorDetail"))
+
+
+
   useEffect(() => {
-    getAllWarranty(page, pageCount);
+    // getAllWarranty(page, pageCount);
   }, []);
 
-  // console.log(page)
-  // console.log(pageCount)
+
   useEffect(() => {
     if (mobile) {
-      getWarranty();
+      // getWarranty();
     }
   }, [allWarranty]);
 
   useEffect(() => {
-    getUserDetail();
+    // getUserDetail();
   }, [userId]);
   return (
     <div className="container">
       <div className="row">
-        <div className="col-3 centerc mt-1 warranty-right-row">
+        {/* <div className="col-3 centerc mt-1 warranty-right-row">
           <div className="warranty-right-row-ok-button centerr mb-2">
             {" "}
             <div className="col-12 login-label-float">
@@ -556,9 +569,9 @@ export default function Repairs() {
                 )}
               </>
             ))}
-        </div>
+        </div> */}
 
-        <div className="col-9">
+        <div className="col-8">
           <div className="centerr">
             {warrantyArray?.length != 0 &&
               mobile &&
@@ -834,7 +847,7 @@ export default function Repairs() {
 
                 <div className="col-12 ">
                   <div className="textarea_div centerc">
-                    <span>ملاحظات:</span>
+                    <span>خدمات انجام شده توسط تعمیرات:</span>
                     <div>
                       <select
                         name="productDetailRepair2"
@@ -952,6 +965,59 @@ export default function Repairs() {
               حذف
             </button>
           </div>
+        </div>
+
+        <div className="col-4 boxSh repair-form-div-main p-3">
+          <button onClick={() => handlePrint()}>Print</button>
+          <div ref={printRef} className="repair-form-div ">
+            <div className=" repair-form-div-sarbarg centercc">
+              <span>رسید تعمیرات کامپیوتر صانع</span>
+            </div>
+            <br />
+            <div className="repai-form-title">
+              <span>شماره پذیرش :</span>
+              <span>تاریخ پذیرش :</span>
+
+            </div>
+
+            <div className="repai-form-title">
+              <span>نام مشتری :</span>
+              <span> شماره همراه :</span>
+            </div>
+
+            <div className="repai-form-title">
+              <span> نوع کالا :</span>
+              <span>  عنوان کالا :</span>
+            </div>
+
+            <div className="repai-form-title">
+              <span>   مدل :</span>
+            </div>
+
+            <div className="repair-problem-div centerc">
+              <h5>ایراد کالا طبق اظهار مشتری:</h5>
+              {getValues("productErrorDetail")?.length != 0 && getValues("productErrorDetail")?.map(item => (
+                <li>{item}</li>
+              ))}
+              <li>{getValues("productProblem")}</li>
+            </div>
+
+            <div className="repair-description-div ">
+              <h5>ملاحظات :</h5>
+              <textarea cols="30" rows="10"></textarea>
+            </div>
+
+
+
+
+
+
+
+
+
+          </div>
+
+
         </div>
       </div>
     </div>

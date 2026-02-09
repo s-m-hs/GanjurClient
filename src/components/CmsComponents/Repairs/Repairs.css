@@ -67,3 +67,44 @@ color: var(--gray3);
 .productDetailRepair{
 
 }
+
+.repair-form-div{
+    height: 800px;
+    width: 98%;
+    border: 1px solid gray;
+    padding: 2px;
+}
+.repai-form-title{
+    padding: 5px;
+    border: 1px solid ;
+    border-radius: 3px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.repai-form-title  span{
+    width: 50%;
+    font-size: 15px;
+    font-weight: 600;
+}
+.repair-form-div-sarbarg {
+    align-items: center;
+}
+ .repair-form-div-sarbarg span{
+
+    width: 50%;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.repair-problem-div{
+    margin-right: 20px;
+}
+.repair-description-div textarea{
+    width: 100%;
+    border: 1px solid;
+    outline: none;
+    height: 100px;
+}

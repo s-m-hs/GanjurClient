@@ -58,6 +58,8 @@ const PishFactor = (props) => {
     const [flagB, setFlagB] = useState(true)
     const [value4, setValue4] = useState(new Date());
 
+    const [titleState, setTitleState] = useState(1)
+
     //   const handlePrint = useReactToPrint({
     //     content: () => componentRef.current,
     //     documentTitle: "factor",
@@ -69,16 +71,6 @@ const PishFactor = (props) => {
         { type: 'همکار', value: 110000 }
     ];
 
-    const buildProductPrices = (product) => {
-        return [
-            { key: 'Price', label: 'قیمت اصلی', value: product.Price },
-            { key: 'ShopPrice', label: 'قیمت فروشگاه', value: product.ShopPrice },
-            { key: 'Price2', label: 'قیمت چکی', value: product.Price2 },
-            { key: 'Price3', label: 'قیمت همکار', value: product.Price3 },
-            { key: 'Price4', label: 'قیمت ویژه', value: product.Price4 },
-            { key: 'Price5', label: 'قیمت پروژه‌ای', value: product.Price5 }
-        ].filter(p => p.value && p.value > 0);
-    };
     const handlePrint = useReactToPrint({
         contentRef: printRef,
         documentTitle: "factor",
@@ -169,9 +161,9 @@ const PishFactor = (props) => {
         };
 
         // فقط محصولات با PartNumber پر شده را چک کن
-        const filledItems = orderItems.filter(item => item.PartNumber && item.PartNumber.trim());
+        const filledItems = orderItems.filter(item => item.PartNumber && item.PartNumber?.trim());
         const isDuplicate = filledItems.some(item =>
-            item.PartNumber.trim() === newItem.PartNumber.trim() && newItem.PartNumber.trim()
+            item.PartNumber?.trim() === newItem.PartNumber?.trim() && newItem.PartNumber?.trim()
         );
 
         if (isDuplicate) {
@@ -356,7 +348,7 @@ const PishFactor = (props) => {
                 }
             })
         }
-        myApp()
+        // myApp()
 
         setError('');
 
@@ -441,7 +433,15 @@ const PishFactor = (props) => {
                                                 <img class="factor-img-logo" src="/images/photo_torob.png" alt=""></img>
                                             </span>
 
-                                            <span className='header-row-title'> {props.sarBarg}</span>
+                                            <span className='header-row-title'>
+
+                                                <button type='button' className='btn btn-light'
+                                                    onClick={() => setTitleState(!titleState)}
+                                                >
+                                                    {titleState == 1 ? 'پیش فاکتور' : 'فاکتور فروش'}
+                                                </button>
+
+                                            </span>
 
                                             <span className='header-row-minInput'>
                                                 {!flagShowFactor ?
@@ -636,7 +636,7 @@ const PishFactor = (props) => {
                                                 ))}
                                             </tbody>
                                         </table>
-                                        {!flagShowFactor ? <button className="add-btn" type='button' onClick={() => {
+                                        {!flagShowFactor ? <button className="btn btn-success no-print" type='button' onClick={() => {
                                             setProCatId('')
                                             setRootName('')
                                             setRootName2('')
@@ -644,6 +644,11 @@ const PishFactor = (props) => {
                                             setProductsByCat([])
                                             setShow(true)
                                         }}>➕ اضافه کردن کالا</button> : null}
+
+                                        <button type='button' className="btn btn-primary no-print" onClick={() => {
+                                            // setShow(true)
+                                            addItem()
+                                        }}><Add></Add> اضافه کردن کالا</button>
 
                                         {orderItems.length === 0 && <p style={{ color: '#666', fontSize: '14px' }}>هیچ محصولی اضافه نشده</p>}
                                     </div>
@@ -727,11 +732,12 @@ const PishFactor = (props) => {
 
                                             <div className='factor-footerBox-divRight-div-ul'>
                                                 <ul>
-                                                    <li>اقلام مندرج در فاکتور تا تسویه نهایی به عنوان امانت و عندالمطالبه خواهد بود .</li>
+                                                    {titleState != 1 && <li>اقلام مندرج در فاکتور تا تسویه نهایی به عنوان امانت و عندالمطالبه خواهد بود .</li>}
+                                                    {titleState == 1 && <li> به علت نوسانات بازار،قیمتهای مندرج در فاکتور فقط در همان تاریخ معتبر است</li>}
 
-                                                    <li>کالای فوق سالم تحویل اینجانب گردید.</li>
+                                                    {titleState != 1 && <li>کالای فوق سالم تحویل اینجانب گردید.</li>}
                                                     <li>گارانتی محصولات به عهده شرکت گارانتی کننده میباشد و این مجموعه هیچ مسولیتی در قبال آن ندارد.</li>
-                                                    <li>قیمتهای مندرج در فاکتور فقط در همان تاریخ معتبر است</li>
+
                                                     <li className='factor-adress'>آدرس : قم - بلوار سمیه -نبش کوچه 5 ---شماره تماس :37835456-37835457-37839322</li>
 
                                                 </ul>
@@ -745,10 +751,6 @@ const PishFactor = (props) => {
                                     </div>
 
 
-                                    <button type='button' className="add-btn" onClick={() => {
-                                        // setShow(true)
-                                        addItem()
-                                    }}><Add></Add> اضافه کردن کالا</button>
 
 
 
