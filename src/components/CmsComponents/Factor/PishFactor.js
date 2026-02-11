@@ -482,11 +482,13 @@ const PishFactor = (props) => {
                                             </div>
 
 
-                                            <input
+                                                <input
+                                            style={{border:'1px dotted',outline:'none'}}
+                                            type='number'
                                                 className='header-row-minInput'
                                                 placeholder=" شماره فاکتور"
+/>
 
-                                                value={!flagShowFactor ? factoNumber : xtFactorNum} />
 
                                             <input className='no-print header-row-minInput' placeholder=" کد مشتری" value={!flagShowFactor ? userDateil?.currentUser?.partnerStatus : xtOrderDetai?.cyUserID} />
 

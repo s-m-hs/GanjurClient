@@ -3,7 +3,7 @@ import "./Repairs.css";
 import { useForm } from "react-hook-form";
 import apiUrl from "../../../utils/ApiConfig";
 import { CmsContext } from "../../../context/CmsContext";
-import { Update } from "@mui/icons-material";
+import { Check, Update } from "@mui/icons-material";
 import Pagination from "@mui/material/Pagination";
 import Swal from "sweetalert2";
 
@@ -15,6 +15,9 @@ import opacity from "react-element-popper/animations/opacity";
 import InputIcon from "react-multi-date-picker/components/input_icon";
 import DateFormat from "../../../utils/DateFormat";
 import { useReactToPrint } from "react-to-print";
+import { Blocks, Watch } from "react-loader-spinner";
+import ApiPostX from "../../../utils/ApiServicesX/ApiPostX";
+import ApiPostX0 from "../../../utils/ApiServicesX/ApiPostX0";
 
 export default function Repairs() {
   const [flagReg, setFlagReg] = useState(false);
@@ -30,15 +33,19 @@ export default function Repairs() {
   const [value6, setValue6] = useState("");
   const [value7, setValue7] = useState("");
   const [garantyId, setGarantyId] = useState("");
+  const [servicType, setServicetype] = useState(2)
+  const [dnaflag, setDnaflag] = useState(false)
 
+  const printRef = useRef();
+
+  const handlePrint = useReactToPrint({
+    contentRef: printRef,
+    documentTitle: "factor",
+  });
   const [paginationArray, setPaginationArray] = useState(
     Array.from({ length: 10 })
   );
-  const [page, setPage] = React.useState(1);
-  const pageCount = 100;
 
-  console.log(allWarranty);
-  const cmsContext = useContext(CmsContext);
 
   const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
@@ -64,30 +71,9 @@ export default function Repairs() {
       title: title,
       showConfirmButton: false,
       timer: 1500,
-    }).then((res) => {
-      getAllWarranty(page, pageCount);
-      reset(setValue(""));
-      setValue4("");
-      setValue5("");
-      setValue6("");
-      setValue7("");
-    });
-  const alertB = (title) =>
-    Swal.fire({
-      position: "center",
-      icon: "success",
-      title: title,
-      showConfirmButton: false,
-      timer: 1500,
-    }).then((res) => {
-      getAllWarranty(page, pageCount);
-      setFlagReg(false);
-      reset(setValue(""));
-      setValue4("");
-      setValue5("");
-      setValue6("");
-      setValue7("");
-    });
+    })
+
+
 
   //  console.log(value4)
   const {
@@ -96,19 +82,25 @@ export default function Repairs() {
     reset,
     setValue,
     getValues,
+    watch,
     formState: { errors },
   } = useForm({
     defaultValues: {
       name: "",
+      acceDevices:[],
+      productErrorDetail:[]
+
     },
   });
+  const resetAllSatates = () => {
+    // reset(setValue(''))
+    // setValue4(new Date())
+  }
   const handleError = (errors) => { };
   const registerOptions = {
-    ItemCategoryTitle: { required: "Name is required" },
-    itemOrderValue: { required: "nameCode is required" },
-    productCount: { required: "productCount is required" },
-    itemImageUrl: { required: "" },
-    itemCode: { required: "itemCode is required" },
+    customerName: { required: "Name is required" },
+    phonenumber: { required: "phonenumber is required" },
+    productName: { required: "productName is required" },
   };
   const WarantyStatus = [
     { id: 1, status: "تحویل گرفته شده از مشتری" },
@@ -151,13 +143,7 @@ export default function Repairs() {
     { id: 11, status: "هارد مشکل دارد" },
   ];
   const productDetailRepair = [
-    // {id:1,status:'SSD 128'},
-    // {id:2,status:'SSD 256'},
-    // {id:3,status:'SSD 512'},
-    // {id:4,status:'SSD 1T'},
-    // {id:5,status:'RAM 4G'},
-    // {id:6,status:'RAM 8G'},
-    // {id:7,status:'RAM 16G'},
+
     { id: 8, status: "CADDY BOX" },
     { id: 9, status: "باکس هارد اکسترنال" },
     { id: 10, status: "تعویض ویندوز -نصب درایورها-نصب برنامه " },
@@ -179,258 +165,63 @@ export default function Repairs() {
     { id: 6, status: "RAM 8G" },
     { id: 7, status: "RAM 16G" },
   ];
+  const AccesDevices = [
+    { id: 7, status: "باطری" },
+    { id: 6, status: "آداپتور" },
+    { id: 5, status: "کیف" },
+    { id: 5, status: "مانیتور" },
+    { id: 5, status: "هارد" },
+  ];
+  console.log(garantyId);
+
+  const funcA = (result) => {
+    alertA('')
+    setGarantyId(result)
+    console.log(garantyId);
+    setTimeout(() => {
+      handlePrint()
+      resetAllSatates()
+      setDnaflag(false)
+
+    }, 1000);
+  }
 
   const handleRegistration = (data) => {
+    setDnaflag(true)
     window.scrollTo(0, 0);
-    if (!flagReg) {
-      let obj = {
-        id: 0,
-        guaranteeID: data.guaranteeID,
-        phonenumber: data.phonenumber,
-        productName: `${data.productNameTitle}${data.productBrand} ${data.productName}`,
-        productStatus: data.productStatus,
-        guaranteeCompany: value6,
-        guarantreePrice: data.guarantreePrice
-          ? `تومان ${data.guarantreePrice}`
-          : "",
-        recievedDate: value4,
-        productProblem: data.productErrorDetail
-          ? `${data.productErrorDetail} - ${data.productProblem}`
-          : data.productProblem,
-        details: data.productDetailRepair
-          ? `${data.productDetailRepair2}-${data.productDetailRepair3}- ${data.productDetailRepair}-  ${data.details}`
-          : data.details,
-        companyExplaination: data.companyExplaination,
-        type: 1,
-      };
-      console.log(obj);
-      async function myApp() {
-        const res = await fetch(`${apiUrl}/api/CyGuarantee`, {
-          method: "POST",
-          credentials: "include",
-
-          headers: {
-            // Authorization: `Bearer ${cmsContext.token.token}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(obj),
-        })
-          .then((res) => {
-            console.log(res);
-
-            if (res.status == 200) {
-              alertA("گارانتی جدید با موفقیت ثبت شد");
-              return res.json();
-            }
-          })
-          .then((result) => {
-            // console.log(result);
-            // alertA('گارانتی جدید با موفقیت ثبت شد')
-            // getAllWarranty(page,pageCount)
-            // reset(setValue(""))
-            // setValue4('')
-            // setValue5('')
-            // setValue6('')
-            // setValue7('')
-          })
-          .catch((err) => {
-            // getAllWarranty(page,pageCount)
-            // alertA('گارانتی جدید با موفقیت ثبت شد')
-            // reset(setValue(""))
-            // setValue4('')
-            // setValue5('')
-            // setValue6('')
-            // setValue7('')
-            console.log(err);
-          });
-      }
-      myApp();
-    } else {
-      let obj = {
-        id: data.update.id,
-        guaranteeID: data.update.guaranteeID,
-        phonenumber: data.phonenumber,
-        productName: data.update.productNameTitle
-          ? `${data.update.productNameTitle} ${data.update.productBrand} ${data.update.productName}`
-          : data.update.productName,
-        productStatus: data.update.productStatus,
-        guaranteeCompany: value6 ? value6 : value7,
-        guarantreePrice: data.update.guarantreePrice
-          ? `تومان ${data.update.guarantreePrice}`
-          : "",
-        recievedDate: value5,
-        productProblem: data.update.productErrorDetail
-          ? `${data.update.productErrorDetail} - ${data.update.productProblem}`
-          : data.update.productProblem,
-        details:
-          data.update.productDetailRepair ||
-            data.update.productDetailRepair2 ||
-            data.update.productDetailRepair3
-            ? ` ${data.update.productDetailRepair2} ${data.update.productDetailRepair3} ${data.update.productDetailRepair}  ${data.update.details}`
-            : data.update.details,
-        companyExplaination: data.update.companyExplaination,
-        type: 1,
-      };
-      console.log(obj);
-      async function myApp() {
-        const res = await fetch(
-          `${apiUrl}/api/CyGuarantee/updateGuarantee?id=${data.update.guaranteeID}`,
-          {
-            method: "PUT",
-            credentials: "include",
-
-            headers: {
-              // Authorization: `Bearer ${cmsContext.token.token}`,
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(obj),
-          }
-        )
-          .then((res) => {
-            console.log(res);
-            if (res.status == 200) {
-              alertB("ویرایش با موفقیت انجام شد");
-              return res.json();
-            }
-          })
-          .then((result) => {
-            console.log(result);
-            // getAllWarranty(page,pageCount)
-            // alertA('ویرایش با موفقیت انجام شد')
-            // setFlagReg(false)
-            // reset(setValue(""))
-            // setValue4('')
-            // setValue5('')
-          })
-          .catch((err) => {
-            console.log(err);
-            //   alertA('ویرایش با موفقیت انجام شد')
-
-            //   getAllWarranty(page,pageCount)
-            //   setFlagReg(false)
-            //   reset(setValue(""))
-            //   setValue4('')
-            //   setValue5('')
-            //         setValue6('')
-            // setValue7('')
-          });
-      }
-      myApp();
+    let obj = {
+      id: 0,
+      customerName: data.customerName,
+      mobile: data.phonenumber,
+      productType: data.productNameTitle,
+      productBrand: data.productBrand,
+      productModel: data.productName,
+      acceDevices: getValues("acceDevices"),
+      productProblem: getValues("productErrorDetail"),
+      productProblemB: data.productProblem,
+      serviceDescription: null,
+      servicePrice: null,
+      deliveryDate: "2026-02-11T12:51:45.678Z",
+      type: servicType
     }
-  };
-
-  const getAllWarranty = (page, pageCount) => {
-    async function myApp() {
-      const res = await fetch(
-        `${apiUrl}/api/CyGuarantee/getAll?page=0&size=100000000`,
-        {
-          method: "GET",
-          credentials: "include",
-
-          headers: {
-            // Authorization: `Bearer ${cmsContext.token.token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      )
-        .then((res) => {
-          console.log(res);
-          return res.json();
-        })
-        .then((result) => {
-          console.log(result);
-          setAllWarranty(result.itemList);
-        });
-    }
-    myApp();
-  };
-
-  const getWarranty = () => {
-    async function myApp() {
-      const res = await fetch(
-        `${apiUrl}/api/CyGuarantee?phoneNumber=${mobile}`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${cmsContext.token.token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      )
-        .then((res) => {
-          console.log(res);
-          return res.json();
-        })
-        .then((result) => {
-          console.log(result);
-          setWarrantyArray(result);
-          setUserId(result[0]?.cyUserID);
-        });
-    }
-    myApp();
+    // console.log(obj);
+    ApiPostX0(`/api/CyCervice/addService`, obj, funcA)
   };
 
   const resetUpdatField2 = () => {
     window.scrollTo(0, 0);
 
-    setMobile("");
-    setFlagReg(false);
-    reset(setValue(""));
-    setValue4("");
-    setValue5("");
-    setValue6("");
-    setValue7("");
+    // setMobile("");
+    // setFlagReg(false);
+    // reset(setValue(""));
+    // setValue4("");
+    // setValue5("");
+    // setValue6("");
+    // setValue7("");
   };
 
-  const changInput = (e) => {
-    setWarrantyArray([]);
-    setMobile(e.target.value);
-  };
 
-  const editHandler = (...data) => {
-    setValue7(data[2]);
-    setValue5(data[10]);
-    setValue("update", {
-      guaranteeID: data[0],
-      productName: data[1],
-      guaranteeCompany: data[2],
-      productStatus: data[3],
-      guarantreePrice: data[4],
-      productProblem: data[5],
-      details: data[6],
-      companyExplaination: data[7],
-      id: data[8],
-      phonenumber: data[9],
-      recievedDate: data[10],
-      productDetailRepair: "",
-      productDetailRepair2: "",
-      productDetailRepair3: "",
-    });
-  };
 
-  const getUserDetail = () => {
-    async function myApp() {
-      const res = await fetch(`${apiUrl}/api/CyUsers/${userId}`, {
-        method: "GET",
-        credentials: "include",
-
-        headers: {
-          // Authorization: `Bearer ${cmsContext.token.token}`,
-          "Content-Type": "application/json",
-        },
-      })
-        .then((res) => {
-          console.log(res);
-          return res.json();
-        })
-        .then((result) => {
-          console.log(result);
-          setUserDetail(result);
-        })
-        .catch((err) => console.log(err));
-    }
-    myApp();
-  };
 
   const deletHandler = () => {
     console.log("first");
@@ -460,7 +251,6 @@ export default function Repairs() {
             )
               .then((res) => {
                 console.log(res);
-                getAllWarranty(page, pageCount);
                 reset(setValue(""));
                 setValue4("");
                 setValue5("");
@@ -480,22 +270,6 @@ export default function Repairs() {
       });
   };
 
-  const printRef = useRef();
-
-  const handlePrint = useReactToPrint({
-    contentRef: printRef,
-    documentTitle: "factor",
-  });
-
-  console.log(getValues("productErrorDetail"))
-
-
-
-  useEffect(() => {
-    // getAllWarranty(page, pageCount);
-  }, []);
-
-
   useEffect(() => {
     if (mobile) {
       // getWarranty();
@@ -505,71 +279,37 @@ export default function Repairs() {
   useEffect(() => {
     // getUserDetail();
   }, [userId]);
+
+  const proplemWathed = watch("productErrorDetail")
+  const accDevicesWathed = watch("acceDevices")
+  const modelWathed = watch("productName")
+  const brandwatch = watch("productBrand")
+  const typewatch = watch("productNameTitle")
+  const mobilewatch = watch("phonenumber")
+  const namewatch = watch("customerName")
+  const productProblemwatch = watch("productProblem")
+
+
   return (
     <div className="container">
       <div className="row">
-        {/* <div className="col-3 centerc mt-1 warranty-right-row">
-          <div className="warranty-right-row-ok-button centerr mb-2">
-            {" "}
-            <div className="col-12 login-label-float">
-              <input
-                onChange={(e) => {
-                  changInput(e);
-                }}
-                value={mobile}
-                name="phonenumber"
-                type="number"
-                placeholder=""
+
+        {dnaflag &&
+          <div className='dnaa-div'>
+            <span className='dnaaa'>
+              <Blocks
+                height="300"
+                width="300"
+                color="#4fa94d"
+                ariaLabel="blocks-loading"
+                wrapperStyle={{}}
+                wrapperClass="blocks-wrapper"
+                visible={true}
               />
-              <label> جستجو تعمیرات با شماره همراه </label>
-            </div>
-            <button className="btn btn-warning" onClick={getWarranty}>
-              تایید
-            </button>
+            </span>
           </div>
-          <hr />
-          <span className="centerr">
-            {" "}
-            <i
-              className="fa-solid fa-rotate-left fa-2xl newsubject-form-col3-icon1"
-              onClick={resetUpdatField2}
-            ></i>
-          </span>
-          <hr />
-          <h3>لیست تعمیرات :</h3>
-          {allWarranty?.length != 0 &&
-            allWarrantyRevers?.map((item) => (
-              <>
-                {item.type == 1 ? (
-                  <button
-                    key={item.id}
-                    className="btn btn-info mt-1 centerr allwarranty-button-right"
-                    onClick={() => {
-                      setFlagReg(true);
-                      setGarantyId(item.id);
-                      editHandler(
-                        item.guaranteeID,
-                        item.productName,
-                        item.guaranteeCompany,
-                        item.productStatus,
-                        item.guarantreePrice,
-                        item.productProblem,
-                        item.details,
-                        item.companyExplaination,
-                        item.id,
-                        item.phonenumber,
-                        item.recievedDate
-                      );
-                    }}
-                  >
-                    {item.username}/پذیرش:{item.guaranteeID}
-                  </button>
-                ) : (
-                  ""
-                )}
-              </>
-            ))}
-        </div> */}
+        }
+
 
         <div className="col-8">
           <div className="centerr">
@@ -581,19 +321,7 @@ export default function Repairs() {
                   className="btn btn-info  m-1"
                   onClick={() => {
                     setFlagReg(true);
-                    editHandler(
-                      item.guaranteeID,
-                      item.productName,
-                      item.guaranteeCompany,
-                      item.productStatus,
-                      item.guarantreePrice,
-                      item.productProblem,
-                      item.details,
-                      item.companyExplaination,
-                      item.id,
-                      item.phonenumber,
-                      item.recievedDate
-                    );
+
                   }}
                 >
                   {item.guaranteeID}
@@ -617,26 +345,37 @@ export default function Repairs() {
                     </button>
                   )}
                 </div>
+                <button className={servicType == 1 ? 'btn btn-success' : 'btn btn-warning'}
+                  onClick={() => {
+                    if (servicType == 1) {
+                      setServicetype(2)
+                    } else if (servicType == 2) {
+                      setServicetype(1)
+                    }
+                  }}
+                >
+                  {servicType == 1 ? 'گارانتی' : 'تعمیرات'}
+                </button>
 
                 <div className="col-4 login-label-float">
                   <input
                     className={flagReg ? "warranty-input-disable" : ""}
-                    name="guaranteeID"
-                    type="number"
+                    name="customerName"
+                    type="text"
                     placeholder=""
                     {...register(
-                      !flagReg ? "guaranteeID" : "update.guaranteeID",
-                      registerOptions.guaranteeID
+                      !flagReg ? "customerName" : "update.customerName",
+                      registerOptions.customerName
                     )}
                   />
-                  <label> شماره پذیرش </label>
+                  <label> نام مشتری </label>
                 </div>
 
                 <div className="col-4 login-label-float">
                   <input
                     className={flagReg ? "warranty-input-disable" : ""}
                     name="phonenumber"
-                    type="number"
+                    type="text"
                     placeholder=""
                     {...register(
                       !flagReg ? "phonenumber" : "update.phonenumber",
@@ -676,6 +415,7 @@ export default function Repairs() {
 
                 <div className="col-4 login-label-float">
                   <select
+                  style={{border:'1px gray',outline:'none'}}
                     name="productNameTitle"
                     id=""
                     {...register(
@@ -693,6 +433,8 @@ export default function Repairs() {
                   </select>
 
                   <select
+                                    style={{border:'1px gray',outline:'none'}}
+
                     name="productBrand"
                     id=""
                     {...register(
@@ -719,98 +461,33 @@ export default function Repairs() {
                       registerOptions.productName
                     )}
                   />
-                  <label> نام محصول</label>
+                  <label> مدل دستگاه</label>
                 </div>
 
-                <div className="col-4 login-label-float centerc">
-                  {flagReg ? (
+
+                <div className="col-12 textarea_div ">
+                  <span>لوازم همراه :</span>
+                  {AccesDevices.map((item) => (
                     <>
-                      <div className="warranty-dateformat centerr">
-                        <span>تاریخ تحویل به مشتری :</span>
-                        <DateFormat dateString={`${value7}`} />
-                      </div>
-
-                      <DatePicker
-                        className="custom-input"
-                        calendar={persian}
-                        locale={persian_fa}
-                        calendarPosition="bottom-right"
-                        value={value6}
-                        onChange={handleChangeB}
-                        animations={[
-                          opacity(),
-                          transition({ from: 35, duration: 800 }),
-                        ]}
-                        render={<InputIcon />}
-                      />
-                    </>
-                  ) : (
-                    <>
-                      <span>تاریخ تحویل به مشتری :</span>
-                      <DatePicker
-                        className="custom-input"
-                        calendar={persian}
-                        locale={persian_fa}
-                        calendarPosition="bottom-right"
-                        value={value6}
-                        onChange={handleChangeB}
-                        animations={[
-                          opacity(),
-                          transition({ from: 35, duration: 800 }),
-                        ]}
-                        render={<InputIcon />}
-                      />
-                    </>
-                  )}
-                </div>
-
-                {/* <div className="col-4 login-label-float">
-                  <input
-                    name="guaranteeCompany"
-                    type="text"
-                    placeholder=""
-                    {...register(
-                      !flagReg ? "guaranteeCompany" : "update.guaranteeCompany",
-                      registerOptions.guaranteeCompany
-                    )}
-                  />
-                  <label>شرکت گارانتی </label> */}
-                {/* </div> */}
-
-                <div className="col-4 login-label-float">
-                  <select
-                    className={
-                      errors.userStatus
-                        ? "user-col3-select formerror"
-                        : "user-col3-select"
-                    }
-                    {...register(
-                      !flagReg ? "productStatus" : "update.productStatus",
-                      registerOptions.productStatus
-                    )}
-                  >
-                    <option value=""> وضعیت کالا...</option>
-                    {WarantyStatus.map((item) => (
-                      <option key={item.id} value={item.status}>
+                      <span key={item.id} className="productDetailRepair">
                         {" "}
-                        {item.status}
-                      </option>
-                    ))}
-                  </select>
+                        <span>{item.status}</span>
+                        <input
+                          type="checkbox"
+                          value={`${item.status}`}
+                          {...register(
+                            !flagReg
+                              ? "acceDevices"
+                              : "update.acceDevices",
+                          )}
+                        />
+                      </span>
+                    </>
+                  ))}
                 </div>
 
-                <div className="col-4 login-label-float">
-                  <input
-                    name="guarantreePrice"
-                    type="text"
-                    placeholder=""
-                    {...register(
-                      !flagReg ? "guarantreePrice" : "update.guarantreePrice",
-                      registerOptions.guarantreePrice
-                    )}
-                  />
-                  <label> هزینه تعمیرات </label>
-                </div>
+
+
 
                 <div className="col-12 ">
                   <div className="textarea_div centerc">
@@ -845,99 +522,7 @@ export default function Repairs() {
                   </div>
                 </div>
 
-                <div className="col-12 ">
-                  <div className="textarea_div centerc">
-                    <span>خدمات انجام شده توسط تعمیرات:</span>
-                    <div>
-                      <select
-                        name="productDetailRepair2"
-                        id=""
-                        {...register(
-                          !flagReg
-                            ? "productDetailRepair2"
-                            : "update.productDetailRepair2",
-                          registerOptions.productBrand
-                        )}
-                      >
-                        <option value="" key="">
-                          SSD
-                        </option>
 
-                        {productDetailRepair2.map((item) => (
-                          <option key={item.id} value={item.status}>
-                            {" "}
-                            {item.status}
-                          </option>
-                        ))}
-                      </select>
-
-                      <select
-                        name="productDetailRepair3"
-                        id=""
-                        {...register(
-                          !flagReg
-                            ? "productDetailRepair3"
-                            : "update.productDetailRepair3",
-                          registerOptions.productBrand
-                        )}
-                      >
-                        <option value="" key="">
-                          RAM
-                        </option>
-
-                        {productDetailRepair3.map((item) => (
-                          <option key={item.id} value={item.status}>
-                            {" "}
-                            {item.status}
-                          </option>
-                        ))}
-                      </select>
-
-                      {productDetailRepair.map((item) => (
-                        <>
-                          <span key={item.id} className="productDetailRepair">
-                            {" "}
-                            <span>{item.status}</span>
-                            <input
-                              type="checkbox"
-                              value={`${item.status}`}
-                              {...register(
-                                !flagReg
-                                  ? "productDetailRepair"
-                                  : "update.productDetailRepair",
-                                registerOptions.productDetailRepair
-                              )}
-                            />
-                          </span>
-                        </>
-                      ))}
-                    </div>
-
-                    <textarea
-                      name="details"
-                      {...register(
-                        !flagReg ? "details" : "update.details",
-                        registerOptions.details
-                      )}
-                    />
-                  </div>
-                </div>
-
-                <div className="col-12 login-label-float">
-                  <div className="textarea_div centerc">
-                    <span>ملاحظات صرفا جهت تعمیرات :</span>
-
-                    <textarea
-                      name="companyExplaination"
-                      {...register(
-                        !flagReg
-                          ? "companyExplaination"
-                          : "update.companyExplaination",
-                        registerOptions.companyExplaination
-                      )}
-                    />
-                  </div>
-                </div>
                 <div className="col-12 mb-3 mt-3 centerc">
                   <span className="centerr">
                     {" "}
@@ -967,52 +552,137 @@ export default function Repairs() {
           </div>
         </div>
 
-        <div className="col-4 boxSh repair-form-div-main p-3">
-          <button onClick={() => handlePrint()}>Print</button>
-          <div ref={printRef} className="repair-form-div ">
+        <div className="col-4 boxSh repair-form-div-main p-2 ">
+          {/* <button onClick={() => handlePrint()}>Print</button> */}
+          <div ref={printRef} className="repair-form-div m-1">
             <div className=" repair-form-div-sarbarg centercc">
-              <span>رسید تعمیرات کامپیوتر صانع</span>
+
+              <div >
+                <span>رسید خدمات کامپیوتر صانع</span>
+                <img src="../../../../images/Screenshot_۲۰۲۵۰۹۲۲_۱۹۵۲۰۳_Logo Maker.jpg"
+                  style={{ width: '30px' }}
+                />
+              </div>
             </div>
             <br />
-            <div className="repai-form-title">
-              <span>شماره پذیرش :</span>
-              <span>تاریخ پذیرش :</span>
+            <div className="repai-form-title repair-span">
+              <span>شماره پذیرش :{garantyId}</span>
+              <span >تاریخ پذیرش : <DateFormat dateString={value4} /></span>
 
             </div>
 
-            <div className="repai-form-title">
-              <span>نام مشتری :</span>
-              <span> شماره همراه :</span>
+            <div className="repai-form-title repair-span">
+              <span>نام مشتری :آقای/خانم {namewatch}</span>
+              <span> شماره همراه :{mobilewatch}</span>
             </div>
 
             <div className="repai-form-title">
-              <span> نوع کالا :</span>
-              <span>  عنوان کالا :</span>
+              <span> نوع کالا : {typewatch}</span>
+              <span>  عنوان کالا :{brandwatch}</span>
             </div>
 
             <div className="repai-form-title">
-              <span>   مدل :</span>
+              <span>   مدل :{modelWathed}</span>
             </div>
+
+            <div className="repair-problem-div ">
+              <span> لوازم همراه:</span>
+              <div className="repair-problem-divaccdevices">
+                {accDevicesWathed && getValues("acceDevices")?.map(item => (
+                  <span><Check style={{ fontSize: "10px" }} />{item}</span>
+                ))}
+              </div>
+
+            </div>
+
 
             <div className="repair-problem-div centerc">
-              <h5>ایراد کالا طبق اظهار مشتری:</h5>
-              {getValues("productErrorDetail")?.length != 0 && getValues("productErrorDetail")?.map(item => (
-                <li>{item}</li>
-              ))}
-              <li>{getValues("productProblem")}</li>
+              <span>ایراد کالا طبق اظهار مشتری:</span>
+              <div className="repair-problem-divaccdevices">
+
+                {proplemWathed && getValues("productErrorDetail")?.map(item => (
+                  <span>◼{item}</span>
+                ))}
+              </div>
             </div>
 
             <div className="repair-description-div ">
-              <h5>ملاحظات :</h5>
-              <textarea cols="30" rows="10"></textarea>
+              ملاحظات :
+              <p
+              >{productProblemwatch}</p>
             </div>
 
+            <hr />
+            <ul className="repair-footer" >
+              <li>دارنده این رسید مالک دستگاه شناخته میشود لذا در حفط آن کوشا باشید.</li>
+
+{servicType==1 && <>
+           <li>زمان بازگشت کالا از گارانتی به عهده شرکت گارانتی کننده می باشد.</li>
+              <li>هزینه ارسال محصول جهت گارانتی به عهده مشتری میباشد.</li>
+              <li>گارانتی کلیه محصولات به عهده شرکت گارانتی کننده میباشد.</li></>}
+{servicType==2 && <>
+              <li>کامپیوتر صانع در قبال ضربه،آبخوردگی ودستگاههایی که به صورت خاموش تحویل میگرددهیچ تعهدی ندارد.</li>
+              <li>این رسید به مدت 30 روز از تاریخ ثبت آن معتبر است و پس از آن تاریخ فروشگاه هیچ گونه مسولیتی در قبال دستگاه ندارد.</li>
+              <li>مسولیت آسیبهای اجتناب ناپذیر در حین تعمیر(شکستگی،خاموشی و ...) به عهده کامپیوتر صانع نمیباشد.</li>
+</>}
+   
+              <li>آدرس :بلوار سمیه -نبش کوچه 5----   37835456/ 37835457</li>
+
+              <li>
+              {servicType==1 ? "ارتباط در ایتا : 09045443715" : " ارتباط در ایتا : 09045443714"}
+
+              </li>
+            </ul>
+
+            <hr />
 
 
 
 
+            <div className="repair-footer-maindiv">
+
+              <div className="repair-footer-personel">
+
+                <span>مشتری:{namewatch}</span>
+                <span>تلفن:{mobilewatch}</span>
+                <span >تاریخ  : <DateFormat dateString={value4} /></span>
+              </div>
+
+              <div className="repair-footer-personel">
+                <span> نوع کالا : {typewatch}</span>
+                <span>  عنوان کالا :{brandwatch}</span>
+
+                <span>   مدل :{modelWathed}</span>
+              </div>
+              <div className="repair-problem-div repair-span ">
+                <div className="repair-problem-divaccdevices">
+                  {accDevicesWathed && getValues("acceDevices")?.map(item => (
+                    <span><Check style={{ fontSize: "10px" }} />{item}</span>
+                  ))}
+                </div>
+
+              </div>
 
 
+              <div className="repair-problem-div repair-span centerc">
+                <div className="repair-problem-divaccdevices">
+
+                  {proplemWathed && getValues("productErrorDetail")?.map(item => (
+                    <span>◼{item}</span>
+                  ))}
+                </div>
+              </div>
+
+
+              <div className="repair-descriptionb-div ">
+                <p
+                >{productProblemwatch}</p>
+              </div>
+
+              <div > هزینه تعمیرات :</div>
+
+              <div className="repiar-footer-span">کالای فوق تحویل اینجانب گردید</div>
+            </div>
 
 
           </div>

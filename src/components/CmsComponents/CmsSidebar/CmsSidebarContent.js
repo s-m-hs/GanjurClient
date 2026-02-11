@@ -124,14 +124,11 @@ export default function CmsSidebarContent() {
         <span>سفارشات </span>{" "}
       </NavLink> */}
 
-      <NavLink className="cmssidebar-div" to={"warranty"}>
-        <i class="fa-solid fa-store fa-lg" style={{ marginLeft: "5px" }}></i>
-        <span>گارانتی </span>{" "}
-      </NavLink>
+
 
       <NavLink className="cmssidebar-div" to={"repairs"}>
         <i class="fa-solid fa-store fa-lg" style={{ marginLeft: "5px" }}></i>
-        <span>تعمیرات </span>{" "}
+        <span>خدمات </span>{" "}
       </NavLink>
 
       <NavLink className="cmssidebar-div" to={"assemblypc"}>

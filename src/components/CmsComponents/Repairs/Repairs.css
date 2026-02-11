@@ -69,10 +69,12 @@ color: var(--gray3);
 }
 
 .repair-form-div{
+    margin: 0 auto;
     height: 800px;
     width: 98%;
     border: 1px solid gray;
     padding: 2px;
+    border-radius: 5px;
 }
 .repai-form-title{
     padding: 5px;
@@ -99,12 +101,45 @@ color: var(--gray3);
     font-weight: 600;
 }
 
-.repair-problem-div{
-    margin-right: 20px;
-}
-.repair-description-div textarea{
-    width: 100%;
+
+.repair-description-div p{
+    font-weight: 600;
+
     border: 1px solid;
-    outline: none;
-    height: 100px;
+}
+.repair-problem-divaccdevices{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-evenly; */
+}
+.repair-problem-divaccdevices li{
+    flex-grow: 1;
+}
+
+
+.repair-span span{
+    font-size: 12px;
+}
+.repair-footer{
+    padding: 0;
+    padding-right: 15px;
+    font-size: 12px;
+}
+.repair-footer-personel{
+    border-bottom: 1px solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.repair-descriptionb-div p{
+font-size: 8px;
+}
+
+.repair-footer-maindiv{
+    position: relative;
+}
+.repiar-footer-span{
+position: absolute;
+left: 10px;
 }
