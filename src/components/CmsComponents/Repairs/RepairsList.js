@@ -214,10 +214,13 @@ setCurrentServic([])
                 >{currentServic.productProblemB}</p>
               </div>
 
-              <div > هزینه تعمیرات :</div>
+              <div > هزینه خدمات :</div>
 
-              <div className="repiar-footer-span">کالای فوق تحویل اینجانب گردید</div>
-            </div>
+   <div className="repiar-footer-span">
+    <p>کالای فوق تحویل اینجانب گردید</p>
+    <p>نام خانوادگی <p>امضاء</p>
+</p>
+    </div>            </div>
 
 
           </div>

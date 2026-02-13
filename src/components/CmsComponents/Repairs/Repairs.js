@@ -598,7 +598,7 @@ export default function Repairs() {
 
             <div className="repair-problem-div centerc">
               <span>ایراد کالا طبق اظهار مشتری:</span>
-              <div className="repair-problem-divaccdevices">
+              <div className="repair-problem-divaccdevices ">
 
                 {proplemWathed && getValues("productErrorDetail")?.map(item => (
                   <span>◼{item}</span>
@@ -679,11 +679,16 @@ export default function Repairs() {
                 >{productProblemwatch}</p>
               </div>
 
-              <div > هزینه تعمیرات :</div>
+              <div > هزینه خدمات :</div>
 
-              <div className="repiar-footer-span">کالای فوق تحویل اینجانب گردید</div>
             </div>
 
+   <div className="repiar-footer-span">
+    <p>کالای فوق تحویل اینجانب گردید</p>
+    <p>نام خانوادگی <p>امضاء</p>
+</p>
+    </div>
+           
 
           </div>
 
