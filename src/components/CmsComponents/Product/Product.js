@@ -550,7 +550,7 @@ export default function Product() {
           datasheetUrl: data.update.datasheetUrl,
           mainImage: file2.name ? `${apiUrl}/${imgUrl2}` : imgUrl2,
           smallImage: file.name ? `${apiUrl}/${imgUrl}` : imgUrl,
-          images: imgArray.join("*,*"),
+          images: imgArray?.join("*,*"),
           cyManufacturerId: !xtSearchG
             ? data.update.manufacture
             : data.manufacture,
