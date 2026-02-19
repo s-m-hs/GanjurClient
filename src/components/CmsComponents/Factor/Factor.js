@@ -57,27 +57,7 @@ const Factor = (props) => {
     const [flagB, setFlagB] = useState(true)
     const [value4, setValue4] = useState(new Date());
 
-    //   const handlePrint = useReactToPrint({
-    //     content: () => componentRef.current,
-    //     documentTitle: "factor",
-    //   });
 
-    const Prices = [
-        { type: 'نقدی', value: 120000 },
-        { type: 'چکی', value: 135000 },
-        { type: 'همکار', value: 110000 }
-    ];
-
-    const buildProductPrices = (product) => {
-        return [
-            { key: 'Price', label: 'قیمت اصلی', value: product.Price },
-            { key: 'ShopPrice', label: 'قیمت فروشگاه', value: product.ShopPrice },
-            { key: 'Price2', label: 'قیمت چکی', value: product.Price2 },
-            { key: 'Price3', label: 'قیمت همکار', value: product.Price3 },
-            { key: 'Price4', label: 'قیمت ویژه', value: product.Price4 },
-            { key: 'Price5', label: 'قیمت پروژه‌ای', value: product.Price5 }
-        ].filter(p => p.value && p.value > 0);
-    };
     const handlePrint = useReactToPrint({
         contentRef: printRef,
         documentTitle: "factor",

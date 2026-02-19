@@ -30,7 +30,7 @@ export default function Customer() {
   const [userVouchur, setUserVouchur] = useState([])
   const [flagUpdate, setFlagUpdate] = useState(false);
   const [show, setShow] = useState(false);
-const [orderDetails,setOrderDetails]=useState([])
+  const [orderDetails, setOrderDetails] = useState([])
   const cmsContext = useContext(CmsContext);
   const homeContext = useContext(HomeContext);
   /////search state===>
@@ -88,10 +88,10 @@ const [orderDetails,setOrderDetails]=useState([])
     },
     buttonsStyling: false,
   });
-const getOrerDetails=(factorNum)=>{
-  setOrderDetails([])
-  ApiGetX2(`/api/CyOrders/getOrderDetail?factorNum=${factorNum}`,setOrderDetails)
-}
+  const getOrerDetails = (factorNum) => {
+    setOrderDetails([])
+    ApiGetX2(`/api/CyOrders/getOrderDetail?factorNum=${factorNum}`, setOrderDetails)
+  }
 
   const searchHandler = () => {
     let searchCustomer = customerArray?.filter((filter) => {
@@ -164,19 +164,22 @@ const getOrerDetails=(factorNum)=>{
 
 
   const [colDefsB] = useState([
-    { field: "refrenceId", headerName: "شماره فاکتور ", Width: 200 ,cellRenderer: (params) => {if(params.data.refrenceId){
-return (
-      <>
-      <button className="btn btn-info"
-      onClick={()=>getOrerDetails(params.data.refrenceId)}
-      >{params.data.refrenceId}</button>
-      </>
-    )
-    }
-    }  },
+    {
+      field: "refrenceId", headerName: "شماره فاکتور ", Width: 200, cellRenderer: (params) => {
+        if (params.data.refrenceId) {
+          return (
+            <>
+              <button className="btn btn-info"
+                onClick={() => getOrerDetails(params.data.refrenceId)}
+              >{params.data.refrenceId}</button>
+            </>
+          )
+        }
+      }
+    },
     { field: "debit", headerName: "بدهکاری ریال", Width: 200, cellRenderer: (params) => params.value?.toLocaleString() },
     { field: "credit", headerName: "بستانکاری ریال", Width: 200, cellRenderer: (params) => params.value?.toLocaleString() },
-    { field: "mandeh2", headerName: "مانده سند", Width: 200, cellRenderer: (params) => params.value?.toLocaleString()  },
+    { field: "mandeh2", headerName: "مانده سند", Width: 200, cellRenderer: (params) => params.value?.toLocaleString() },
     { field: "description", headerName: "شرح", Width: 200 },
     { field: "referenceType", headerName: "نوع مرجع", Width: 200 },
     {
@@ -289,11 +292,11 @@ return (
     setFlagUpdate(false);
     reset(setValue(""));
   };
-useEffect(()=>{
-if(show==false){
-  setOrderDetails([])
-}
-},[show])
+  useEffect(() => {
+    if (show == false) {
+      setOrderDetails([])
+    }
+  }, [show])
 
   useEffect(() => {
     cmsContext.setFlagClass(false);
@@ -534,70 +537,70 @@ if(show==false){
             <div className="customerDetail-modal" ref={printRef} style={{ height: "1000px" }}>
               <BaseGrid rowData={userVouchur?.currentVouchurs} colDefs={colDefsB} rtl={true} />
 
-{orderDetails?.length!= 0 &&        
-     <div className="orderDetail-div boxSh">
+              {orderDetails?.length != 0 &&
+                <div className="orderDetail-div boxSh">
 
-<div className="orderDetail-div-B ">
-<table className="table table-dark">
-<thead>
-  <tr>
-    <th>شماره فاکتور</th>
-    <th>مبلغ نهایی</th>
-    <th>شناسه </th>
-    <th>تاریخ</th>
-  </tr>
-</thead>
+                  <div className="orderDetail-div-B ">
+                    <table className="table table-dark">
+                      <thead>
+                        <tr>
+                          <th>شماره فاکتور</th>
+                          <th>مبلغ نهایی</th>
+                          <th>شناسه </th>
+                          <th>تاریخ</th>
+                        </tr>
+                      </thead>
 
-<tbody>
+                      <tbody>
 
-  <tr>
-<td>{orderDetails?.factorNumber}</td>
-<td>{orderDetails?.fanalTotalAmount?.toLocaleString()}ریال</td>
-<td>{orderDetails?.id}</td>
-<td><DateFormat dateString={orderDetails?.creatDate}/></td>
+                        <tr>
+                          <td>{orderDetails?.factorNumber}</td>
+                          <td>{orderDetails?.fanalTotalAmount?.toLocaleString()}ریال</td>
+                          <td>{orderDetails?.id}</td>
+                          <td><DateFormat dateString={orderDetails?.creatDate} /></td>
 
-  </tr>
-</tbody>
-
-
-</table>
+                        </tr>
+                      </tbody>
 
 
-<table className="table table-dark">
-<thead>
-  <tr>
-    <th> کالا</th>
-    <th> قیمت</th>
-    <th>تعداد </th>
-    <th>مجموع</th>
-  </tr>
-</thead>
-
-<tbody>
-
-{orderDetails?.orderItems?.length !=0 && orderDetails?.orderItems?.map((item)=>(
-  <tr>
-<td>{item.partNumber}</td>
-<td>{item.unitPrice?.toLocaleString()}ریال</td>
-<td>{item.quantity}</td>
-<td>{item.totalPrice?.toLocaleString()}ریال</td>
-
-  </tr>
-))}
-
-</tbody>
+                    </table>
 
 
-</table>
+                    <table className="table table-dark">
+                      <thead>
+                        <tr>
+                          <th> کالا</th>
+                          <th> قیمت</th>
+                          <th>تعداد </th>
+                          <th>مجموع</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+
+                        {orderDetails?.orderItems?.length != 0 && orderDetails?.orderItems?.map((item) => (
+                          <tr>
+                            <td>{item.partNumber}</td>
+                            <td>{item.unitPrice?.toLocaleString()}ریال</td>
+                            <td>{item.quantity}</td>
+                            <td>{item.totalPrice?.toLocaleString()}ریال</td>
+
+                          </tr>
+                        ))}
+
+                      </tbody>
+
+
+                    </table>
 
 
 
-</div>
+                  </div>
 
-        </div>}
+                </div>}
 
 
-          
+
             </div>
 
 
