@@ -75,11 +75,11 @@ export default function App() {
   };
 
   useEffect(() => {
-    // setIsLogin(true);
+    setIsLogin(true);
 
-    refreshToken();
-    intervalId();
-    clearInterval(intervalId);
+    // refreshToken();
+    // intervalId();
+    // clearInterval(intervalId);
   }, []);
   return (
     <>

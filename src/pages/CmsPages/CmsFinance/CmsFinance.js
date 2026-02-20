@@ -8,6 +8,7 @@ import Finance from '../../../components/CmsComponents/Finance/Finance';
 import BankAccount from '../../../components/CmsComponents/Accounts/BankAccount';
 import UsersFinanceTabs from '../../../components/CmsComponents/Finance/UserFinance/UsersFinanceTabs';
 import AllFinance from '../../../components/CmsComponents/Finance/AllFinance';
+import ActionFainanc from '../../../components/CmsComponents/Finance/ActionFinancs/ActionFainanc';
 
 
 export default function CmsFinance() {
@@ -41,8 +42,9 @@ export default function CmsFinance() {
                       {tabId == "users" &&   <UsersFinanceTabs />}
                     </Tab>
 
-                    {/* <Tab eventKey="newSubject" title=" مطلب جدید " style={{ background: 'inherit' }}>
-        </Tab> */}
+                              <Tab eventKey="Action" title="عملکرد مالی" style={{ background: 'inherit' }}>
+                      {tabId == "Action" &&   <ActionFainanc />}
+                    </Tab>
 
                 </Tabs>
 
