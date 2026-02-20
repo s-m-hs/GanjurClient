@@ -413,7 +413,7 @@ export default function Product() {
   };
   const handleRegistration = (data) => {
     // console.log(data)
-    let obj2 = paramiterArray.map((item) => ({
+    let obj2 = paramiterArray?.map((item) => ({
       id: 0,
       name: item.names,
       value: item.values,
@@ -487,13 +487,13 @@ export default function Product() {
         // styleRefD.current.classList.add('formerroryy')
       }
     } else if (flagUpdate) {
-      let obj3 = paramiterArrayB.map((item) => ({
+      let obj3 = paramiterArrayB?.map((item) => ({
         id: item.id,
         name: item.names,
         value: item.values,
         cyProductId: putId,
       }));
-      let obj2 = paramiterArray.map((item) => ({
+      let obj2 = paramiterArray?.map((item) => ({
         id: 0,
         name: item.names,
         value: item.values,
@@ -529,7 +529,7 @@ export default function Product() {
           cyProductCategoryId: !xtSearchF
             ? data.update.categoryB
             : data.categoryB,
-          spec: obj3.length != 0 ? mergedArray : mergedArray2,
+          spec: obj3?.length != 0 ? mergedArray : mergedArray2,
         };
         handelUpdate(obj);
       } else if (productById[0] == null) {
@@ -550,7 +550,7 @@ export default function Product() {
           datasheetUrl: data.update.datasheetUrl,
           mainImage: file2.name ? `${apiUrl}/${imgUrl2}` : imgUrl2,
           smallImage: file.name ? `${apiUrl}/${imgUrl}` : imgUrl,
-          images: imgArray.join("*,*"),
+          images: imgArray?.join("*,*"),
           cyManufacturerId: !xtSearchG
             ? data.update.manufacture
             : data.manufacture,
@@ -697,7 +697,7 @@ export default function Product() {
           setProductById(
             Object.keys(result)
               .filter((key) => key.startsWith("spec"))
-              .map((key) => result[key])
+              ?.map((key) => result[key])
           );
         })
         .catch((error) => navigate("/errorpage"));
@@ -803,7 +803,7 @@ export default function Product() {
     setParamiterArray(
       Object.keys(data)
         .filter((key) => key.startsWith("proParamiter"))
-        .map((key) => data[key])
+        ?.map((key) => data[key])
     );
   };
 
@@ -812,7 +812,7 @@ export default function Product() {
     setRemoveArray((prev) => [...prev, id]);
     let x = productById[0].findIndex((item) => item.id == id);
     let y = productById[0].splice(x, 1);
-    if (paramiterArrayB.length != 0) {
+    if (paramiterArrayB?.length != 0) {
       paramiterArrayB.splice(x, 1);
     }
   };
@@ -836,7 +836,7 @@ export default function Product() {
   }, [imgUrl3]);
   /////////////////////////
   useEffect(() => {
-    if (statearray.length != 0 && !tableState) {
+    if (statearray?.length != 0 && !tableState) {
       let x = statearray;
       let countInPage = pageCount;
       let z = Math.ceil(x / countInPage);
@@ -1274,7 +1274,7 @@ export default function Product() {
 
                   <div className="producted-login-label-float producted-keyvalue-main">
                     {!flagUpdate &&
-                      arrayValue.map((item, index) => (
+                      arrayValue?.map((item, index) => (
                         <div
                           className="producted-login-label-float producted-keyvalue"
                           key={index}
@@ -1298,7 +1298,7 @@ export default function Product() {
                         </div>
                       ))}
                     {flagUpdate &&
-                      arrayValue.map((item, index) => (
+                      arrayValue?.map((item, index) => (
                         <div
                           className="producted-login-label-float producted-keyvalue"
                           key={index}
@@ -1322,7 +1322,7 @@ export default function Product() {
                         </div>
                       ))}
                     {productById[0] &&
-                      productById[0].map((item, index) => (
+                      productById[0]?.map((item, index) => (
                         <div className="producted-login-label-float producted-keyvalue">
                           <input
                             type="text"
@@ -1381,8 +1381,8 @@ export default function Product() {
 
 
                 <div className="producted-newimg-div">
-                  {imgArray.length != 0 &&
-                    imgArray.map((item) => (
+                  {imgArray?.length != 0 &&
+                    imgArray?.map((item) => (
                       <>
                         <div className="producted-newimg-imgarray-div">
                           {item && (
@@ -1615,7 +1615,7 @@ export default function Product() {
                     {!tableState &&
                       productArray?.length != 0 &&
                       !flagSearchNoImg
-                      ? productArray.map((item, index) => (
+                      ? productArray?.map((item, index) => (
                         <tr key={item.id}>
                           <td>{productNumberPagi + (index + 1)}</td>
                           {/* <td>
@@ -1658,7 +1658,7 @@ export default function Product() {
                           <td>
                             {categoryItemB.filter((itemF) => {
                               return itemF.id == item.cyProductCategoryId;
-                            }).length != 0 &&
+                            })?.length != 0 &&
                               categoryItemB.filter((itemF) => {
                                 return itemF.id == item.cyProductCategoryId;
                               })[0].name}
@@ -1775,7 +1775,7 @@ export default function Product() {
                             <td>
                               {categoryItemB.filter((itemF) => {
                                 return itemF.id == item.cyProductCategoryId;
-                              }).length != 0 &&
+                              })?.length != 0 &&
                                 categoryItemB.filter((itemF) => {
                                   return itemF.id == item.cyProductCategoryId;
                                 })[0].name}
@@ -2051,7 +2051,7 @@ export default function Product() {
                   {detailProduct[10] &&
                     detailProduct[10]
                       ?.split("*,*")
-                      .map((item) => <img src={item} alt="" />)}
+                      ?.map((item) => <img src={item} alt="" />)}
                 </div>
               </div>
               <span className="product-detailmodal-div-span ">
