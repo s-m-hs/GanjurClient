@@ -134,6 +134,20 @@ export default function Customer() {
   // ]);
 
   const [colDefs] = useState([
+    {
+      headerName: 'عملیات', width: 200,
+      cellRenderer: (params) => (
+        <>
+          <button className='btn btn-info' style={{ width: "60px", height: "30px", margin: "1px", fontSize: "15px", padding: "1px" }} onClick={() => {
+            console.log(params)
+            setUserVouchur([])
+            setShow(true)
+            showUserVouchur(params.data.accountId)
+          }
+          }>...</button>
+        </>
+      )
+    },
     { field: "cyUsNm", headerName: "نام", Width: 200 },
     { field: "mobile", headerName: "موبایل", Width: 200 },
     { field: "phone", headerName: "تلفن" },
@@ -147,19 +161,15 @@ export default function Customer() {
     { field: "accountId", headerName: "AccountId", Width: 50 },
     { field: "userAddress", headerName: "آدرس" },
     {
-      headerName: 'عملیات', width: 200,
+      headerName: 'عت', width: 200,
       cellRenderer: (params) => (
         <>
-          <button className='btn btn-info' style={{ width: "30px", height: "15px", margin: "1px", fontSize: "8px", padding: "1px" }} onClick={() => {
-            setUserVouchur([])
-            setShow(true)
-            showUserVouchur(params.data.accountId)
-          }
-          }>...</button>
+
           <button className='btn btn-danger' style={{ width: "30px", height: "15px", margin: "1px", fontSize: "8px", padding: "1px" }} onClick={() => deleteHandler(params.data.id)}>×</button>
         </>
       )
-    }
+    },
+
   ])
 
 
@@ -169,7 +179,7 @@ export default function Customer() {
         if (params.data.refrenceId) {
           return (
             <>
-              <button className="btn btn-info"
+              <button className="btn btn-info" style={{ width: "60px", height: "30px", margin: "1px", fontSize: "15px", padding: "1px" }}
                 onClick={() => getOrerDetails(params.data.refrenceId)}
               >{params.data.refrenceId}</button>
             </>
@@ -260,7 +270,7 @@ export default function Customer() {
       .then((result) => {
         if (result.isConfirmed) {
           async function myAppDelet() {
-            const res = await fetch(`${apiUrl}/api/CyUsers/${id}`, {
+            const res = await fetch(`${apiUrl}/api/CyUsers/deletUser?id=${id}`, {
               method: "DELETE",
               credentials: "include",
             })

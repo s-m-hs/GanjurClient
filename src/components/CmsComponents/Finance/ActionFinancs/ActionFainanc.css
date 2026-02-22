@@ -1,4 +1,13 @@
+
+.actionFinanc-div-table{
+    min-height: 400px;
+}
+.actionFinanc-div-table table{
+    min-height: 300px;
+}
+
 .actionfain-table-sood th,td{
 
     font-size: 18px;
 }
+

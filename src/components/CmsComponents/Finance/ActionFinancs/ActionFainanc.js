@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import  "./ActionFainanc.css"
+import "./ActionFainanc.css"
 import DatePicker from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
@@ -14,6 +14,7 @@ export default function ActionFainanc() {
     const [value4, setValue4] = useState();
     const [value5, setValue5] = useState();
     const [SoodResult, setSoodResult] = useState([])
+    const [hazineResult, setHazinehResult] = useState([])
 
     function handleChange(value) {
         setValue4(value && value.toDate());
@@ -23,11 +24,12 @@ export default function ActionFainanc() {
         setValue5(value && value.toDate());
     }
 
-
+    const getHazineh = () => {
+        setHazinehResult([])
+        ApiGetX2(`/api/Voucher/expense-summary?from=${value4?.toISOString()}&to=${value5?.toISOString()}`, setHazinehResult)
+    }
     const getSood = () => {
         setSoodResult([])
-        // console.log(value4);
-        // console.log(value5);
         ApiGetX2(`/api/Voucher/financial-performance?from=${value4?.toISOString()}&to=${value5?.toISOString()}`, setSoodResult)
     }
     console.log(SoodResult);
@@ -90,49 +92,77 @@ export default function ActionFainanc() {
 
             <div className='row'>
 
-                <div className='col-4'></div>
+                <div className='col-2'></div>
 
-                <div className='col-4'></div>
+                <div className='col-4 boxSh centercc actionFinanc-div-table'>
+                    <h2>هزینه ها</h2>
+                    <button className='btn btn-primary m-3'
+                        onClick={() => getHazineh()}
+                    >نمایش </button>
+                    <table class="table table-bordered actionfain-table-sood ">
 
-                <div className='col-4 boxSh centercc'>
-                    <h2>سود</h2>
+                        <tbody>
+                            {hazineResult.length != 0 && hazineResult.map(item => (
+                                <tr>
+                                    <th scope="row">{item.title} </th>
+                                    <td>{item.amount?.toLocaleString()}</td>
+
+                                </tr>
+                            ))}
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div className='col-4 boxSh centercc actionFinanc-div-table'>
+                    <h2>عملکرد کلی</h2>
                     <button className='btn btn-primary m-3'
                         onClick={() => getSood()}
                     >نمایش </button>
                     <table class="table table-bordered actionfain-table-sood ">
 
-                        <tbody>
-                            <tr>
-                                <th scope="row">فروش ناخالص(فروش کالا)</th>
-                                <td>{SoodResult?.darAmad?.toLocaleString()}</td>
+                        {
+                            SoodResult.length != 0 &&
 
-                            </tr>
-                            {/* <tr>
+
+                            <tbody>
+                                <tr>
+                                    <th scope="row">فروش ناخالص(فروش کالا)</th>
+                                    <td>{SoodResult?.darAmad?.toLocaleString()}</td>
+
+                                </tr>
+                                {/* <tr>
                                 <th scope="row">فروش خالص (کل درآمدها)</th>
                                 <td>{SoodResult?.netSales?.toLocaleString()}</td>
 
                             </tr> */}
-                            <tr>
-                                <th scope="row">بهای تمام شده  </th>
-                                <td >{SoodResult?.bahayKala?.toLocaleString()}</td>
+                                <tr>
+                                    <th scope="row"> بهای تمام شده کالا </th>
+                                    <td >{SoodResult?.bahayKala?.toLocaleString()}</td>
 
-                            </tr>
+                                </tr>
 
-                            <tr>
-                                <th scope="row"> سایرهزینه ها</th>
-                                <td >{SoodResult?.otherExpenses?.toLocaleString()}</td>
+                                <tr>
+                                    <th scope="row"> سایرهزینه ها</th>
+                                    <td >{SoodResult?.otherExpenses?.toLocaleString()}</td>
 
-                            </tr>
+                                </tr>
 
-                            <tr>
-                                <th scope="row">سود خالص</th>
-                                <td >{SoodResult?.netProfit?.toLocaleString()}</td>
+                                <tr>
+                                    <th scope="row">سود خالص</th>
+                                    <td >{SoodResult?.netProfit?.toLocaleString()}</td>
 
-                            </tr>
-                        </tbody>
+                                </tr>
+                            </tbody>
+                        }
+
                     </table>
 
                 </div>
+
+                <div className='col-2'></div>
+
 
             </div>
 

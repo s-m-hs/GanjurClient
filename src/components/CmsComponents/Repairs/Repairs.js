@@ -87,8 +87,8 @@ export default function Repairs() {
   } = useForm({
     defaultValues: {
       name: "",
-      acceDevices:[],
-      productErrorDetail:[]
+      acceDevices: [],
+      productErrorDetail: []
 
     },
   });
@@ -415,7 +415,7 @@ export default function Repairs() {
 
                 <div className="col-4 login-label-float">
                   <select
-                  style={{border:'1px gray',outline:'none'}}
+                    style={{ border: '1px gray', outline: 'none' }}
                     name="productNameTitle"
                     id=""
                     {...register(
@@ -433,7 +433,7 @@ export default function Repairs() {
                   </select>
 
                   <select
-                                    style={{border:'1px gray',outline:'none'}}
+                    style={{ border: '1px gray', outline: 'none' }}
 
                     name="productBrand"
                     id=""
@@ -616,20 +616,20 @@ export default function Repairs() {
             <ul className="repair-footer" >
               <li>دارنده این رسید مالک دستگاه شناخته میشود لذا در حفط آن کوشا باشید.</li>
 
-{servicType==1 && <>
-           <li>زمان بازگشت کالا از گارانتی به عهده شرکت گارانتی کننده می باشد.</li>
-              <li>هزینه ارسال محصول جهت گارانتی به عهده مشتری میباشد.</li>
-              <li>گارانتی کلیه محصولات به عهده شرکت گارانتی کننده میباشد.</li></>}
-{servicType==2 && <>
-              <li>کامپیوتر صانع در قبال ضربه،آبخوردگی ودستگاههایی که به صورت خاموش تحویل میگرددهیچ تعهدی ندارد.</li>
-              <li>این رسید به مدت 30 روز از تاریخ ثبت آن معتبر است و پس از آن تاریخ فروشگاه هیچ گونه مسولیتی در قبال دستگاه ندارد.</li>
-              <li>مسولیت آسیبهای اجتناب ناپذیر در حین تعمیر(شکستگی،خاموشی و ...) به عهده کامپیوتر صانع نمیباشد.</li>
-</>}
-   
+              {servicType == 1 && <>
+                <li>زمان بازگشت کالا از گارانتی به عهده شرکت گارانتی کننده می باشد.</li>
+                <li>هزینه ارسال محصول جهت گارانتی به عهده مشتری میباشد.</li>
+                <li>گارانتی کلیه محصولات به عهده شرکت گارانتی کننده میباشد.</li></>}
+              {servicType == 2 && <>
+                <li>کامپیوتر صانع در قبال ضربه،آبخوردگی ودستگاههایی که به صورت خاموش تحویل میگرددهیچ تعهدی ندارد.</li>
+                <li>این رسید به مدت 30 روز از تاریخ ثبت آن معتبر است و پس از آن تاریخ فروشگاه هیچ گونه مسولیتی در قبال دستگاه ندارد.</li>
+                <li>مسولیت آسیبهای اجتناب ناپذیر در حین تعمیر(شکستگی،خاموشی و ...) به عهده کامپیوتر صانع نمیباشد.</li>
+              </>}
+
               <li>آدرس :بلوار سمیه -نبش کوچه 5----   37835456/ 37835457</li>
 
               <li>
-              {servicType==1 ? "ارتباط در ایتا : 09045443715" : " ارتباط در ایتا : 09045443714"}
+                {servicType == 1 ? "ارتباط در ایتا : 09045443715" : " ارتباط در ایتا : 09045443714"}
 
               </li>
             </ul>
@@ -643,8 +643,8 @@ export default function Repairs() {
 
               <div className="repair-footer-personel">
 
-                <span>مشتری:{namewatch}</span>
-                <span>تلفن:{mobilewatch}</span>
+                <span style={{ fontWeight: 600 }}>مشتری:{namewatch}</span>
+                <span style={{ fontWeight: 600 }}>تلفن:{mobilewatch}</span>
                 <span >تاریخ  : <DateFormat dateString={value4} /></span>
               </div>
 
@@ -683,12 +683,12 @@ export default function Repairs() {
 
             </div>
 
-   <div className="repiar-footer-span">
-    <p>کالای فوق تحویل اینجانب گردید</p>
-    <p>نام خانوادگی <p>امضاء</p>
-</p>
-    </div>
-           
+            <div className="repiar-footer-span">
+              <p>کالای فوق تحویل اینجانب گردید</p>
+              <p>نام خانوادگی <p>امضاء</p>
+              </p>
+            </div>
+
 
           </div>
 

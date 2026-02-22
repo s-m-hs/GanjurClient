@@ -22,6 +22,7 @@ import apiUrl from '../../../utils/ApiConfig';
 import DateFormat from "../../../utils/DateFormat";
 import AlertError from '../../../utils/AlertFunc/AlertError';
 import BaseGrid from '../../Grid/BaseGrid';
+import { Modal } from 'react-bootstrap';
 export default function Accounts() {
   let { xtSearchI, setXtSearchI,
     xtSearchJ, setXtSearchJ, setResetSearchbox } = useContext(CmsContext)
@@ -35,6 +36,10 @@ export default function Accounts() {
   const [allAccount, setAllAccount] = useState([])
   const [voucherDate, setVochurDate] = useState(new Date())
   const [vouchurDetail, setVouchurDetail] = useState([])
+  const [accountVouchur, setAccountVouchur] = useState([])
+
+  const [show, setShow] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -108,12 +113,46 @@ export default function Accounts() {
   const accountWatch = watch("accountType")
 
   const [colDefs] = useState([
-    { field: "id", headerName: "شناسه ", Width: 200 },
-    { field: "code", headerName: "کد", Width: 200 },
+    {
+      field: "id", headerName: "شناسه ", Width: 80, cellRenderer: (params) => (
+        <>
+          <button className='btn btn-info' style={{ width: "70px", height: "30px", margin: "1px", fontSize: "15px", padding: "1px" }} onClick={() => {
+            setAccountVouchur([])
+            setShow(true)
+            showAccountVouchur(params.data.id)
+          }
+          }>{params.data.id}</button>
+
+        </>
+      )
+    },
+    { field: "code", headerName: "کد", Width: 80 },
     { field: "title", headerName: "عنوان", Width: 400 },
-    { field: "accountType", headerName: "نوع", Width: 200 },
-    { field: "parentId", headerName: "والد", Width: 200 },
+    { field: "accountType", headerName: "نوع", Width: 80 },
+    { field: "parentId", headerName: "والد", Width: 80 },
+
   ])
+
+
+  const [colDefsB] = useState([
+
+    { field: "debit", headerName: "بدهکاری ریال", Width: 200, cellRenderer: (params) => params.value?.toLocaleString() },
+    { field: "credit", headerName: "بستانکاری ریال", Width: 200, cellRenderer: (params) => params.value?.toLocaleString() },
+    { field: "mandeh2", headerName: "مانده سند", Width: 200, cellRenderer: (params) => params.value?.toLocaleString() },
+    { field: "description", headerName: "شرح", Width: 200 },
+    { field: "referenceType", headerName: "نوع مرجع", Width: 200 },
+    {
+      field: "voucherDate",
+      headerName: "تاریخ سند",
+      width: 200,
+      cellRenderer: (params) => <DateFormat dateString={params.value} />,
+    },
+    { field: "id", headerName: "شناسه آیتم", Width: 200 },
+  ])
+
+  const showAccountVouchur = (id) => {
+    ApiGetX2(`/api/CyUsers/getUserVoucherItem?AccountId=${id}`, setAccountVouchur)
+  }
 
   const getAllAccount = () => {
     ApiGetX2('/api/Account', setAllAccount)
@@ -250,9 +289,43 @@ export default function Accounts() {
           <div style={{ height: "1000px" }}>
             <BaseGrid rowData={allAccount} colDefs={colDefs} rtl={true} />
           </div>
-          </div>
+        </div>
 
       </div>
+
+
+      <Modal show={show} fullscreen={true} onHide={() => setShow(false)}>
+        <Modal.Header closeButton>
+          <div className="customer-voucherTitle ">
+            <span>{accountVouchur?.result?.balance?.toLocaleString()} ریال </span>
+            <span>{accountVouchur?.result?.balanceStatus}</span>
+
+            {/* <button
+              type="button"
+              onClick={() => {
+                handlePrint()
+
+              }}
+              className="btn btn-warning no-print "
+            >
+              خروجی PDF
+            </button> */}
+
+          </div>
+        </Modal.Header>
+        <Modal.Body>
+
+
+          <div className="customerDetail-modal" style={{ height: "1000px" }}>
+            <BaseGrid rowData={accountVouchur?.currentVouchurs} colDefs={colDefsB} rtl={true} />
+
+
+
+          </div>
+
+
+        </Modal.Body>
+      </Modal>
     </div>
   )
 }
