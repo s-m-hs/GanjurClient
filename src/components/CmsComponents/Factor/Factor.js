@@ -28,6 +28,7 @@ import AllFactors from './AllFactor';
 import DateFormat from '../../../utils/DateFormat';
 import AlertError from '../../../utils/AlertFunc/AlertError';
 import scrollToElementAndCenter from '../../../utils/ScrollToElement';
+import FactorComponent from './FactorComponent';
 
 const Factor = (props) => {
     const cmsContext = useContext(CmsContext);
@@ -38,6 +39,7 @@ const Factor = (props) => {
     const overlayRefs = useRef({});
     const [fullscreen, setFullscreen] = useState(true);
     const [show, setShow] = useState(false);
+    const [showD, setShowD] = useState(false);
     const [showModalB, setShowModalB] = useState(false);
     const [hardWareCat, sethardWareCat] = useState([])
     const [accesoryCat, setaccesoryCat] = useState([])
@@ -56,7 +58,7 @@ const Factor = (props) => {
     const [flagA, setFlagA] = useState(true)
     const [flagB, setFlagB] = useState(true)
     const [value4, setValue4] = useState(new Date());
-
+const[isShowCoulum,setIsShowCoulum]=useState(true)
 
     const handlePrint = useReactToPrint({
         contentRef: printRef,
@@ -414,11 +416,14 @@ const Factor = (props) => {
                                     <div className="Factor-header">
                                         <div className="header-row">
 
+
+   <span className='header-row-title'> {props.sarBarg}</span>
+
                                             <span>فروشگاه صانع
-                                                <img class="factor-img-logo" src="/images/photo_torob.png" alt=""></img>
+                                                <img class="factor-img-logo boxSh" src="/images/logoFactor3.png" alt=""></img>
                                             </span>
 
-                                            <span className='header-row-title'> {props.sarBarg}</span>
+                                         
 
                                             <span className='header-row-minInput'>
                                                 {!flagShowFactor ?
@@ -480,8 +485,8 @@ const Factor = (props) => {
                                                     <th className='no-print'>گروه</th>
                                                     <th>نام کالا</th>
                                                     <th className='factor-q-th'>تعداد</th>
-                                                    <th> واحد(ریال)</th>
-                                                    <th>مجموع(ریال)</th>
+                                                    <th className={isShowCoulum?'':'hidden'} > واحد(ریال)</th>
+                                                    <th className={isShowCoulum?'':'hidden'} >مجموع(ریال)</th>
                                                     <th className='no-print'>شرح</th>
                                                 </tr>
                                             </thead>
@@ -514,7 +519,7 @@ const Factor = (props) => {
                                                         </td>
 
 
-                                                        <td>
+                                                        <td className={isShowCoulum?'':'hidden'}>
 
                                                             {!flagShowFactor ? <div className="mt-2 mb-2">
                                                                 <OverlayPanel ref={(el) => overlayRefs.current[item.ID] = el}>
@@ -597,7 +602,7 @@ const Factor = (props) => {
 
                                                         </td>
 
-                                                        <td>{!flagShowFactor ? (item.TotalPrice || 0).toLocaleString('fa-IR') : item?.totalPrice?.toLocaleString('fa-IR')}</td>
+                                                        <td className={isShowCoulum?'':'hidden'}>{!flagShowFactor ? (item.TotalPrice || 0).toLocaleString('fa-IR') : item?.totalPrice?.toLocaleString('fa-IR')}</td>
 
 
 
@@ -721,9 +726,12 @@ const Factor = (props) => {
                                     </div>
 
                                     {!flagShowFactor ?
-                                        <div className="footer-section centercc">
+                                        <div className="footer-section centerrc">
 
                                             <button className="submit-btn" type='submit'>💾 ثبت فاکتور</button>
+                                            <button className="btn btn-light" type='button'
+                                            onClick={()=>setIsShowCoulum(!isShowCoulum)}
+                                            >نمایش ستون قیمت</button>
 
                                         </div> : null}
 
@@ -900,8 +908,7 @@ const Factor = (props) => {
 
                     <div className='col-lg-2 boxSh  centercc foctor-btn-section'>
 
-
-                        <button className='btn btn-secondary'
+{props.orderMode==1 &&                         <button className='btn btn-secondary'
                             onClick={() => {
                                 setUserDateil([])
                                 setXtFactorNum(null)
@@ -912,11 +919,7 @@ const Factor = (props) => {
                             }}
                         >
                             فاکتورها
-                        </button>
-
-                        <button className='btn btn-secondary'>
-                            مشاهده فاکتور
-                        </button>
+                        </button> }
 
 
                         <button
@@ -944,6 +947,16 @@ const Factor = (props) => {
                 </div>
 
             </div>
+
+
+
+                                    <Modal show={showD} fullscreen={fullscreen} onHide={() => setShowD(false)}>
+                                        <Modal.Header closeButton></Modal.Header>
+                                        <Modal.Body >
+                                            <FactorComponent />
+                                        </Modal.Body>
+                                        </Modal>
+
 
         </section >
 

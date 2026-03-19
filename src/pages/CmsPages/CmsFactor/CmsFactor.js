@@ -57,7 +57,7 @@ export default function CmsFactor() {
 
 
                         <Tab eventKey="factorEdit" title=" ویرایش فاکتور" style={{ background: 'inherit' }}>
-                            {tabId == "factorEdit" && <FactorComponent />}
+                            {tabId == "factorEdit" && <FactorComponent   orderMode={6} />  }
 
                         </Tab>
 
@@ -66,6 +66,11 @@ export default function CmsFactor() {
 
                         </Tab>
 
+
+                        <Tab eventKey="showFactor" title=" مشاهده فاکتور" style={{ background: 'inherit' }}>
+                            {tabId == "showFactor" && <FactorComponent  orderMode={7} />}
+
+                        </Tab>
                     </Tabs>
 
                 </>

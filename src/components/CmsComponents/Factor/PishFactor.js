@@ -941,10 +941,6 @@ const PishFactor = (props) => {
                             فاکتورها
                         </button>
 
-                        <button className='btn btn-secondary'>
-                            مشاهده فاکتور
-                        </button>
-
 
                         <button
                             type="button"

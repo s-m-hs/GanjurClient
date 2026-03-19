@@ -25,7 +25,7 @@
 }
 .factor-img-logo {
   border-radius: 50%;
-  width: 30px;
+  width: 45px;
 }
 .header-row {
   display: flex;
@@ -46,6 +46,8 @@
 }
 .header-row-title {
   justify-self: center;
+  /* background-image: url(./logoFactor3.png);
+  background-size: cover; */
 }
 .items-table {
   border: 1px solid;

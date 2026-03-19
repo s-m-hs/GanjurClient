@@ -5,6 +5,14 @@ import BuildVirsion from "../../../utils/BuildVirsion";
 import mode from "../../../utils/ModsB";
 import { HomeContext } from "../../../context/CmsContext";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import { File, Headphones, Mouse, Percent, SealPercent, User, Users } from "@phosphor-icons/react";
+import { CategoryOutlined, CategoryRounded, HeadphonesSharp, PercentOutlined, PercentSharp, RoomServiceTwoTone } from "@mui/icons-material";
+import { RiCalculatorFill, RiCustomerService2Fill, RiMenu5Line, RiMenuUnfold4Fill, RiServiceFill } from "react-icons/ri";
+import { MdHomeRepairService, MdMenu, MdOutlineRoomService, MdOutlineSupervisorAccount, MdShoppingBasket, MdShopTwo } from "react-icons/md";
+import { GiAutoRepair, GiBrandyBottle, GiExitDoor } from "react-icons/gi";
+import { IoLogoCss3, IoLogoWindows, IoLogoXbox, IoMdCalculator } from "react-icons/io";
+import { Keyboard } from "@phosphor-icons/react/dist/ssr";
+import { FaCalculator, FaServicestack } from "react-icons/fa6";
 export default function CmsSidebarContent() {
   const [currentDate, setCurrentDate] = useState(new Date());
   const homeContext = useContext(HomeContext);
@@ -28,30 +36,30 @@ export default function CmsSidebarContent() {
       <h6 className="cmssidebar-h6">Quick menu</h6>
 
       <NavLink className="cmssidebar-div" to={"users"}>
-        <i class="fa-solid fa-users fa-lg" style={{ marginLeft: "5px" }}></i>
+        <Users size={18}/>
         <span> مدیران</span>
       </NavLink>
 
       <NavLink className="cmssidebar-div" to={"customer"}>
-        <i class="fa-solid fa-user-pen fa-lg" style={{ marginLeft: "5px" }}></i>
+<User size={18}/>
         <span> کاربران</span>
       </NavLink>
 
       <NavLink className="cmssidebar-div" to={"Factor"}>
-        <i class="fa-solid fa-percent fa-lg" style={{ marginLeft: "5px" }}></i>
+<Percent size={18}/>
         <span> فاکتور  </span>
       </NavLink>
 
 
 
       <NavLink className="cmssidebar-div" to={"finance"}>
-        <i class="fa-solid fa-percent fa-lg" style={{ marginLeft: "5px" }}></i>
+< FaCalculator size={18}/>
         <span> امورمالی  </span>
       </NavLink>
 
       <NavLink className="cmssidebar-div" to={"accounts"}>
-        <i class="fa-solid fa-percent fa-lg" style={{ marginLeft: "5px" }}></i>
-        <span> اسناد حسابداری  </span>
+<File size={18}/>
+        <span>حساب کاربری </span>
       </NavLink>
 
       {/* 
@@ -68,19 +76,13 @@ export default function CmsSidebarContent() {
         <span>منو </span>
       </NavLink> */}
       <NavLink className="cmssidebar-div" to={"category"}>
-        <i
-          class="fa-solid fa-layer-group fa-lg"
-          style={{ marginLeft: "5px" }}
-        ></i>
-        <span>دسته بندی عمومی </span>{" "}
+   <MdMenu size={18}/>
+        <span>دسته عمومی </span>{" "}
       </NavLink>
 
       <NavLink className="cmssidebar-div" to={"categoryspecialty"}>
-        <i
-          class="fa-solid fa-layer-group fa-lg"
-          style={{ marginLeft: "5px" }}
-        ></i>
-        <span>دسته بندی تخصصی </span>
+<RiMenu5Line size={18}/>
+        <span>دسته تخصصی </span>
       </NavLink>
 
       {/* <NavLink className="cmssidebar-div" to={"CmsSubject"}>
@@ -102,20 +104,17 @@ export default function CmsSidebarContent() {
       </NavLink> */}
 
       <NavLink className="cmssidebar-div" to={"manufacturer"}>
-        <i
-          class="fa-solid fa-compass-drafting fa-lg"
-          style={{ marginLeft: "5px" }}
-        ></i>
+<IoLogoXbox size={18}/>
         <span>شرکت سازنده</span>{" "}
       </NavLink>
 
-      <NavLink className="cmssidebar-div" to={"product"}>
-        <i class="fa-solid fa-store fa-lg" style={{ marginLeft: "5px" }}></i>
+      <NavLink className="cmssidebar-div " to={"product"}>
+        <Headphones size={18} />
         <span>محصولات</span>{" "}
       </NavLink>
 
       <NavLink className="cmssidebar-div" to={"allProductInfo"}>
-        <i class="fa-solid fa-store fa-lg" style={{ marginLeft: "5px" }}></i>
+<Keyboard size={18}/>
         <span> همه محصولات</span>{" "}
       </NavLink>
 
@@ -127,75 +126,33 @@ export default function CmsSidebarContent() {
 
 
       <NavLink className="cmssidebar-div" to={"repairs"}>
-        <i class="fa-solid fa-store fa-lg" style={{ marginLeft: "5px" }}></i>
+        <MdHomeRepairService size={18}/>
         <span>خدمات </span>{" "}
       </NavLink>
 
       <NavLink className="cmssidebar-div" to={"assemblypc"}>
-        <i class="fa-solid fa-store fa-lg" style={{ marginLeft: "5px" }}></i>
-        <span>محاسبه گر سیستم </span>{" "}
+<IoMdCalculator size={18}/>
+        <span>محاسبه گر  </span>{" "}
       </NavLink>
 
       <NavLink className="cmssidebar-div" to={"testpage"}>
-        <i class="fa-solid fa-store fa-lg" style={{ marginLeft: "5px" }}></i>
+        <i class="fa-solid fa-store fa-lg" ></i>
         <span>TEST-PAGE </span>{" "}
       </NavLink>
 
       <hr />
-      <h6 className="cmssidebar-h6">Notifications</h6>
-
-      <NavLink className="cmssidebar-div" to={"useremail"}>
-        <i class="fa-solid fa-envelope fa-lg" style={{ marginLeft: "5px" }}></i>
-        <span>ایمیل </span>{" "}
-      </NavLink>
-
-      {/* <div className='cmssidebar-div'> <i class="fa-solid fa-seedling fa-lg" style={{marginLeft:'5px'}}></i><span>بازخورد</span> </div> */}
+{/* 
       <NavLink className="cmssidebar-div " to={"tickets"}>
-        <i class="fa-solid fa-message fa-lg" style={{ marginLeft: "5px" }}></i>
+        <i class="fa-solid fa-message fa-lg"></i>
         <span>پیام ها</span>
-        <div className="cmssidebar-div cmssidebarrr">
-          {homeContext.messageNotification?.length > 0 && (
-            <>
-              <NotificationsIcon />
-              <span className="cmssidebar-span">
-                {homeContext.messageNotification?.length}
-              </span>
-            </>
-          )}
-        </div>
-      </NavLink>
 
-      {/* <div className='cmssidebar-div'><i class="fa-solid fa-message fa-lg" style={{marginLeft:'5px'}}></i><span>پیام ها</span>  </div> */}
-      <hr />
-      <h6 className="cmssidebar-h6">Staff</h6>
-      <div className="cmssidebar-div">
-        <i class="fa-solid fa-gear fa-lg" style={{ marginLeft: "5px" }}></i>
-        <span>تنظیمات</span>{" "}
-      </div>
-      <div className="cmssidebar-div">
-        {" "}
-        <i class="fa-solid fa-toolbox fa-lg" style={{ marginLeft: "5px" }}></i>
-        <span>خدمات</span>{" "}
-      </div>
-      <div className="cmssidebar-div">
-        <i
-          class="fa-solid fa-circle-info fa-lg"
-          style={{ marginLeft: "5px" }}
-        ></i>
-        <span>درباره </span>{" "}
-      </div>
+      </NavLink> */}
+
       <NavLink className="cmssidebar-div" to={"/"}>
-        <i
-          class="fa-solid fa-right-from-bracket fa-lg"
-          style={{ marginLeft: "5px" }}
-        ></i>{" "}
+<GiExitDoor size={18}/>
         <span>خروج </span>{" "}
       </NavLink>
       <hr />
-      {/* Time Display at the bottom */}
-      {/* <div className="time-display" style={{ textAlign: 'center', marginTop: '20px', fontWeight: 'bold' }}>
-        {currentTime.toLocaleTimeString()}
-      </div> */}
 
       <div
         className="date-display"

@@ -708,7 +708,7 @@ const FactorComponent = (props) => {
                                                 ))}
                                             </tbody>
                                         </table>
-                                        {<button className="add-btn" type='button' onClick={() => {
+                                        {props.orderMode!= 7 && <button className="add-btn" type='button' onClick={() => {
                                             setProCatId('')
                                             setRootName('')
                                             setRootName2('')
@@ -817,7 +817,7 @@ const FactorComponent = (props) => {
 
                                     </div>
 
-                                    {
+                                    {props.orderMode!= 7 && 
                                         <div className="footer-section centercc">
 
                                             <button className="submit-btn" type='submit'>💾 ثبت فاکتور</button>
@@ -988,7 +988,7 @@ const FactorComponent = (props) => {
                         {/* دکمه */}
 
 
-                        <AllFactors show={showModalB} setShowModalB={setShowModalB} setOrderItems={setOrderItems} setDnaflag={setDnaflag} ordermode={1}
+                        <AllFactors show={showModalB} setShowModalB={setShowModalB} setOrderItems={setOrderItems} setDnaflag={setDnaflag} ordermode={7}
                             onHide={() => setShowModalB(false)} />
 
                     </div>
@@ -997,8 +997,7 @@ const FactorComponent = (props) => {
 
                     <div className='col-lg-2 boxSh  centercc foctor-btn-section'>
 
-
-                        <button className='btn btn-secondary'
+{props.orderMode== 7 &&                         <button className='btn btn-secondary'
                             onClick={() => {
                                 setUserDateil([])
                                 setXtFactorNum(null)
@@ -1010,10 +1009,8 @@ const FactorComponent = (props) => {
                         >
                             همه فاکتورها
                         </button>
+}
 
-                        <button className='btn btn-secondary'>
-                            مشاهده فاکتور
-                        </button>
 
                         <button
                             type="button"

@@ -779,6 +779,8 @@ props.orderMode== 3 ?`/api/CyOrders/addOrderC?ordermode=${props.orderMode}` : ''
 
 
                     <div className='col-lg-2 boxSh  centercc foctor-btn-section'>
+                     
+                     {props.orderMode==2 &&  
                         <button className='btn btn-secondary'
                             onClick={() => {
                                 setUserDateil([])
@@ -790,11 +792,8 @@ props.orderMode== 3 ?`/api/CyOrders/addOrderC?ordermode=${props.orderMode}` : ''
                             }}
                         >
                             فاکتورها
-                        </button>
+                        </button> }
 
-                        <button className='btn btn-secondary'>
-                            مشاهده فاکتور
-                        </button>
 
 
 

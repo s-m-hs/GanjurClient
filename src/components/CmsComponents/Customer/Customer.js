@@ -315,6 +315,9 @@ export default function Customer() {
     return () => cmsContext.setFlagClass(true);
   }, []);
 
+
+
+  
   return (
     <div className="container ">
       <div className="row">
@@ -545,6 +548,7 @@ export default function Customer() {
 
 
             <div className="customerDetail-modal" ref={printRef} style={{ height: "1000px" }}>
+
               <BaseGrid rowData={userVouchur?.currentVouchurs} colDefs={colDefsB} rtl={true} />
 
               {orderDetails?.length != 0 &&

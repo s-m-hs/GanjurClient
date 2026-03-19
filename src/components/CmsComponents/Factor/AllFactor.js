@@ -74,15 +74,25 @@ function AllFactors(props) {
         }
     ])
 
-
-    useEffect(() => {
-        if (value4 && value5 && value4 <= value5) {
-            ApiGetX2(`/api/CyOrders/getOrders?fromDate=${value4?.toISOString()}&toDate=${value5?.toISOString()}&ordermode=${props.ordermode}`, setAllOrders)
+const showFactors=()=>{
+    setAllOrders([])
+            if (value4 && value5 && value4 <= value5) {
+            const url = props.ordermode == 7 ?`/api/CyOrders/getAllOrders?fromDate=${value4?.toISOString()}&toDate=${value5?.toISOString()}`:`/api/CyOrders/getOrders?fromDate=${value4?.toISOString()}&toDate=${value5?.toISOString()}&ordermode=${props.ordermode}`
+            ApiGetX2(url, setAllOrders)
 
         } else if (value4 >= value5) {
             setAllOrders([])
         }
-    }, [value4, value5])
+    }
+    // useEffect(() => {
+    //     if (value4 && value5 && value4 <= value5) {
+    //         const url = props.ordermode == 7 ?`/api/CyOrders/getAllOrders?fromDate=${value4?.toISOString()}&toDate=${value5?.toISOString()}`:`/api/CyOrders/getOrders?fromDate=${value4?.toISOString()}&toDate=${value5?.toISOString()}&ordermode=${props.ordermode}`
+    //         ApiGetX2(url, setAllOrders)
+
+    //     } else if (value4 >= value5) {
+    //         setAllOrders([])
+    //     }
+    // }, [value4, value5])
     return (
         <>
             <Modal show={props.show} fullscreen onHide={props.onHide}>
@@ -134,7 +144,9 @@ function AllFactors(props) {
                                     />
                                 </div>
 
-
+<div>
+    <button className="btn btn-primary m-3" onClick={()=>{showFactors()}}>نمایش</button>
+</div>
                             </div>
                             <hr />
                         </div>

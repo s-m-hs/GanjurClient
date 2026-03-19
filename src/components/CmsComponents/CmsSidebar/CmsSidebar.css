@@ -9,6 +9,7 @@
 }
 
 .cmssidebar-maindiv {
+  width: 150px;
   height: 95vh;
   overflow: inherit;
   display: flex;
@@ -40,19 +41,23 @@
 }
 .cmssidebar-div {
   text-decoration: none;
-  margin-left: 10px;
+  margin-left: 5px;
+  margin-bottom: 5px;
   padding: 2px;
   color: var(--gray3);
   cursor: pointer;
   border-radius: 3px;
-  border: none;
+  border: 1px solid;
   background: none;
   align-items: center;
 }
 .cmssidebar-div span {
-  font-size: 1cqi;
+  font-size: 15px;
+  font-weight: 600;
 }
-
+.cmssidebar-div i{
+  font-size: 10px;
+}
 .cmssidebar-div:hover {
   background-color: var(--gray2);
 }

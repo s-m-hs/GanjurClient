@@ -15,7 +15,7 @@ const BaseGrid = React.forwardRef((props, ref) => {
                     sortable: true,
                     filter: true,
                     resizable: true,
-                    maxWidth: props.maxWidth,
+                    // maxWidth: props.maxWidth,
                     suppressHeaderMenuButton: true,
 
                 }}

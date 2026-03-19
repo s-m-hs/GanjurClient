@@ -136,18 +136,19 @@ export default function Accounts() {
 
   const [colDefsB] = useState([
 
-    { field: "debit", headerName: "بدهکاری ریال", Width: 200, cellRenderer: (params) => params.value?.toLocaleString() },
-    { field: "credit", headerName: "بستانکاری ریال", Width: 200, cellRenderer: (params) => params.value?.toLocaleString() },
-    { field: "mandeh2", headerName: "مانده سند", Width: 200, cellRenderer: (params) => params.value?.toLocaleString() },
-    { field: "description", headerName: "شرح", Width: 200 },
-    { field: "referenceType", headerName: "نوع مرجع", Width: 200 },
+    { field: "debit", headerName: "بدهکاری ریال", maxWidth: 200, cellRenderer: (params) => params.value?.toLocaleString() },
+    { field: "credit", headerName: "بستانکاری ریال", maxWidth: 200, cellRenderer: (params) => params.value?.toLocaleString() },
+    { field: "mandeh2", headerName: "مانده سند", maxWidth: 200, cellRenderer: (params) => params.value?.toLocaleString() },
+    { field: "description", headerName: "شرح", maxWidth: 200 },
+    { field: "referenceType", headerName: "نوع مرجع", maxWidth: 200 },
     {
       field: "voucherDate",
       headerName: "تاریخ سند",
-      width: 200,
+      maxWidth: 250,
       cellRenderer: (params) => <DateFormat dateString={params.value} />,
     },
-    { field: "id", headerName: "شناسه آیتم", Width: 200 },
+    { field: "refrenceId", headerName: "ش فاکتور", maxWidth: 150 },
+    { field: "id", headerName: "شناسه آیتم", maxWidth: 120 },
   ])
 
   const showAccountVouchur = (id) => {

@@ -112,7 +112,7 @@ export default function CmsIndex() {
               <div className="col col-1 col-md-1 mt-5 pt-2">
                 <CmsSidebar />
               </div>
-              <div className="col col-11 col-md-11 mt-5 pt-2">
+              <div className="col col-11 col-md-11  pt-2" style={{marginTop:'48px'}}>
                 <div className={flagClass ? "cmsindex-maincontainer-div" : "cmsindex-maincontainer-div-hidden"}>
                   <div className="container">
 
