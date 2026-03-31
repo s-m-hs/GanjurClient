@@ -21,7 +21,8 @@ import UploadFileIcon from "@mui/icons-material/UploadFile";
 import BaseGrid from "../../Grid/BaseGrid";
 import DateFormat from "../../../utils/DateFormat";
 import ApiGetX2 from "../../../utils/ApiServicesX/ApiGetX2";
-import { Refresh } from "@mui/icons-material";
+import { ArrowBackSharp, ArrowCircleDown, ArrowCircleDownRounded, ArrowCircleLeftTwoTone, ArrowDropDownCircle, Refresh, RefreshOutlined, RefreshRounded, RefreshSharp } from "@mui/icons-material";
+import { ArrowBendLeftDown } from "@phosphor-icons/react";
 
 export default function Product() {
   const [categoryItem, setCategoriItem] = useState([]);
@@ -139,7 +140,7 @@ export default function Product() {
       { field: "name", headerName: "نام محصول", Width: 300 },
       { field: "supply", headerName: " موجودی",maxWidth: 150  },
 
-      { field: "noOffPrice", headerName: "قیمت (ریال)",maxWidth:250, cellRenderer: (params) => params.value?.toLocaleString() },
+      { field: "price", headerName: "قیمت (ریال)",maxWidth:250, cellRenderer: (params) => params.value?.toLocaleString() },
 
 
             {
@@ -1113,11 +1114,16 @@ const getProductKartex=(id)=>{
 
                 {flagUpdate && (
                   <div className="skin-resticon">
-                    <i
+<span className="boxSh" onClick={resetUpdatField}>
+  <Refresh style={{fontSize:'35px' ,color:"#2050ec",cursor:"pointer"}}/>
+</span>
+
+
+                    {/* <i
                       class="fa-solid fa-rotate-left fa-2xl"
                       style={{ color: " #74C0FC" }}
                       onClick={resetUpdatField}
-                    ></i>
+                    ></i> */}
                   </div>
                 )}
                 <Button
@@ -1234,12 +1240,12 @@ const getProductKartex=(id)=>{
               )} */}
 
 
-<span className="boxSh" onClick={()=>{
+<button className="btn btn-light boxSh" onClick={()=>{
   setProductArray([])
   getAllProductB()
 }}>
-  <Refresh style={{fontSize:'35px' ,color:"#2050ec",cursor:"pointer"}}/>
-</span>
+  <ArrowDropDownCircle style={{fontSize:'35px' ,color:"#2050ec",cursor:"pointer"}}/>تازه سازی لیست محصولات
+</button>
 
                     {!tableState &&
                       productArray?.length != 0 &&
