@@ -5,6 +5,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import { CmsContext } from '../../../context/CmsContext';
 import Product from '../../../components/CmsComponents/Product/Product';
 import ListPro from '../../../components/CmsComponents/Product/ListPro';
+import ChangePrice from '../../../components/CmsComponents/Product/ChangePrice';
 
 export default function CmsProduct() {
   const [tabId, setTabId] = useState('products')
@@ -41,6 +42,11 @@ export default function CmsProduct() {
           <Tab eventKey="list" title="لیست محصولات" style={{ background: 'inherit' }}>
 
             <ListPro />
+          </Tab>
+
+          <Tab eventKey="changPrice" title="تغییر قیمت لیستی" style={{ background: 'inherit' }}>
+
+            <ChangePrice />
           </Tab>
           {/* 
         <Tab eventKey="longer-tab" title=" نمایش دسته بندی ها" style={{ background: 'inherit' }}>

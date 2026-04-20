@@ -58,7 +58,7 @@ const Factor = (props) => {
     const [flagA, setFlagA] = useState(true)
     const [flagB, setFlagB] = useState(true)
     const [value4, setValue4] = useState(new Date());
-const[isShowCoulum,setIsShowCoulum]=useState(true)
+    const [isShowCoulum, setIsShowCoulum] = useState(true)
 
     const handlePrint = useReactToPrint({
         contentRef: printRef,
@@ -417,13 +417,13 @@ const[isShowCoulum,setIsShowCoulum]=useState(true)
                                         <div className="header-row">
 
 
-   <span className='header-row-title'> {props.sarBarg}</span>
+                                            <span className='header-row-title'> {props.sarBarg}</span>
 
                                             <span>فروشگاه صانع
                                                 <img class="factor-img-logo boxSh" src="/images/logoFactor3.png" alt=""></img>
                                             </span>
 
-                                         
+
 
                                             <span className='header-row-minInput'>
                                                 {!flagShowFactor ?
@@ -485,8 +485,8 @@ const[isShowCoulum,setIsShowCoulum]=useState(true)
                                                     <th className='no-print'>گروه</th>
                                                     <th>نام کالا</th>
                                                     <th className='factor-q-th'>تعداد</th>
-                                                    <th className={isShowCoulum?'':'hidden'} > واحد(ریال)</th>
-                                                    <th className={isShowCoulum?'':'hidden'} >مجموع(ریال)</th>
+                                                    <th className={isShowCoulum ? '' : 'hidden'} > واحد(ریال)</th>
+                                                    <th className={isShowCoulum ? '' : 'hidden'} >مجموع(ریال)</th>
                                                     <th className='no-print'>شرح</th>
                                                 </tr>
                                             </thead>
@@ -519,7 +519,7 @@ const[isShowCoulum,setIsShowCoulum]=useState(true)
                                                         </td>
 
 
-                                                        <td className={isShowCoulum?'':'hidden'}>
+                                                        <td className={isShowCoulum ? '' : 'hidden'}>
 
                                                             {!flagShowFactor ? <div className="mt-2 mb-2">
                                                                 <OverlayPanel ref={(el) => overlayRefs.current[item.ID] = el}>
@@ -602,7 +602,7 @@ const[isShowCoulum,setIsShowCoulum]=useState(true)
 
                                                         </td>
 
-                                                        <td className={isShowCoulum?'':'hidden'}>{!flagShowFactor ? (item.TotalPrice || 0).toLocaleString('fa-IR') : item?.totalPrice?.toLocaleString('fa-IR')}</td>
+                                                        <td className={isShowCoulum ? '' : 'hidden'}>{!flagShowFactor ? (item.TotalPrice || 0).toLocaleString('fa-IR') : item?.totalPrice?.toLocaleString('fa-IR')}</td>
 
 
 
@@ -729,8 +729,8 @@ const[isShowCoulum,setIsShowCoulum]=useState(true)
                                         <div className="footer-section centerrc">
 
                                             <button className="submit-btn" type='submit'>💾 ثبت فاکتور</button>
-                                            <button className="btn btn-light" type='button'
-                                            onClick={()=>setIsShowCoulum(!isShowCoulum)}
+                                            <button className="no-print btn btn-light" type='button'
+                                                onClick={() => setIsShowCoulum(!isShowCoulum)}
                                             >نمایش ستون قیمت</button>
 
                                         </div> : null}
@@ -908,7 +908,7 @@ const[isShowCoulum,setIsShowCoulum]=useState(true)
 
                     <div className='col-lg-2 boxSh  centercc foctor-btn-section'>
 
-{props.orderMode==1 &&                         <button className='btn btn-secondary'
+                        {props.orderMode == 1 && <button className='btn btn-secondary'
                             onClick={() => {
                                 setUserDateil([])
                                 setXtFactorNum(null)
@@ -919,7 +919,7 @@ const[isShowCoulum,setIsShowCoulum]=useState(true)
                             }}
                         >
                             فاکتورها
-                        </button> }
+                        </button>}
 
 
                         <button
@@ -950,12 +950,12 @@ const[isShowCoulum,setIsShowCoulum]=useState(true)
 
 
 
-                                    <Modal show={showD} fullscreen={fullscreen} onHide={() => setShowD(false)}>
-                                        <Modal.Header closeButton></Modal.Header>
-                                        <Modal.Body >
-                                            <FactorComponent />
-                                        </Modal.Body>
-                                        </Modal>
+            <Modal show={showD} fullscreen={fullscreen} onHide={() => setShowD(false)}>
+                <Modal.Header closeButton></Modal.Header>
+                <Modal.Body >
+                    <FactorComponent />
+                </Modal.Body>
+            </Modal>
 
 
         </section >
