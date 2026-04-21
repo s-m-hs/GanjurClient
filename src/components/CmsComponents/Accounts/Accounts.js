@@ -184,7 +184,6 @@ export default function Accounts() {
     }
   }, [])
 
-  console.log(accountType)
   return (
     <div className="container">
       <div className="row">

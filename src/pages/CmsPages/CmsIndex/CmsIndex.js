@@ -16,6 +16,10 @@ import DateShow2 from "../../../utils/DateShow2";
 import Swal from "sweetalert2";
 import Navigat from "../../../utils/Navigat";
 import Task from "../../../components/CmsComponents/Task/Task";
+import ApiGetX2 from "../../../utils/ApiServicesX/ApiGetX2";
+import { Modal } from 'react-bootstrap';
+import BaseGrid from "../../../components/Grid/BaseGrid";
+import FromToDate from "../../../utils/FromToDate";
 
 export default function CmsIndex() {
   const [isValid, setIsValid] = useState(false);
@@ -41,9 +45,30 @@ export default function CmsIndex() {
   const [isolaEdiImg, setIsolaEdiImg] = useState("");
   const [isolaSave, setIsolaSave] = useState(false);
   const [isolaLocal, setIsplaLocal] = useState("");
-
+  const [proCategoryList, setProCategoryList] = useState([])
+  const [listDetail, setListDetail] = useState([])
+  const [show, setShow] = useState(false);
+  const [from, setFrom] = useState()
+  const [to, setTo] = useState()
   const navigatt = useNavigate();
   let { isLogin, sideMenueFlag, setSideMenueFlag } = useContext(HomeContext);
+
+  const [colDefs] = useState([
+
+    { field: "partNumber", headerName: "عنوان", maxWidth: 400 },
+    { field: "manufacturer", headerName: "شرکت سازنده", maxWidth: 150 },
+    { field: "quantity", headerName: "تعداد فروخته شده", maxWidth: 100 },
+    {
+      field: "unitPrice", headerName: "قیمت ریال", maxWidth: 150, cellRenderer: (params) => params.value?.toLocaleString()
+    },
+    {
+      field: "totalPrice", headerName: "مبلغ کل فروخته شده ریال", maxWidth: 200, cellRenderer: (params) => params.value?.toLocaleString()
+    },
+    { field: "orderCount", headerName: "تعداد فاکتور", maxWidth: 150 },
+
+  ])
+
+
   useEffect(() => {
     // setToken(JSON.parse(localStorage.getItem("loginToken")));
     setUser(localStorage.getItem("user"));
@@ -53,7 +78,19 @@ export default function CmsIndex() {
   //   return()=>setToken('')
   // })
 
+  const getProductReport = () => {
+    var url = (from == null && to == null) ? `/api/CyReporter/proCategoryReport2` : `/api/CyReporter/proCategoryReport2?fromDate=${from?.toISOString()}&toDate=${to?.toISOString()}`
+    ApiGetX2(url
+      , setProCategoryList)
+  }
+
+  useEffect(() => {
+    getProductReport()
+  }, [])
+
   const location = useLocation();
+
+
   return (
     <>
       <CmsContext.Provider
@@ -112,7 +149,7 @@ export default function CmsIndex() {
               <div className="col col-1 col-md-1 mt-5 pt-2">
                 <CmsSidebar />
               </div>
-              <div className="col col-11 col-md-11  pt-2" style={{marginTop:'48px'}}>
+              <div className="col col-11 col-md-11  pt-2" style={{ marginTop: '48px' }}>
                 <div className={flagClass ? "cmsindex-maincontainer-div" : "cmsindex-maincontainer-div-hidden"}>
                   <div className="container">
 
@@ -137,19 +174,61 @@ export default function CmsIndex() {
                       </div>
                     </div>
 
-                    <div className="row">
-                      <div className="col-lg-6">
-                        <CircleChart />
+                    <div className="row boxSh">
+                      <div className="col-lg-12">
+                        <FromToDate from={from} to={to} setFrom={setFrom} setTo={setTo} action={getProductReport} />
+                      </div>
+                      <div className="col-lg-5">
+                        <CircleChart list={proCategoryList} />
+
+                      </div>
+                      <div className="col-lg-7">
+                        <div className="container">
+                          <div className="row ">
+                            {proCategoryList?.groupedResult?.length != 0 && proCategoryList?.groupedResult?.map(item => (
+                              <span className="col-3 cmsindex-card-span  centercc"
+                                onClick={() => {
+                                  setListDetail(item)
+                                  setShow(true)
+                                }}
+                              >{item.category}</span>
+                            ))}
+
+
+
+                            <Modal show={show} fullscreen={true} onHide={() => setShow(false)}>
+                              <Modal.Header closeButton>
+                              </Modal.Header>
+                              <Modal.Body>
+
+                                {listDetail?.length != 0 && <div className="customerDetail-modal" style={{ height: "1000px" }}>
+                                  <BaseGrid rowData={listDetail.items} colDefs={colDefs} rtl={true} />
+
+
+
+                                </div>}
+
+
+
+                              </Modal.Body>
+                            </Modal>
+
+                          </div>
+
+                        </div>
+
 
                       </div>
 
-                      <div className="col-lg-6">
-
-                        <VerticalChart />
-                      </div>
                     </div>
                   </div>
+                  <div className="row">
 
+                    <div className="col-lg-6">
+
+                      <VerticalChart />
+                    </div>
+                  </div>
 
                 </div>
                 <ScrollTo />
