@@ -4,6 +4,7 @@ import apiUrl from "../../../utils/ApiConfig";
 import { CmsContext } from "../../../context/CmsContext";
 import "./test.css";
 import ImageResizer from "../../../utils/ImageResizer";
+import PersianContentCalendar from "../../../utils/PersianContentCalendar";
 
 export default function TestPage() {
   const cmscontext = useContext(CmsContext);
@@ -75,6 +76,9 @@ export default function TestPage() {
         dangerouslySetInnerHTML={{ __html: subject.body }}
       ></div>
       {/* <TextEditor height={!flagEditor ? '400px' :  '100vh'  } image={true} value={ckValue} onChange={handleEditorChange} /> */}
+
+      <PersianContentCalendar />
+
     </div>
   );
 }

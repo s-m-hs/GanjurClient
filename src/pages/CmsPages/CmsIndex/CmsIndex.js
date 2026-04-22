@@ -20,6 +20,7 @@ import ApiGetX2 from "../../../utils/ApiServicesX/ApiGetX2";
 import { Modal } from 'react-bootstrap';
 import BaseGrid from "../../../components/Grid/BaseGrid";
 import FromToDate from "../../../utils/FromToDate";
+import PersianContentCalendar from "../../../utils/PersianContentCalendar";
 
 export default function CmsIndex() {
   const [isValid, setIsValid] = useState(false);
@@ -153,24 +154,27 @@ export default function CmsIndex() {
                 <div className={flagClass ? "cmsindex-maincontainer-div" : "cmsindex-maincontainer-div-hidden"}>
                   <div className="container">
 
-                    <div className="row">
+                    {/* <div className="row">
                       <div className="col-12">
 
                         <div className="centerr cmsIndex-Date-Div ">
                           <DateShow2 />
+                          <PersianContentCalendar />
                           <CounterTile />
                         </div>
                       </div>
-                    </div>
+                    </div> */}
 
-                    <div className="row  mt-1">
+                    <div className="row  mt-1" style={{ height: "600px" }}>
 
                       <div className="col-lg-5 cmsindex-countertile boxSh">
                         <Task />
                       </div>
 
-                      <div className="col-lg-7 cmsindex-countertile boxSh">
-                        <OrderTable />
+                      <div className="col-lg-7 cmsindex-countertile boxSh centerr">
+                        <DateShow2 />
+                        <PersianContentCalendar />
+                        {/* <OrderTable /> */}
                       </div>
                     </div>
 
