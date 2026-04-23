@@ -29,6 +29,7 @@ import DateFormat from '../../../utils/DateFormat';
 import AlertError from '../../../utils/AlertFunc/AlertError';
 import scrollToElementAndCenter from '../../../utils/ScrollToElement';
 import FactorComponent from './FactorComponent';
+import PersianContentCalendar from '../../../utils/PersianContentCalendar';
 
 const Factor = (props) => {
     const cmsContext = useContext(CmsContext);
@@ -384,7 +385,7 @@ const Factor = (props) => {
             <div className='container'>
 
                 <div className='row'>
-                    <div className='col-lg-10'>
+                    <div className='col-lg-9'>
                         {dnaflag &&
                             <div className='dnaa-div'>
                                 <span className='dnaaa'>
@@ -906,7 +907,10 @@ const Factor = (props) => {
 
 
 
-                    <div className='col-lg-2 boxSh  centercc foctor-btn-section'>
+                    <div className='col-lg-3 boxSh  centercc foctor-btn-section'>
+
+                        <PersianContentCalendar Width={300} widthContent={280} />
+                        <hr />
 
                         {props.orderMode == 1 && <button className='btn btn-secondary'
                             onClick={() => {
@@ -941,6 +945,7 @@ const Factor = (props) => {
                             RESET
 
                         </button>
+
 
                     </div>
 

@@ -171,9 +171,9 @@ export default function CmsIndex() {
                         <Task />
                       </div>
 
-                      <div className="col-lg-7 cmsindex-countertile boxSh centerr">
+                      <div className="col-lg-7 cmsindex-countertile boxSh centerrc">
                         <DateShow2 />
-                        <PersianContentCalendar />
+                        <PersianContentCalendar Width={400} widthContent={380} />
                         {/* <OrderTable /> */}
                       </div>
                     </div>

@@ -1,0 +1,220 @@
+.persian-calendar-container {
+          /* max-width: 500px; */
+          margin: 0 auto;
+          padding: 10px;
+          background: #dfe7ef;
+          border-radius: 24px;
+          box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+        }
+        
+        .current-day-content-box {
+          margin-top: 24px;
+          border-radius: 16px;
+          background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+          border: 1px solid #e2e8f0;
+          overflow: hidden;
+          transition: all 0.3s ease;
+        }
+        
+        .content-box-header {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          padding: 15px 20px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        
+        .content-box-icon {
+          font-size: 24px;
+        }
+        
+        .content-box-title {
+          margin: 0;
+          color: white;
+          font-size: 16px;
+          font-weight: 500;
+        }
+        
+        .content-box-text {
+          padding: 5px;
+          background: white;
+          color: #374151;
+          font-size: 12px;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+          min-height: 300px;
+          max-height: 300px;
+          overflow-y: scroll;
+        }
+                .content-box-text p{
+            padding: none !important;
+            margin: none !important;
+         }
+                         .content-box-text div{
+ 
+              border-bottom: 1px solid #e5e7eb;
+         }
+
+
+         .content-box-text-div{
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+         }
+
+         .content-box-text-div button {
+position: absolute;
+left: 20px;
+width: 10px !important;
+         }
+        .content-box-empty {
+          padding: 30px 20px;
+          text-align: center;
+          color: #6b7280;
+        }
+        
+        .empty-icon {
+          font-size: 48px;
+          display: block;
+          margin-bottom: 12px;
+        }
+        
+        .content-box-empty p {
+          margin-bottom: 16px;
+          font-size: 14px;
+        }
+        
+        .add-content-btn {
+          background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 12px;
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 500;
+          transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .add-content-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+        
+        .content-box-actions {
+          padding: 15px 20px;
+          display: flex;
+          gap: 12px;
+          justify-content: flex-end;
+          background: #f8fafc;
+        }
+        
+        .action-btn {
+          padding: 8px 16px;
+          border: none;
+          border-radius: 10px;
+          cursor: pointer;
+          font-size: 13px;
+          font-weight: 500;
+          transition: all 0.2s;
+        }
+        
+        .edit-btn {
+          background-color: #3b82f6;
+          color: white;
+        }
+        
+        .edit-btn:hover {
+          background-color: #2563eb;
+          transform: translateY(-1px);
+        }
+        
+        .delete-btn {
+          background-color: #ef4444;
+          color: white;
+        }
+        
+        .delete-btn:hover {
+          background-color: #dc2626;
+          transform: translateY(-1px);
+        }
+        
+        .modal-overlay-h {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgba(0,0,0,0.6);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 1000;
+          backdrop-filter: blur(4px);
+        }
+        
+        .modal-content-h {
+          background: white;
+          padding: 24px;
+          border-radius: 20px;
+          width: 90%;
+          max-width: 500px;
+          direction: rtl;
+          box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        
+        .modal-buttons {
+          display: flex;
+          gap: 12px;
+          justify-content: center;
+          margin-top: 24px;
+        }
+        
+        .btn-save, .btn-cancel {
+          padding: 10px 24px;
+          border: none;
+          border-radius: 12px;
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 500;
+          transition: all 0.2s;
+        }
+        
+        .btn-save {
+          background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+          color: white;
+        }
+        
+        .btn-save:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+        
+        .btn-cancel {
+          background-color: #f3f4f6;
+          color: #374151;
+        }
+        
+        .btn-cancel:hover {
+          background-color: #e5e7eb;
+        }
+        
+        .rmdp-container {
+          width: 100%;
+        }
+        
+        .rmdp-calendar {
+          width: 100%;
+          box-shadow: none !important;
+          border-radius: 16px;
+        }
+        
+        .rmdp-day:not(.rmdp-disabled):hover {
+          transform: scale(1.05);
+        }
+        
+        .rmdp-day.rmdp-selected span:not(.highlight) {
+          background-color: #8b5cf6 !important;
+          box-shadow: 0 0 0 2px #c084fc;
+        }

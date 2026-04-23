@@ -23,6 +23,7 @@ import { Blocks } from 'react-loader-spinner';
 import ApiDeleteX2 from '../../../utils/ApiServicesX/ApiDeleteX2';
 import { Dangerous, DangerousOutlined, DangerousRounded, DangerousSharp, DangerousTwoTone } from '@mui/icons-material';
 import { MdDangerous } from 'react-icons/md';
+import PersianContentCalendar from '../../../utils/PersianContentCalendar';
 export default function Finance() {
     let { xtSearchI, setXtSearchI,
         xtSearchJ, setXtSearchJ, setResetSearchbox } = useContext(CmsContext)
@@ -38,8 +39,8 @@ export default function Finance() {
     const [vouchurDetail, setVouchurDetail] = useState([])
     const [voucherId, setVoucherId] = useState(0)
     const [editVoucherDetail, setEditVoucherDetail] = useState({})
-        const [dnaflag, setDnaflag] = useState(false)
-    
+    const [dnaflag, setDnaflag] = useState(false)
+
     const {
         register,
         handleSubmit,
@@ -84,7 +85,7 @@ export default function Finance() {
     ]
     const handleRegistration = (data) => {
         setDnaflag(true)
-        if (voucherId==0) {
+        if (voucherId == 0) {
             let obj = {
                 voucherDate: voucherDate,
                 description: data.description,
@@ -126,7 +127,7 @@ export default function Finance() {
                 })
             }
             myApp()
-        } else if (editVoucherDetail?.items?.length != 0 && voucherId>0 ) {
+        } else if (editVoucherDetail?.items?.length != 0 && voucherId > 0) {
             let creditId = 0
             let debitId = 0
 
@@ -180,7 +181,7 @@ export default function Finance() {
                         setAccountADetail([])
                         setAccountBDetail([])
                         alertA("سند با موفقیت ویرایش شد ")
-                         setDnaflag(false)
+                        setDnaflag(false)
                     })
                 })
             }
@@ -237,9 +238,9 @@ export default function Finance() {
                 }
             });
             setDnaflag(false)
-        }else{
- setVochurDate(new Date())     
-   }
+        } else {
+            setVochurDate(new Date())
+        }
 
     }, [editVoucherDetail])
 
@@ -259,25 +260,25 @@ export default function Finance() {
 
     return (
         <div className="container">
-                               {dnaflag &&
-                                        <div className='dnaa-div'>
-                                            <span className='dnaaa'>
-                                                <Blocks
-                                                    height="300"
-                                                    width="300"
-                                                    color="#4fa94d"
-                                                    ariaLabel="blocks-loading"
-                                                    wrapperStyle={{}}
-                                                    wrapperClass="blocks-wrapper"
-                                                    visible={true}
-                                                />
-                                            </span>
-                                        </div>
-                                    }
+            {dnaflag &&
+                <div className='dnaa-div'>
+                    <span className='dnaaa'>
+                        <Blocks
+                            height="300"
+                            width="300"
+                            color="#4fa94d"
+                            ariaLabel="blocks-loading"
+                            wrapperStyle={{}}
+                            wrapperClass="blocks-wrapper"
+                            visible={true}
+                        />
+                    </span>
+                </div>
+            }
             <div className="row">
 
                 <div className="col-12 col-lg-3 user-col3"
-                style={{backgroundColor:!voucherId ? '' :'#ffb93f'}}
+                    style={{ backgroundColor: !voucherId ? '' : '#ffb93f' }}
                 >
 
                     <form
@@ -285,13 +286,13 @@ export default function Finance() {
                         onSubmit={handleSubmit(handleRegistration)}
                     >
                         <span className="newsubject-form-col3-span">تاریخ سند:</span>
-                      {editVoucherDetail?.items?.length!=0 &&  <span style={{color:'red', fontWeight:700}}><DateFormat dateString={editVoucherDetail.voucherDate} /></span>} 
+                        {editVoucherDetail?.items?.length != 0 && <span style={{ color: 'red', fontWeight: 700 }}><DateFormat dateString={editVoucherDetail.voucherDate} /></span>}
                         <DatePicker
                             className="custom-input"
                             calendar={persian}
                             locale={persian_fa}
                             calendarPosition="bottom-right"
-                            value={ voucherDate}
+                            value={voucherDate}
                             onChange={handleChange}
                             animations={[
                                 opacity(),
@@ -384,7 +385,7 @@ export default function Finance() {
                             className={(typeof xtSearchI === "number" && typeof xtSearchJ === "number" && value1) ? "user-regbutton " : "user-regbutton disable"}
                             type="submit"
                             variant="contained"
-                            color={!voucherId? "info" : 'secondary'}
+                            color={!voucherId ? "info" : 'secondary'}
                             endIcon={<SendIcon />}
                         >
                             {!voucherId ? <span> افزودن </span> : <span> ویرایش </span>}
@@ -423,7 +424,7 @@ export default function Finance() {
 
 
 
-                <div className="col-12 col-lg-3 finance-accountA-div boxSh">
+                <div className="col-12 col-lg-2 finance-accountA-div boxSh">
                     <h2 className='mb-5 mt-3' > جزییات سند :</h2>
 
                     <ul>
@@ -443,7 +444,11 @@ export default function Finance() {
                     </ul>
                 </div>
 
-                <div className="col-12 col-lg-2 finance-accountA-div boxSh">
+                <div className="col-12 col-lg-3 finance-accountA-div boxSh">
+                    <PersianContentCalendar Width={300} widthContent={280} />
+
+                    <hr />
+
                     <div className="login-label-float">
                         <input
                             value={voucherId}
@@ -456,6 +461,7 @@ export default function Finance() {
 
 
                     <div className='centercc'>
+
                         <button className="btn btn-success mt-3 "
                             type='button'
                             onClick={() => {
@@ -473,22 +479,23 @@ export default function Finance() {
 
                         </button>
 
-                        
-                      {editVoucherDetail?.items?.length >0 &&
-                       <button className='btn btn-danger mt-5'
-                       type='button'
-                       onClick={()=>{
-                        const func=()=>{
-                            alertA('حذف با موفقیت انجام شد')
-resetAllSatates()
-                        } 
-                        ApiDeleteX2(`/api/Voucher/deleteVoucher?id=${voucherId}`,func)
-                       }}
-                       >
-حذف سند<MdDangerous size={25}/>
-                        </button>
-                      } 
+
+                        {editVoucherDetail?.items?.length > 0 &&
+                            <button className='btn btn-danger mt-5'
+                                type='button'
+                                onClick={() => {
+                                    const func = () => {
+                                        alertA('حذف با موفقیت انجام شد')
+                                        resetAllSatates()
+                                    }
+                                    ApiDeleteX2(`/api/Voucher/deleteVoucher?id=${voucherId}`, func)
+                                }}
+                            >
+                                حذف سند<MdDangerous size={25} />
+                            </button>
+                        }
                     </div>
+
                 </div>
             </div>
         </div>

@@ -169,7 +169,7 @@ const TiptapEditor = ({ value, onChange, onTextChange, height = "300px", active 
           });
         }
       })
-      const updatedHTML = `<div style="padding: 1rem;">${editor.getHTML()}</div>`;
+      const updatedHTML = `<div style="padding:10px;">${editor.getHTML()}</div>`;
       onChange(updatedHTML);
       onTextChange?.(editor.getText());
     },
