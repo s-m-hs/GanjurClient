@@ -51,7 +51,6 @@ export default function Accounts() {
   } = useForm({
     defaultValues: {},
   });
-  console.log(allAccount);
 
   const registerOptions = {
     title: { required: "title is required" },

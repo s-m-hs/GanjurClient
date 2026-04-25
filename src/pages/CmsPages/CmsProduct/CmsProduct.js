@@ -48,6 +48,7 @@ export default function CmsProduct() {
 
             <ChangePrice />
           </Tab>
+
           {/* 
         <Tab eventKey="longer-tab" title=" نمایش دسته بندی ها" style={{ background: 'inherit' }}>
           <CircleMenu />

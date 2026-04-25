@@ -19,7 +19,7 @@ export default function FromToDate(props) {
 
 
     return (
-        <div className="centerr m-3 ">
+        <div className="centerrc m-3 ">
 
             <div className="m-3"
                 style={{ direction: "rtl" }}
@@ -60,7 +60,7 @@ export default function FromToDate(props) {
                 />
             </div>
 
-            <button className='btn btn-primary'
+            <button className='btn btn-primary' style={{ height: "50px", width: '60px' }}
                 onClick={() => {
                     if (props.from < props.to) {
                         props.action()

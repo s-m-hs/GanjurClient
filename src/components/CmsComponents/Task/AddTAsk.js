@@ -51,7 +51,6 @@ export default function AddTAsk() {
         setExpireDate(value && value.toDate());
         // console.log(value.format());   /// convert  to persian format
     }
-    console.log(task.adminId, userId)
 
     const handleRegistration = (data) => {
         if (!showEditMod && (data.title == '' || data.taskKind == 0)) return setShowError(true)
@@ -128,7 +127,6 @@ export default function AddTAsk() {
             setCkValue(task.description)
         }
     }, [showEditMod])
-    console.log(task)
     return (
         <div>
 

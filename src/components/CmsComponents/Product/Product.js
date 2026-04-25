@@ -53,7 +53,7 @@ export default function Product() {
   const [objNoImg, setObjNoImg] = useState([]);
   const [flagUpdateAnbar, setFlagUpdateAnbar] = useState(false);
   const [show, setShow] = useState(false);
-  const [kartex,setKartex]=useState([])
+  const [kartex, setKartex] = useState([])
   let {
     xtSearchB,
     xtSearchC,
@@ -125,7 +125,7 @@ export default function Product() {
 
   const colDefs = useMemo(() =>
     [
-            {
+      {
         field: "proCateName",
         headerName: "دسته بندی",
         maxWidth: 200,
@@ -138,79 +138,79 @@ export default function Product() {
         maxWidth: 200,
       },
       { field: "name", headerName: "نام محصول", Width: 300 },
-      { field: "supply", headerName: " موجودی",maxWidth: 150  },
+      { field: "supply", headerName: " موجودی", maxWidth: 150 },
 
-      { field: "price", headerName: "قیمت (ریال)",maxWidth:250, cellRenderer: (params) => params.value?.toLocaleString() },
+      { field: "price", headerName: "قیمت (ریال)", maxWidth: 250, cellRenderer: (params) => params.value?.toLocaleString() },
 
 
-            {
+      {
         field: "",
         headerName: "عملیات ",
         width: 300,
         cellRenderer: (params) =>
-  <>
-                         <button
-                              className="btn btn-primary product-morebut"
-                              onClick={() => {
-                                // modalDetailProduct(
-                                //   params.data.id,
-                                //   params.data.name,
-                                //   params.data.description,
-                                //   params.data.partNo,
-                                //   params.data.mfrNo,
-                                //   params.data.datasheetUrl,
-                                //   params.data.mainImage,
-                                //   params.data.smallImage,
-                                //   params.data.cyManufacturerId,
-                                //   params.data.cyCategoryId,
-                                //   params.data.images
-                                // );
-                                setKartex([])
-                                getProductKartex(params.data.id)
-                                setLgShow(true);
-                              }}
-                            >
-                              {params.data.id}
-                            </button>
-                            <button
-                              className="btn btn-info product-editbut"
-                              onClick={() => {
-                                window.scrollTo(0, 0);
-                                editHandler(
-                                  params.data.id,
-                                  params.data.name,
-                                  params.data.description,
-                                  params.data.partNo,
-                                  params.data.mfrNo,
-                                  params.data.datasheetUrl,
-                                  params.data.mainImage,
-                                  params.data.smallImage,
-                                  params.data.cyManufacturerId,
-                                  params.data.cyCategoryId,
-                                  params.data.price,
-                                  params.data.noOffPrice,
-                                  params.data.images,
-                                  params.data.supply,
-                                  params.data.cyProductCategoryId,
-                                  params.data.productCode,
-                                  params.data.price2,
-                                  params.data.price3,
-                                  params.data.price4,
-                                  params.data.shopPrice
+          <>
+            <button
+              className="btn btn-primary product-morebut"
+              onClick={() => {
+                // modalDetailProduct(
+                //   params.data.id,
+                //   params.data.name,
+                //   params.data.description,
+                //   params.data.partNo,
+                //   params.data.mfrNo,
+                //   params.data.datasheetUrl,
+                //   params.data.mainImage,
+                //   params.data.smallImage,
+                //   params.data.cyManufacturerId,
+                //   params.data.cyCategoryId,
+                //   params.data.images
+                // );
+                setKartex([])
+                getProductKartex(params.data.id)
+                setLgShow(true);
+              }}
+            >
+              {params.data.id}
+            </button>
+            <button
+              className="btn btn-info product-editbut"
+              onClick={() => {
+                window.scrollTo(0, 0);
+                editHandler(
+                  params.data.id,
+                  params.data.name,
+                  params.data.description,
+                  params.data.partNo,
+                  params.data.mfrNo,
+                  params.data.datasheetUrl,
+                  params.data.mainImage,
+                  params.data.smallImage,
+                  params.data.cyManufacturerId,
+                  params.data.cyCategoryId,
+                  params.data.price,
+                  params.data.noOffPrice,
+                  params.data.images,
+                  params.data.supply,
+                  params.data.cyProductCategoryId,
+                  params.data.productCode,
+                  params.data.price2,
+                  params.data.price3,
+                  params.data.price4,
+                  params.data.shopPrice
 
-                                );
-                                //  console.log(item)
-                              }}
-                            >
-                              ویرایش
-                            </button>
-                            <button
-                              className="btn btn-danger product-deletbut"
-                              onClick={() => deleteHandler(params.data.id)}
-                            >
-                              حذف
-                            </button>  
-  </>,
+                );
+                //  console.log(item)
+              }}
+            >
+              ویرایش
+            </button>
+            <button
+              className="btn btn-danger product-deletbut"
+              onClick={() => deleteHandler(params.data.id)}
+            >
+              حذف
+            </button>
+          </>,
       },
 
     ], [productArray])
@@ -218,17 +218,18 @@ export default function Product() {
   const [colDefsB] = useState(
     [
 
-     {field: "name", headerName: "کالا",maxWidth: 300},
-     {field: "factorNumber", headerName: "ش فاکتور",maxWidth: 150},
-      {field: "user",headerName: "طرف حساب",maxWidth: 300,},
-      { field: "creatDate", headerName: " تاریخ فاکتور", maxWidth: 300,
-        cellRenderer:(params)=>(
-          <DateFormat dateString={params.data.creatDate}/>
+      { field: "name", headerName: "کالا", maxWidth: 300 },
+      { field: "factorNumber", headerName: "ش فاکتور", maxWidth: 150 },
+      { field: "user", headerName: "طرف حساب", maxWidth: 300, },
+      {
+        field: "creatDate", headerName: " تاریخ فاکتور", maxWidth: 300,
+        cellRenderer: (params) => (
+          <DateFormat dateString={params.data.creatDate} />
         )
-       },
-      { field: "quantity", headerName: " تعداد",maxWidth: 150  },
-      { field: "unitPrice", headerName: " قیمت",maxWidth: 150  },
-      { field: "totalPrice", headerName: " قیمت کل",maxWidth: 150  },
+      },
+      { field: "quantity", headerName: " تعداد", maxWidth: 150 },
+      { field: "unitPrice", headerName: " قیمت", maxWidth: 150 },
+      { field: "totalPrice", headerName: " قیمت کل", maxWidth: 150 },
     ])
 
   const handleChange = (event, value) => {
@@ -481,7 +482,7 @@ export default function Product() {
         myAppPost();
       } else if (!data.manufacture || !data.category || !data.categoryB) {
         setFlagError(true);
-      } 
+      }
     } else if (flagUpdate) {
       let obj3 = paramiterArrayB?.map((item) => ({
         id: item.id,
@@ -558,9 +559,9 @@ export default function Product() {
   };
   ////////////////////////////////
 
-const getProductKartex=(id)=>{
-  ApiGetX2(`/api/CyProductsB/KartexProduct?id=${id}`,setKartex)
-}
+  const getProductKartex = (id) => {
+    ApiGetX2(`/api/CyProductsB/KartexProduct?id=${id}`, setKartex)
+  }
 
   ////////////////////////////////
   const GetProductItem = (pageNumber, pageSize) => {
@@ -742,8 +743,8 @@ const getProductKartex=(id)=>{
     setResetSearchbox(true);
   };
 
-  const getAllProductB=()=>{
-    ApiGetX2(`/api/CyProducts/allProducsB`,setProductArray)
+  const getAllProductB = () => {
+    ApiGetX2(`/api/CyProducts/allProducsB`, setProductArray)
   }
 
 
@@ -794,7 +795,6 @@ const getProductKartex=(id)=>{
     };
   }, []);
 
-  console.log(manufactureItem);
   return (
     <div className="container">
       {flagPagin && (
@@ -926,7 +926,7 @@ const getProductKartex=(id)=>{
 
             </div>
 
-<div className="col-lg-4 producted-form-col9">
+            <div className="col-lg-4 producted-form-col9">
 
               <div className="producted-login-label-float">
                 <input
@@ -1003,7 +1003,7 @@ const getProductKartex=(id)=>{
                 <label>دیتاشیت </label>
               </div>
 
-</div>
+            </div>
 
 
             <div className="col-lg-4 producted-col3 ">
@@ -1114,9 +1114,9 @@ const getProductKartex=(id)=>{
 
                 {flagUpdate && (
                   <div className="skin-resticon">
-<span className="boxSh" onClick={resetUpdatField}>
-  <Refresh style={{fontSize:'35px' ,color:"#2050ec",cursor:"pointer"}}/>
-</span>
+                    <span className="boxSh" onClick={resetUpdatField}>
+                      <Refresh style={{ fontSize: '35px', color: "#2050ec", cursor: "pointer" }} />
+                    </span>
 
 
                     {/* <i
@@ -1147,7 +1147,7 @@ const getProductKartex=(id)=>{
         <div className="row mt-5">
           <div className="col product-col-table">
             <>
-         {/* <div className="product-countUpdate-div">
+              {/* <div className="product-countUpdate-div">
                 <div className="product-countUpdate-div_div">
                   <input
                     className=" Product-search"
@@ -1220,7 +1220,7 @@ const getProductKartex=(id)=>{
               </div> */}
 
 
-{/* 
+              {/* 
 
              {paginationArray.length > 1 && !flagSearchNoImg && (
                 <>
@@ -1240,57 +1240,57 @@ const getProductKartex=(id)=>{
               )} */}
 
 
-<button className="btn btn-light boxSh" onClick={()=>{
-  setProductArray([])
-  getAllProductB()
-}}>
-  <ArrowDropDownCircle style={{fontSize:'35px' ,color:"#2050ec",cursor:"pointer"}}/>تازه سازی لیست محصولات
-</button>
+              <button className="btn btn-light boxSh" onClick={() => {
+                setProductArray([])
+                getAllProductB()
+              }}>
+                <ArrowDropDownCircle style={{ fontSize: '35px', color: "#2050ec", cursor: "pointer" }} />تازه سازی لیست محصولات
+              </button>
 
-                    {!tableState &&
-                      productArray?.length != 0 &&
-                      !flagSearchNoImg
-                      ? 
-                      <div className='col' style={{ height: "1000px", }}>
-                <BaseGrid rowData={productArray} colDefs={colDefs} rtl={true} fontSize='18px' />
-              </div>
-                      : tableState &&
-                        searchState.itemList?.length != 0 &&
-                        !flagSearchNoImg
-                        ? 
-                            <div className='col' style={{ height: "1000px", }}>
-                <BaseGrid rowData={searchState.itemList} colDefs={colDefs} rtl={true} fontSize='18px' />
-              </div>
-
-                        : flagSearchNoImg &&
-                        productArrayB?.length != 0 &&
-                                                 <div className='col' style={{ height: "1000px", }}>
-                <BaseGrid rowData={productArrayB} colDefs={colDefs} rtl={true} fontSize='18px' />
-              </div>
-                        }
-
-                {tableState && searchState.itemList?.length == 0 ? (
-                  <div
-                    className="div-nopc"
-                    style={{
-                      margin: "30px",
-                      width: "100%",
-                      textAlign: "center",
-                    }}
-                  >
-                    <h1>
-                      <Typewriter
-                        options={{
-                          strings: ["محصولی با این مشخصات یافت نشد..."],
-                          autoStart: true,
-                          loop: true,
-                        }}
-                      />
-                    </h1>
+              {!tableState &&
+                productArray?.length != 0 &&
+                !flagSearchNoImg
+                ?
+                <div className='col' style={{ height: "1000px", }}>
+                  <BaseGrid rowData={productArray} colDefs={colDefs} rtl={true} fontSize='18px' />
+                </div>
+                : tableState &&
+                  searchState.itemList?.length != 0 &&
+                  !flagSearchNoImg
+                  ?
+                  <div className='col' style={{ height: "1000px", }}>
+                    <BaseGrid rowData={searchState.itemList} colDefs={colDefs} rtl={true} fontSize='18px' />
                   </div>
-                ) : (
-                  ""
-                )}
+
+                  : flagSearchNoImg &&
+                  productArrayB?.length != 0 &&
+                  <div className='col' style={{ height: "1000px", }}>
+                    <BaseGrid rowData={productArrayB} colDefs={colDefs} rtl={true} fontSize='18px' />
+                  </div>
+              }
+
+              {tableState && searchState.itemList?.length == 0 ? (
+                <div
+                  className="div-nopc"
+                  style={{
+                    margin: "30px",
+                    width: "100%",
+                    textAlign: "center",
+                  }}
+                >
+                  <h1>
+                    <Typewriter
+                      options={{
+                        strings: ["محصولی با این مشخصات یافت نشد..."],
+                        autoStart: true,
+                        loop: true,
+                      }}
+                    />
+                  </h1>
+                </div>
+              ) : (
+                ""
+              )}
               {paginationArray.length > 1 && !flagSearchNoImg && (
                 <>
                   <div className="pagination-div">
@@ -1324,9 +1324,9 @@ const getProductKartex=(id)=>{
             <Modal.Title id="example-modal-sizes-title-lg"></Modal.Title>
           </Modal.Header>
           <Modal.Body>
-                             <div  style={{ height: "1000px", }}>
-                <BaseGrid rowData={kartex} colDefs={colDefsB} rtl={true} fontSize='18px' />
-              </div>
+            <div style={{ height: "1000px", }}>
+              <BaseGrid rowData={kartex} colDefs={colDefsB} rtl={true} fontSize='18px' />
+            </div>
           </Modal.Body>
         </Modal>
       </>

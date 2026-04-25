@@ -19,6 +19,7 @@ const PersianContentCalendar = (props) => {
     let { userId } = useContext(HomeContext)
 
     const [show, setShow] = useState(false);
+    const [putId, setPutId] = useState(0)
     const [ckValue, setCkValue] = useState("");
     const [expireDate, setExpireDate] = useState(new Date());
     const [showEditMod, setShowEditMod] = useState(false)
@@ -28,17 +29,18 @@ const PersianContentCalendar = (props) => {
     const handleClose = () => {
         setShow(false)
         setCkValue('')
-        setExpireDate(new Date())
+        setShowEditMod(false)
+        // setExpireDate(new Date())
     };
 
     const addNote = () => {
         const dayNote = 3
         let obj = {
-            id: !showEditMod ? 0 : task.id,
+            id: !showEditMod ? 0 : putId,
             createDate: "2025-09-06T08:00:47.475Z",
             completionDate: expireDate,
             title: "یادآوری ",
-            description: !showEditMod ? ckValue : task.title,
+            description: ckValue,
             taskKind: dayNote,
             score: 1,
             taskState: 1,
@@ -51,12 +53,13 @@ const PersianContentCalendar = (props) => {
             ApiPostX('/api/Task/addNote', obj, function () {
                 alertA("با موفقیت اضافه شد")
                 setShow(false)
-                setExpireDate(new Date())
+                setIsGet(!isGet)
+                // setExpireDate(new Date())
             })
 
         } else if (showEditMod) {
             async function myAppPost() {
-                const res = await fetch(`${apiUrl}/api/Task/editeTask`, {
+                const res = await fetch(`${apiUrl}/api/Task/editeNote`, {
                     method: "PUT",
                     credentials: "include",
 
@@ -70,11 +73,10 @@ const PersianContentCalendar = (props) => {
                         if (res.ok) {
                             return res.json().then((result) => {
                                 alertA('ویرایش با موفقیت انجام شد')
-                                setTask({})
                                 setShowEditMod(false)
                                 setShow(false)
                                 setCkValue('')
-                                setExpireDate(new Date())
+                                setIsGet(!isGet)
 
                             });
                         }
@@ -254,6 +256,8 @@ const PersianContentCalendar = (props) => {
                                                 setCkValue(item.description)
                                                 setNoteId(item.id)
                                                 setShow(true)
+                                                setPutId(item.id)
+                                                setShowEditMod(true)
 
                                             }}
                                         >
@@ -332,7 +336,7 @@ const PersianContentCalendar = (props) => {
                                 }}
                                 className="add-content-btn"
                             >
-                                + افزودن مطلب جدید
+                                {!showEditMod ? "+ افزودن مطلب جدید" : "ویرایش مطلب"}
                             </button>
 
                         </div>

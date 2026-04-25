@@ -23,7 +23,6 @@ export default function CmsHeader() {
   const homeContext = useContext(HomeContext);
   const [them, setThem] = useState(() => {
     const locale = localStorage.getItem('themAdmin')
-    console.log(locale)
     if (locale) {
       return localStorage.getItem('themAdmin')
     } else {
@@ -72,10 +71,7 @@ export default function CmsHeader() {
   };
 
   useEffect(() => {
-    // setThem(localStorage.getItem('themAdmin'))
-    // console.log(localStorage.getItem('themAdmin'))
-    // console.log(them)//////
-    // console.log(flagThem)
+
     if (them == 'dark') {
       homeContext.setThemContext(true)
       document.documentElement.style.setProperty("--white", "#c1edf7");
@@ -100,18 +96,7 @@ export default function CmsHeader() {
       document.documentElement.style.setProperty("--blue2", "#fff");
     }
   }, [flagThem]);
-  // console.log(cmsContext.user)
-  // console.log(homeContext.themContext)
 
-  // console.log(getlocalStorage)
-  // console.log(homeContext.isLogin)
-  // console.log(homeContext.messageNotification)
-  // useEffect(()=>{
-  //   homeContext.setIsLogin(true)
-  //   if(getlocalStorage){
-  //     homeContext.setIsLogin(true)
-  //   }
-  // },[getlocalStorage])
 
   useEffect(() => {
     getAllTicket();
