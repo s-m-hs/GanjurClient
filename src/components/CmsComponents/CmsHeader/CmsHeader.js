@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, NavLink } from "react-router-dom";
 import "./CmsHeader.css";
 import GridViewIcon from "@mui/icons-material/GridView";
 import LanguageIcon from "@mui/icons-material/Language";
@@ -15,7 +15,15 @@ import apiUrl from "../../../utils/ApiConfig";
 import ApiGetX2 from "../../../utils/ApiServicesX/ApiGetX2";
 import Swal from "sweetalert2";
 import LogOut from "../../../utils/LogOut";
-
+import BuildVirsion from "../../../utils/BuildVirsion";
+import { File, Headphones, Mouse, Percent, SealPercent, User, Users } from "@phosphor-icons/react";
+import { CategoryOutlined, CategoryRounded, HeadphonesSharp, PercentOutlined, PercentSharp, RoomServiceTwoTone } from "@mui/icons-material";
+import { RiCalculatorFill, RiCustomerService2Fill, RiMenu5Line, RiMenuUnfold4Fill, RiServiceFill } from "react-icons/ri";
+import { MdHomeRepairService, MdMenu, MdOutlineRoomService, MdOutlineSupervisorAccount, MdShoppingBasket, MdShopTwo } from "react-icons/md";
+import { GiAutoRepair, GiBrandyBottle, GiExitDoor } from "react-icons/gi";
+import { IoLogoCss3, IoLogoWindows, IoLogoXbox, IoMdCalculator } from "react-icons/io";
+import { Keyboard } from "@phosphor-icons/react/dist/ssr";
+import { FaCalculator, FaServicestack } from "react-icons/fa6";
 
 export default function CmsHeader() {
   const [flagThem, setFlagThem] = useState(false);
@@ -106,7 +114,7 @@ export default function CmsHeader() {
   }, [homeContext.flagMessageNotification]);
 
   return (
-    <div className="container cmsheader-container ">
+    <div className=" cmsheader-container " style={{ marginRight: "none" }}>
       <div className="row cmsheader-row">
         <div className="col col-lg-6 cmsheader-col1">
           <h4 className="cmsheader-gridviewIcon">
@@ -191,6 +199,93 @@ export default function CmsHeader() {
           </div>
         </div>
         <hr />
+      </div>
+
+      <div className="row">
+
+        <div className="col-12 cmsheader-menue-div">
+
+          <Link className="cmssidebar-div " to={"/p-admin"}
+            onClick={() => homeContext.setSideMenueFlag(false)}
+          >
+            <i
+              class="fa-sharp fa-solid fa-house fa-lg"
+              style={{ marginLeft: "5px" }}
+            ></i>
+            <span>خانه</span>
+          </Link>
+
+          <NavLink className="cmssidebar-div" to={"users"}>
+            <Users size={18} />
+            <span> مدیران</span>
+          </NavLink>
+
+          <NavLink className="cmssidebar-div" to={"customer"}>
+            <User size={18} />
+            <span> کاربران</span>
+          </NavLink>
+
+          <NavLink className="cmssidebar-div" to={"Factor"}>
+            <Percent size={18} />
+            <span> فاکتور  </span>
+          </NavLink>
+
+
+
+          <NavLink className="cmssidebar-div" to={"finance"}>
+            < FaCalculator size={18} />
+            <span> امورمالی  </span>
+          </NavLink>
+
+          <NavLink className="cmssidebar-div" to={"accounts"}>
+            <File size={18} />
+            <span>حساب کاربری </span>
+          </NavLink>
+
+          <NavLink className="cmssidebar-div" to={"category"}>
+            <MdMenu size={18} />
+            <span>دسته عمومی </span>{" "}
+          </NavLink>
+
+          <NavLink className="cmssidebar-div" to={"categoryspecialty"}>
+            <RiMenu5Line size={18} />
+            <span>دسته تخصصی </span>
+          </NavLink>
+
+          <NavLink className="cmssidebar-div" to={"manufacturer"}>
+            <IoLogoXbox size={18} />
+            <span>شرکت سازنده</span>{" "}
+          </NavLink>
+
+          <NavLink className="cmssidebar-div " to={"product"}>
+            <Headphones size={18} />
+            <span>محصولات</span>{" "}
+          </NavLink>
+
+          <NavLink className="cmssidebar-div" to={"allProductInfo"}>
+            <Keyboard size={18} />
+            <span> همه محصولات</span>{" "}
+          </NavLink>
+
+
+          <NavLink className="cmssidebar-div" to={"repairs"}>
+            <MdHomeRepairService size={18} />
+            <span>خدمات </span>{" "}
+          </NavLink>
+
+          <NavLink className="cmssidebar-div" to={"assemblypc"}>
+            <IoMdCalculator size={18} />
+            <span>محاسبه گر  </span>{" "}
+          </NavLink>
+
+          <NavLink className="cmssidebar-div" to={"testpage"}>
+            <i class="fa-solid fa-store fa-lg" ></i>
+            <span>TEST-PAGE </span>{" "}
+          </NavLink>
+
+        </div>
+
+
       </div>
     </div>
   );

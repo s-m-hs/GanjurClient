@@ -316,6 +316,11 @@ export default function Accounts() {
 
 
           <div className="customerDetail-modal" style={{ height: "1000px" }}>
+
+            <div className="customer-voucherTitle-B mt-5 ">
+              <span>{accountVouchur?.result?.balance?.toLocaleString()} ریال </span>
+              <span>{accountVouchur?.result?.balanceStatus}</span>
+            </div>
             <BaseGrid rowData={accountVouchur?.currentVouchurs} colDefs={colDefsB} rtl={true} />
 
 

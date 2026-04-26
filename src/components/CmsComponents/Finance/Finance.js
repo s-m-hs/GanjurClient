@@ -393,59 +393,98 @@ export default function Finance() {
                     </form>
                 </div>
 
-                <div className="col-12 col-lg-2 finance-accountA-div boxSh">
-                    <h2 className='mb-5 mt-3' >پرداخت کننده:</h2>
 
-                    <ul>
-                        <li>شناسه : <span>{accountADetail.account?.id}</span></li>
-                        <li>کد :<span>{accountADetail.account?.code}</span> </li>
-                        <li>عنوان : <span>{accountADetail.account?.title}</span></li>
-                        <li>والد : <span>{accountADetail.account?.parentId}</span></li>
-                        <li>نوع حساب : <span>{accountADetail.account?.accountType}</span></li>
-                        <li>مانده حساب : <span>{Math.abs(accountADetail.result?.balance ?? 0)?.toLocaleString()}ریال</span></li>
-                        <li><span>{accountADetail.result?.balanceStatus}</span></li>
-                    </ul>
+
+                <div className='col-12 col-lg-4 finance-accountA-div boxSh'>
+
+                    <div className='row'>
+                        <div className="col-6" style={{ borderLeft: "1px dotted" }}>
+                            <h3 className='mb-5 mt-3' >پرداخت کننده:</h3>
+
+                            <ul>
+                                <li>شناسه : <span>{accountADetail.account?.id}</span></li>
+                                <li>کد :<span>{accountADetail.account?.code}</span> </li>
+                                <li>عنوان : <span>{accountADetail.account?.title}</span></li>
+                                <li>والد : <span>{accountADetail.account?.parentId}</span></li>
+                                <li>نوع حساب : <span>{accountADetail.account?.accountType}</span></li>
+                                <li>مانده حساب : <span>{Math.abs(accountADetail.result?.balance ?? 0)?.toLocaleString()}ریال</span></li>
+                                <li><span>{accountADetail.result?.balanceStatus}</span></li>
+                            </ul>
+                        </div>
+
+                        <div className="col-6">
+                            <h3 className='mb-5 mt-3' >دریافت کننده:</h3>
+
+                            <ul>
+                                <li>شناسه : <span>{accountBDetail.account?.id}</span></li>
+                                <li>کد :<span>{accountBDetail.account?.code}</span> </li>
+                                <li>عنوان : <span>{accountBDetail.account?.title}</span></li>
+                                <li>والد : <span>{accountBDetail.account?.parentId}</span></li>
+                                <li>نوع حساب : <span>{accountBDetail.account?.accountType}</span></li>
+                                <li>مانده حساب : <span>{Math.abs(accountBDetail.result?.balance ?? 0)?.toLocaleString()}ریال</span></li>
+                                <li><span>{accountBDetail.result?.balanceStatus}</span></li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div className='row'>
+                        <div className="">
+                            <h2 className='mb-5 mt-3' > جزییات سند :</h2>
+
+                            <table className='table'>
+                                <thead>
+                                    <tr key="">
+                                        <th>تاریخ</th>
+                                        <th>شناسه</th>
+                                        <th>عنوان</th>
+                                        <th>شرح</th>
+                                        <th>مبلغ انتقالی</th>
+                                    </tr>
+                                </thead>
+
+
+                                <tbody>
+                                    <tr key="">
+                                        <td><DateFormat dateString={editVoucherDetail?.items?.length == 0 ? `${vouchurDetail.voucherDate}` : `${editVoucherDetail.voucherDate}`} /> </td>
+                                        <td>{editVoucherDetail?.items?.length == 0 ? vouchurDetail.id : editVoucherDetail.id}</td>
+                                        <td>{editVoucherDetail?.items?.length == 0 ? vouchurDetail.referenceType : editVoucherDetail.referenceType}</td>
+                                        <td>{editVoucherDetail?.items?.length == 0 ? vouchurDetail.description : editVoucherDetail.description}</td>
+                                        <td>{(vouchurDetail?.length != 0 && editVoucherDetail?.items?.length == 0) ? vouchurDetail?.items?.[0]?.credit?.toLocaleString() :
+                                            editVoucherDetail?.items?.length != 0 ?
+                                                editVoucherDetail?.items?.[0]?.credit?.toLocaleString()
+                                                : 0}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            {/* <ul >
+                                <li>تاریخ : <span><DateFormat dateString={editVoucherDetail?.items?.length == 0 ? `${vouchurDetail.voucherDate}` : `${editVoucherDetail.voucherDate}`} /> </span></li>
+                                <li>شناسه :<span>{editVoucherDetail?.items?.length == 0 ? vouchurDetail.id : editVoucherDetail.id}</span> </li>
+
+                                <li>عنوان : <span>{editVoucherDetail?.items?.length == 0 ? vouchurDetail.referenceType : editVoucherDetail.referenceType}</span></li>
+
+                                <li>شرح : <span>{editVoucherDetail?.items?.length == 0 ? vouchurDetail.description : editVoucherDetail.description}</span></li>
+
+                                <li>مبلغ انتقالی :<span>
+                                    {(vouchurDetail?.length != 0 && editVoucherDetail?.items?.length == 0) ? vouchurDetail?.items?.[0]?.credit?.toLocaleString() :
+                                        editVoucherDetail?.items?.length != 0 ?
+                                            editVoucherDetail?.items?.[0]?.credit?.toLocaleString()
+                                            : 0} ریال</span> </li>
+
+                            </ul> */}
+                        </div>
+                    </div>
+
                 </div>
 
 
-                <div className="col-12 col-lg-2 finance-accountA-div boxSh">
-                    <h2 className='mb-5 mt-3' >دریافت کننده:</h2>
 
-                    <ul>
-                        <li>شناسه : <span>{accountBDetail.account?.id}</span></li>
-                        <li>کد :<span>{accountBDetail.account?.code}</span> </li>
-                        <li>عنوان : <span>{accountBDetail.account?.title}</span></li>
-                        <li>والد : <span>{accountBDetail.account?.parentId}</span></li>
-                        <li>نوع حساب : <span>{accountBDetail.account?.accountType}</span></li>
-                        <li>مانده حساب : <span>{Math.abs(accountBDetail.result?.balance ?? 0)?.toLocaleString()}ریال</span></li>
-                        <li><span>{accountBDetail.result?.balanceStatus}</span></li>
-                    </ul>
-                </div>
-
-
-
-                <div className="col-12 col-lg-2 finance-accountA-div boxSh">
-                    <h2 className='mb-5 mt-3' > جزییات سند :</h2>
-
-                    <ul>
-                        <li>تاریخ : <span><DateFormat dateString={editVoucherDetail?.items?.length == 0 ? `${vouchurDetail.voucherDate}` : `${editVoucherDetail.voucherDate}`} /> </span></li>
-                        <li>شناسه :<span>{editVoucherDetail?.items?.length == 0 ? vouchurDetail.id : editVoucherDetail.id}</span> </li>
-
-                        <li>عنوان : <span>{editVoucherDetail?.items?.length == 0 ? vouchurDetail.referenceType : editVoucherDetail.referenceType}</span></li>
-
-                        <li>شرح : <span>{editVoucherDetail?.items?.length == 0 ? vouchurDetail.description : editVoucherDetail.description}</span></li>
-
-                        <li>مبلغ انتقالی :<span>
-                            {(vouchurDetail?.length != 0 && editVoucherDetail?.items?.length == 0) ? vouchurDetail?.items?.[0]?.credit?.toLocaleString() :
-                                editVoucherDetail?.items?.length != 0 ?
-                                    editVoucherDetail?.items?.[0]?.credit?.toLocaleString()
-                                    : 0} ریال</span> </li>
-
-                    </ul>
-                </div>
-
-                <div className="col-12 col-lg-3 finance-accountA-div boxSh">
-                    <PersianContentCalendar Width={300} widthContent={280} />
+                <div className="col-12 col-lg-5 finance-accountA-div boxSh">
+                    <PersianContentCalendar Width={500} widthContent={250} />
 
                     <hr />
 

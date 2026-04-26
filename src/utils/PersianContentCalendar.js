@@ -14,7 +14,7 @@ import apiUrl from '../utils/ApiConfig';
 import ApiGetX2 from "./ApiServicesX/ApiGetX2";
 import { HomeContext } from "../context/CmsContext";
 import ApiDeleteX2 from "./ApiServicesX/ApiDeleteX2";
-import { Close } from "@mui/icons-material";
+import { Close, CloseOutlined } from "@mui/icons-material";
 const PersianContentCalendar = (props) => {
     let { userId } = useContext(HomeContext)
 
@@ -26,6 +26,7 @@ const PersianContentCalendar = (props) => {
     const [task, setTask] = useState([])
     const [isGet, setIsGet] = useState(true)
     const [noteId, setNoteId] = useState('')
+    const [allTask, setAllTask] = useState([])
     const handleClose = () => {
         setShow(false)
         setCkValue('')
@@ -92,7 +93,7 @@ const PersianContentCalendar = (props) => {
         setIsGet(!isGet)
     }
     const deletTask = (id) => {
-        ApiDeleteX2(`/api/Task/deleteTask?taskId=${id}`, funcA)
+        ApiDeleteX2(`/api/Task/deleteNote?taskId=${id}`, funcA)
     }
 
     useEffect(() => {
@@ -103,6 +104,11 @@ const PersianContentCalendar = (props) => {
         }
         ApiGetX2(`/api/Task/getNotes?date=${expireDate.toISOString()}`, func)
     }, [expireDate, isGet])
+
+    useEffect(() => {
+        ApiGetX2('/api/Task/admin&UserTasks?show=true', setAllTask)
+    }, [])
+    console.log(allTask)
 
     // state برای نگهداری مطالب هر روز
     const [contents, setContents] = useState({});
@@ -197,193 +203,166 @@ const PersianContentCalendar = (props) => {
     // <div>{getFormattedDate()}</div>
 
     return (
-        <div className="persian-calendar-container" style={{ width: props.Width, direction: "rtl" }}>
-            {/* <style>
-                {`
-          .has-content-day:hover {
-            transform: scale(1.05);
-            transition: transform 0.2s;
-          }
-        `}
-            </style> */}
+        <>
+            <div className="persian-calendar-container centerr" style={{ width: props.Width, direction: "rtl" }}>
 
-
-            {/* <h2 style={{ textAlign: "center", marginBottom: "20px", color: "#1f2937" }}>
-                📅 تقویم محتوای من
-            </h2> */}
-            <div className="centerrc" >
-                <img src="../../images/604-1-scaled-1-1024x854.jpg" alt="" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
                 <div>
-                    <DatePicker
-                        calendar={persian}
-                        locale={persian_fa}
-                        calendarPosition="bottom-right"
-                        multiple={false}
-                        mapDays={mapDays}
-                        // value={expireDate}
-                        onChange={(date) => handleDayClick(date)}
-                        style={{
-                            width: "100%",
-                            fontFamily: "inherit"
-                        }}
-                        showOtherDays={true}
-                        highlightToday={true}
-                    />
-                </div>
-
-            </div>
-
-
-            {/* باکس نمایش مطلب روز جاری انتخاب شده */}
-
-            <div className="current-day-content-box">
-                {currentSelectedDate && <div className="content-box-header">
-                    <span className="content-box-icon">📖</span>
-                    <h3 className="content-box-title">
-                        {formatPersianDate(currentSelectedDate)}
-                    </h3>
-                </div>}
-
-
-                {task.length != 0 ? (
-                    <>
-                        <div className="content-box-text " style={{ width: props.widthContent }}>
-                            {task.map((item => (
-                                <>
-                                    <div className="content-box-text-div">
-                                        <p style={{ cursor: "pointer", marginBottom: 0 }} dangerouslySetInnerHTML={{ __html: item.description }}
-                                            onClick={() => {
-                                                setCkValue(item.description)
-                                                setNoteId(item.id)
-                                                setShow(true)
-                                                setPutId(item.id)
-                                                setShowEditMod(true)
-
-                                            }}
-                                        >
-
-                                        </p>
-                                        <span>
-                                            <button
-                                                className="content-box-text-del-btn btn btn-danger"
-                                                onClick={() => {
-                                                    deletTask(item.id)
-                                                }}
-                                            >
-
-                                            </button>
-                                        </span>
-                                    </div>
-
-                                </>
-
-                            )))}
-
-                        </div>
-                        <div className="content-box-actions">
-
-                            <button
-                                onClick={() => {
-                                    setCkValue('')
-                                    setShow(true)
-                                    setSelectedDate(currentSelectedDate);
-                                    setModalContent("");
+                    <div className="centerrc" >
+                        <img src="../../images/604-1-scaled-1-1024x854.jpg" alt="" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
+                        <div>
+                            <DatePicker
+                                calendar={persian}
+                                locale={persian_fa}
+                                calendarPosition="bottom-right"
+                                multiple={false}
+                                mapDays={mapDays}
+                                // value={expireDate}
+                                onChange={(date) => handleDayClick(date)}
+                                style={{
+                                    width: "100%",
+                                    fontFamily: "inherit"
                                 }}
-                                className="add-content-btn"
-                            >
-                                + افزودن مطلب جدید
-                            </button>
-
+                                showOtherDays={true}
+                                highlightToday={true}
+                            />
                         </div>
-                    </>
-                ) : (
-                    <div className="content-box-empty">
-                        <span className="empty-icon">📝</span>
-                        <p>هنوز مطلبی برای این روز ثبت نشده است.</p>
-                        <button
-                            onClick={() => {
-                                setShow(true)
-                                setSelectedDate(currentSelectedDate);
-                                setModalContent("");
-                            }}
-                            className="add-content-btn"
-                        >
-                            + افزودن مطلب جدید
-                        </button>
-
 
                     </div>
-                )}
 
-                <Modal show={show} onHide={handleClose} size="lg">
-                    <Modal.Header closeButton>
-                    </Modal.Header>
-                    <Modal.Body>                <div className='container'>
+                    <div className="current-day-content-box" style={{ width: props.widthContent }}>
+                        {currentSelectedDate && <div className="content-box-header">
+                            <span className="content-box-icon">📖</span>
+                            <h3 className="content-box-title">
+                                {formatPersianDate(currentSelectedDate)}
+                            </h3>
+                        </div>}
 
-                        <div className='row'>
-                            <div >
-                                <TiptapEditor
-                                    value={ckValue}
-                                    onChange={(e) => {
-                                        setCkValue(e);
+
+                        {task.length != 0 ? (
+                            <>
+                                <div className="content-box-text " style={{ width: props.widthContent }}>
+                                    {task.map((item => (
+                                        <>
+                                            <div className="content-box-text-div">
+                                                <p style={{ cursor: "pointer", marginBottom: 0 }} dangerouslySetInnerHTML={{ __html: item.description }}
+                                                    onClick={() => {
+                                                        setCkValue(item.description)
+                                                        setNoteId(item.id)
+                                                        setShow(true)
+                                                        setPutId(item.id)
+                                                        setShowEditMod(true)
+
+                                                    }}
+                                                >
+
+                                                </p>
+                                                <span onClick={() => {
+                                                    deletTask(item.id)
+                                                }} style={{ cursor: "pointer", color: "red" }}>
+                                                    <CloseOutlined fontSize="10px" />
+                                                </span>
+                                            </div>
+
+                                        </>
+
+                                    )))}
+
+                                </div>
+                                <div className="content-box-actions">
+
+                                    <button
+                                        onClick={() => {
+                                            setCkValue('')
+                                            setShow(true)
+                                            setSelectedDate(currentSelectedDate);
+                                            setModalContent("");
+                                        }}
+                                        className="add-content-btn"
+                                    >
+                                        + افزودن مطلب جدید
+                                    </button>
+
+                                </div>
+                            </>
+                        ) : (
+                            <div className="content-box-empty">
+                                <span className="empty-icon">📝</span>
+                                <p>هنوز مطلبی برای این روز ثبت نشده است.</p>
+                                <button
+                                    onClick={() => {
+                                        setShow(true)
+                                        setSelectedDate(currentSelectedDate);
+                                        setModalContent("");
                                     }}
-                                />
+                                    className="add-content-btn"
+                                >
+                                    + افزودن مطلب جدید
+                                </button>
+
 
                             </div>
-                            <button
-                                onClick={() => {
-                                    addNote()
-                                }}
-                                className="add-content-btn"
-                            >
-                                {!showEditMod ? "+ افزودن مطلب جدید" : "ویرایش مطلب"}
-                            </button>
+                        )}
 
-                        </div>
+                        <Modal show={show} onHide={handleClose} size="lg">
+                            <Modal.Header closeButton>
+                            </Modal.Header>
+                            <Modal.Body>                <div className='container'>
 
-                    </div></Modal.Body>
+                                <div className='row'>
+                                    <div >
+                                        <TiptapEditor
+                                            value={ckValue}
+                                            onChange={(e) => {
+                                                setCkValue(e);
+                                            }}
+                                        />
 
-                </Modal>
+                                    </div>
+                                    <button
+                                        onClick={() => {
+                                            addNote()
+                                        }}
+                                        className="add-content-btn"
+                                    >
+                                        {!showEditMod ? "+ افزودن مطلب جدید" : "ویرایش مطلب"}
+                                    </button>
+
+                                </div>
+
+                            </div></Modal.Body>
+
+                        </Modal>
+                    </div>
+                </div>
+
+
+                <div className="current-day-content-box" style={{ width: props.widthContent }}>
+                    {allTask.map((item => (
+                        <>
+                            <div className="content-box-text-div-task centercc p-1">
+                                <p style={{ marginBottom: 0 }}
+                                // onClick={() => {
+                                //     setCkValue(item.description)
+                                //     setShow(true)
+                                // }}
+                                >
+                                    <span><DateFormat dateString={item.createDate} /> </span>
+                                    {item.title}
+                                </p>
+
+                            </div>
+
+                        </>
+
+                    )))}
+
+                </div>
+
             </div>
 
 
-            {/* مودال ثبت/مشاهده مطلب */}
-            {/* {selectedDate && (
-                <div className="modal-overlay-h" onClick={() => setSelectedDate(null)}>
-                    <div className="modal-content-h" onClick={(e) => e.stopPropagation()}>
-                        <h3 style={{ marginBottom: "10px", color: "#1f2937" }}>
-                            ✏️ ثبت مطلب برای {formatPersianDate(selectedDate)}
-                        </h3>
-                        <textarea
-                            value={modalContent}
-                            onChange={(e) => setModalContent(e.target.value)}
-                            placeholder="مطلب خود را برای این روز بنویسید..."
-                            rows="6"
-                            style={{
-                                width: "100%",
-                                padding: "12px",
-                                fontSize: "14px",
-                                fontFamily: "inherit",
-                                borderRadius: "8px",
-                                border: "1px solid #e5e7eb",
-                                marginTop: "10px",
-                                resize: "vertical",
-                                backgroundColor: "#f9fafb"
-                            }}
-                        />
-                        <div className="modal-buttons">
-                            <button onClick={saveContentForDate} className="btn-save">
-                                💾 ذخیره مطلب
-                            </button>
-                            <button onClick={() => setSelectedDate(null)} className="btn-cancel">
-                                ❌ انصراف
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            )} */}
+        </>
 
-        </div>
     );
 };
 

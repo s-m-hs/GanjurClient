@@ -147,28 +147,19 @@ export default function CmsIndex() {
 
           <div className="container  app-container">
             <div className="row">
+              {/*               
               <div className="col col-1 col-md-1 mt-5 pt-2">
                 <CmsSidebar />
-              </div>
-              <div className="col col-11 col-md-11  pt-2" style={{ marginTop: '48px' }}>
+              </div> */}
+
+              <div className="col col-12 col-md-12  pt-2" style={{ marginTop: '115px' }}>
                 <div className={flagClass ? "cmsindex-maincontainer-div" : "cmsindex-maincontainer-div-hidden"}>
                   <div className="container">
-
-                    {/* <div className="row">
-                      <div className="col-12">
-
-                        <div className="centerr cmsIndex-Date-Div ">
-                          <DateShow2 />
-                          <PersianContentCalendar />
-                          <CounterTile />
-                        </div>
-                      </div>
-                    </div> */}
 
                     <div className="row  mt-1" style={{ height: "600px" }}>
 
                       <div className="col-lg-5 cmsindex-countertile boxSh">
-                        <Task />
+                        <Task isShow={true} />
                       </div>
 
                       <div className="col-lg-7 cmsindex-countertile boxSh centerrc">

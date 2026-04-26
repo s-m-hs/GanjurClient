@@ -36,52 +36,38 @@ export default function CmsSidebarContent() {
       <h6 className="cmssidebar-h6">Quick menu</h6>
 
       <NavLink className="cmssidebar-div" to={"users"}>
-        <Users size={18}/>
+        <Users size={18} />
         <span> مدیران</span>
       </NavLink>
 
       <NavLink className="cmssidebar-div" to={"customer"}>
-<User size={18}/>
+        <User size={18} />
         <span> کاربران</span>
       </NavLink>
 
       <NavLink className="cmssidebar-div" to={"Factor"}>
-<Percent size={18}/>
+        <Percent size={18} />
         <span> فاکتور  </span>
       </NavLink>
 
 
 
       <NavLink className="cmssidebar-div" to={"finance"}>
-< FaCalculator size={18}/>
+        < FaCalculator size={18} />
         <span> امورمالی  </span>
       </NavLink>
 
       <NavLink className="cmssidebar-div" to={"accounts"}>
-<File size={18}/>
+        <File size={18} />
         <span>حساب کاربری </span>
       </NavLink>
-
-      {/* 
-      <NavLink className="cmssidebar-div" to={"coupon"}>
-        <i class="fa-solid fa-percent fa-lg" style={{ marginLeft: "5px" }}></i>
-        <span> کد تخفیف </span>
-      </NavLink> */}
-
-      {/* <NavLink className="cmssidebar-div" to={"menu"}>
-        <i
-          class="fa-solid fa-calendar-minus fa-lg  "
-          style={{ marginLeft: "5px" }}
-        ></i>
-        <span>منو </span>
-      </NavLink> */}
       <NavLink className="cmssidebar-div" to={"category"}>
-   <MdMenu size={18}/>
+        <MdMenu size={18} />
         <span>دسته عمومی </span>{" "}
       </NavLink>
 
       <NavLink className="cmssidebar-div" to={"categoryspecialty"}>
-<RiMenu5Line size={18}/>
+        <RiMenu5Line size={18} />
         <span>دسته تخصصی </span>
       </NavLink>
 
@@ -104,7 +90,7 @@ export default function CmsSidebarContent() {
       </NavLink> */}
 
       <NavLink className="cmssidebar-div" to={"manufacturer"}>
-<IoLogoXbox size={18}/>
+        <IoLogoXbox size={18} />
         <span>شرکت سازنده</span>{" "}
       </NavLink>
 
@@ -114,7 +100,7 @@ export default function CmsSidebarContent() {
       </NavLink>
 
       <NavLink className="cmssidebar-div" to={"allProductInfo"}>
-<Keyboard size={18}/>
+        <Keyboard size={18} />
         <span> همه محصولات</span>{" "}
       </NavLink>
 
@@ -126,12 +112,12 @@ export default function CmsSidebarContent() {
 
 
       <NavLink className="cmssidebar-div" to={"repairs"}>
-        <MdHomeRepairService size={18}/>
+        <MdHomeRepairService size={18} />
         <span>خدمات </span>{" "}
       </NavLink>
 
       <NavLink className="cmssidebar-div" to={"assemblypc"}>
-<IoMdCalculator size={18}/>
+        <IoMdCalculator size={18} />
         <span>محاسبه گر  </span>{" "}
       </NavLink>
 
@@ -141,7 +127,7 @@ export default function CmsSidebarContent() {
       </NavLink>
 
       <hr />
-{/* 
+      {/* 
       <NavLink className="cmssidebar-div " to={"tickets"}>
         <i class="fa-solid fa-message fa-lg"></i>
         <span>پیام ها</span>
@@ -149,7 +135,7 @@ export default function CmsSidebarContent() {
       </NavLink> */}
 
       <NavLink className="cmssidebar-div" to={"/"}>
-<GiExitDoor size={18}/>
+        <GiExitDoor size={18} />
         <span>خروج </span>{" "}
       </NavLink>
       <hr />

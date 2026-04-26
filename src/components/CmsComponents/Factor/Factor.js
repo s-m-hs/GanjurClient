@@ -385,7 +385,7 @@ const Factor = (props) => {
             <div className='container'>
 
                 <div className='row'>
-                    <div className='col-lg-9'>
+                    <div className='col-lg-7'>
                         {dnaflag &&
                             <div className='dnaa-div'>
                                 <span className='dnaaa'>
@@ -585,20 +585,6 @@ const Factor = (props) => {
                                                             </div> :
                                                                 <span>{item?.unitPrice?.toLocaleString()}</span>
                                                             }
-                                                            {/* <div className='mt-2 mb-2 hhhhh' >
-                                                <FloatLabel>
-                                                    <InputNumber id="number-input"
-                                                        value={(item.UnitPrice) || 0}
-                                                        onValueChange={(e) => {
-                                                                   const value = parseInt(e.target.value) || 0;
-                                                    updateItemField(item.ID, 'UnitPrice', value);
-                                                    updateRowTotal(item.ID);
-                                                            // setValue1(e.value)
-                                                        }
-                                                        }
-                                                    />
-                                                </FloatLabel>
-                                            </div> */}
 
 
                                                         </td>
@@ -907,9 +893,9 @@ const Factor = (props) => {
 
 
 
-                    <div className='col-lg-3 boxSh  centercc foctor-btn-section'>
+                    <div className='col-lg-5 boxSh  centercc foctor-btn-section'>
 
-                        <PersianContentCalendar Width={300} widthContent={280} />
+                        <PersianContentCalendar Width={500} widthContent={250} />
                         <hr />
 
                         {props.orderMode == 1 && <button className='btn btn-secondary'
@@ -948,6 +934,7 @@ const Factor = (props) => {
 
 
                     </div>
+
 
                 </div>
 

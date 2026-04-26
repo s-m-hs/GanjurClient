@@ -4,6 +4,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import UsersDebitCredit from './UsersDebitCredit';
 import { CmsContext, HomeContext } from '../../../../context/CmsContext';
 import { Blocks } from 'react-loader-spinner';
+import ListProB from './ListProB';
 export default function UsersFinanceTabs() {
     const cmsContext = useContext(CmsContext)
 
@@ -58,6 +59,9 @@ export default function UsersFinanceTabs() {
 
                     <Tab eventKey="credit" title="بستانکاران" style={{ background: 'inherit' }}>
                         <UsersDebitCredit state={false} setloading={setDnaflag} />
+                    </Tab>
+                    <Tab eventKey="exell" title="گزارش اکسل" style={{ background: 'inherit' }}>
+                        <ListProB state={false} setloading={setDnaflag} />
                     </Tab>
 
 

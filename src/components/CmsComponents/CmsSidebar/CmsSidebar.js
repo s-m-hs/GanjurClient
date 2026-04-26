@@ -10,9 +10,9 @@ export default function CmsSidebar() {
 
     return (
         <div className='cmssidebar-container'>
-            {!sideMenueFlag && <div className="cmssidebar-maindiv">
+            {/* {!sideMenueFlag && <div className="cmssidebar-maindiv">
                 <CmsSidebarContent />
-            </div>}
+            </div>} */}
 
 
             {/* /////// to control sidemenue on mobileSize */}

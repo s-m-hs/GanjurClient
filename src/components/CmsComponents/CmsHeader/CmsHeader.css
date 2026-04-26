@@ -1,7 +1,10 @@
 .cmsheader-container {
   max-width: none !important;
   position: fixed;
-  z-index: 100 !important;
+  z-index: 100000 !important;
+  background-color: #dadee3;
+  width: 100vw !important;
+  padding: 5px;
   /* background-color: white; */
   /* margin-bottom: 100px !important; */
 }
@@ -81,6 +84,10 @@
   width: 50px;
   animation: flipX 3s infinite ease-in-out;
 }
+
+
+
+
 @keyframes flipX {
   0% {
     transform: rotateY(0deg);

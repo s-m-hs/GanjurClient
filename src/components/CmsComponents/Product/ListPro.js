@@ -72,7 +72,34 @@ export default function ListPro() {
             console.error("خطا:", error);
         }
     };
+    const downloadExcelByPrice = async (url) => {
+        try {
+            const response = await fetch(`${apiUrl}/api/CyProducts/getExellFromProductByAllPrice`, {
+                method: "GET",
+            });
 
+            if (!response.ok) {
+                throw new Error("خطا در دریافت فایل");
+            }
+
+            // تبدیل پاسخ به Blob
+            const blob = await response.blob();
+
+            // ساخت لینک دانلود
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = "Products.xlsx"; // نام فایل دانلودی
+            document.body.appendChild(link);
+            link.click();
+
+            // پاکسازی
+            link.remove();
+            window.URL.revokeObjectURL(url);
+        } catch (error) {
+            console.error("خطا:", error);
+        }
+    };
 
 
     return (
@@ -98,7 +125,21 @@ export default function ListPro() {
                     >لیست همه محصولات (اکسل) <DownloadRounded style={{ color: "#fff" }}
 
                         /></button>
+
+
+
                 </div>
+
+                <div className='col-12  mt-3'>
+                    <button className='btn btn-warning listpro-btn'
+                        onClick={() => {
+                            downloadExcelByPrice()
+                        }}
+                    >لیست محصولات موجود با قیمت  (اکسل) <DownloadRounded style={{ color: "#fff" }}
+
+                        /></button>
+                </div>
+
             </div>
 
         </div>

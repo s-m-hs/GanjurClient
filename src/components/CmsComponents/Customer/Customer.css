@@ -151,7 +151,11 @@ td {
     z-index: 100000;
     top: 20px;
 }
-
+.customer-voucherTitle-B{
+    margin-right: 50px;
+  font-weight: 700;
+  color: red;
+}
 .orderDetail-div{
   position: fixed;
   left: 20px;
