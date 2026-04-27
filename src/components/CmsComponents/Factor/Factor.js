@@ -30,6 +30,9 @@ import AlertError from '../../../utils/AlertFunc/AlertError';
 import scrollToElementAndCenter from '../../../utils/ScrollToElement';
 import FactorComponent from './FactorComponent';
 import PersianContentCalendar from '../../../utils/PersianContentCalendar';
+import { Google, Search, Web, WebAsset } from '@mui/icons-material';
+import { FaInternetExplorer, FaResearchgate, FaSearchengin } from 'react-icons/fa6';
+import { GoogleLogo } from '@phosphor-icons/react';
 
 const Factor = (props) => {
     const cmsContext = useContext(CmsContext);
@@ -488,7 +491,8 @@ const Factor = (props) => {
                                                     <th className='factor-q-th'>تعداد</th>
                                                     <th className={isShowCoulum ? '' : 'hidden'} > واحد(ریال)</th>
                                                     <th className={isShowCoulum ? '' : 'hidden'} >مجموع(ریال)</th>
-                                                    <th className='no-print'>شرح</th>
+                                                    <th className='no-print'>جسنجو</th>
+                                                    <th className='no-print'>حذف</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -499,6 +503,7 @@ const Factor = (props) => {
                                                         <td className='no-print'>{item.Manufacturer}</td>
 
                                                         <td className='no-print'>{item.productCategory}</td>
+
                                                         <td style={{ width: "250px" }}>
                                                             {!flagShowFactor ? <input value={item.PartNumber || ''} onChange={e => updateItemField(item.ID, 'PartNumber', e.target.value)} /> :
                                                                 <span>{item.partNumber}</span>
@@ -593,11 +598,34 @@ const Factor = (props) => {
 
 
 
-                                                        <td className='no-print'>
+
+                                                        <td className='no-print' style={{ width: "100px" }}>
+                                                            <button
+
+                                                                onClick={() => {
+                                                                    const searchQuery = encodeURIComponent(item.PartNumber);
+                                                                    window.open(`https://www.google.com/search?q=${searchQuery}`, '_blank');
+                                                                }}
+                                                                style={{
+                                                                    padding: "2px 5px",
+                                                                    cursor: "pointer",
+                                                                    backgroundColor: "#4285f4",
+                                                                    color: "white",
+                                                                    border: "none",
+                                                                    borderRadius: "4px"
+                                                                }}
+                                                            >
+                                                                <FaInternetExplorer style={{ color: '#fff' }} />
+                                                                {/* <Search  /> */}
+                                                            </button>
+                                                        </td>
+
+                                                        { /*ستون شرح*/}
+                                                        {/* <td className='no-print'>
                                                             {!flagShowFactor ? <input value={item.Information || ''} onChange={e => updateItemField(item.ID, 'Information', e.target.value)} /> :
                                                                 <span>{item?.information}</span>
                                                             }
-                                                        </td>
+                                                        </td> */}
 
                                                         {!flagShowFactor ? <td className='no-print'><button type='button' className="remove-btn" onClick={() => removeItem(item.ID)}>حذف</button></td> : null}
 
@@ -695,6 +723,7 @@ const Factor = (props) => {
 
 
                                             <div className='factor-footerBox-divRight-div-ul'>
+
                                                 <ul>
                                                     <li>اقلام مندرج در فاکتور تا تسویه نهایی به عنوان امانت و عندالمطالبه خواهد بود .</li>
 

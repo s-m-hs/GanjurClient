@@ -549,7 +549,7 @@ export default function Customer() {
 
             <div className="customerDetail-modal" ref={printRef} style={{ height: "1000px" }}>
 
-              <div className="customer-voucherTitle-B mt-5 ">     <span>{userVouchur?.result?.balance?.toLocaleString()} ریال </span>
+              <div className="customer-voucherTitle-B mt-1 ">     <span>{userVouchur?.result?.balance?.toLocaleString()} ریال </span>
                 <span>{userVouchur?.result?.balanceStatus}</span></div>
               <BaseGrid rowData={userVouchur?.currentVouchurs} colDefs={colDefsB} rtl={true} />
 

@@ -35,7 +35,9 @@ iframe {
   color: none;
   background-color: none;
 }
-
+.modal-body {
+  margin-top: 40px !important;
+}
 @media (max-width: 768px) {
   .blog-content table {
     font-size: 12px;

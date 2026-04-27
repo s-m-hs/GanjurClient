@@ -61,8 +61,13 @@
             display: flex;
             justify-content: space-between;
             flex-direction: row;
+            font-size: 24px;
          }
 
+.content-box-text-div span{
+  font-size: 10px;
+}
+         
          .content-box-text-div button {
 position: absolute;
 left: 20px;
