@@ -26,6 +26,8 @@ import DatePicker from 'react-multi-date-picker';
 import DateFormat from '../../../utils/DateFormat';
 import scrollToElementAndCenter from '../../../utils/ScrollToElement';
 import AlertError from '../../../utils/AlertFunc/AlertError';
+import { MdRefresh } from 'react-icons/md';
+import { Refresh } from '@mui/icons-material';
 
 const FactorB = (props) => {
     const cmsContext = useContext(CmsContext);
@@ -291,9 +293,9 @@ const FactorB = (props) => {
 
         }
         async function myApp() {
-const url=props.orderMode==2 ? `/api/CyOrders/addOrderB?ordermode=${props.orderMode}` :
+            const url = props.orderMode == 2 ? `/api/CyOrders/addOrderB?ordermode=${props.orderMode}` :
 
-props.orderMode== 3 ?`/api/CyOrders/addOrderC?ordermode=${props.orderMode}` : ''
+                props.orderMode == 3 ? `/api/CyOrders/addOrderC?ordermode=${props.orderMode}` : ''
 
             const res = await fetch(`${apiUrl}${url}`, {
                 method: "POST",
@@ -442,6 +444,9 @@ props.orderMode== 3 ?`/api/CyOrders/addOrderC?ordermode=${props.orderMode}` : ''
                                                     id="UserArray"
                                                 // classs={"categoryCodeForAdd"}
                                                 /> : <span>{xtOrderDetai?.userName}</span>}
+                                                <span className='no-print'
+                                                    onClick={() => getcustomerItem()}
+                                                ><MdRefresh style={{ color: '#438efd', cursor: 'pointer' }} /></span>
                                             </div>
 
 
@@ -543,6 +548,15 @@ props.orderMode== 3 ?`/api/CyOrders/addOrderC?ordermode=${props.orderMode}` : ''
                                                 setShow(true)
                                                 // addItem()
                                             }}>➕ اضافه کردن کالا</button> : null}
+                                        <span className='no-print'
+                                            onClick={() => {
+                                                getProCateegory(0, setParentCat)
+                                                getProCateegory(2, sethardWareCat)
+                                                getProCateegory(3, setaccesoryCat)
+                                            }
+                                            }
+                                        ><Refresh style={{ color: '#438efd', cursor: 'pointer' }} /></span>
+
                                         {orderItems.length === 0 && <p style={{ color: '#666', fontSize: '14px' }}>هیچ محصولی اضافه نشده</p>}
                                     </div>
 
@@ -779,20 +793,20 @@ props.orderMode== 3 ?`/api/CyOrders/addOrderC?ordermode=${props.orderMode}` : ''
 
 
                     <div className='col-lg-2 boxSh  centercc foctor-btn-section'>
-                     
-                     {props.orderMode==2 &&  
-                        <button className='btn btn-secondary'
-                            onClick={() => {
-                                setUserDateil([])
-                                setXtFactorNum(null)
-                                setOrderItems([])
-                                setXtOrderDetai([])
-                                setFlagShowFactor(false)
-                                setShowModalB(true)
-                            }}
-                        >
-                            فاکتورها
-                        </button> }
+
+                        {props.orderMode == 2 &&
+                            <button className='btn btn-secondary'
+                                onClick={() => {
+                                    setUserDateil([])
+                                    setXtFactorNum(null)
+                                    setOrderItems([])
+                                    setXtOrderDetai([])
+                                    setFlagShowFactor(false)
+                                    setShowModalB(true)
+                                }}
+                            >
+                                فاکتورها
+                            </button>}
 
 
 

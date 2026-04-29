@@ -158,13 +158,13 @@ export default function CmsIndex() {
 
                     <div className="row  mt-1" style={{ height: "600px" }}>
 
-                      <div className="col-lg-5 cmsindex-countertile boxSh">
+                      <div className="col-lg-5 cmsindex-countertile boxSh" style={{ height: "600px" }}>
                         <Task isShow={true} />
                       </div>
 
                       <div className="col-lg-7 cmsindex-countertile boxSh centerrc">
                         <DateShow2 />
-                        <PersianContentCalendar Width={400} widthContent={380} />
+                        <PersianContentCalendar Width={400} height={400} widthContent={380} />
                         {/* <OrderTable /> */}
                       </div>
                     </div>

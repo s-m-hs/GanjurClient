@@ -204,7 +204,7 @@ const PersianContentCalendar = (props) => {
 
     return (
         <>
-            <div className="persian-calendar-container centerr" style={{ width: props.Width, direction: "rtl" }}>
+            <div className="persian-calendar-container centerr" style={{ width: props.Width, direction: "rtl", height: props.height }}>
 
                 <div>
                     <div className="centerrc" >

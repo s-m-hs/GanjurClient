@@ -12,7 +12,7 @@
           border-radius: 16px;
           background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
           border: 1px solid #e2e8f0;
-          overflow: hidden;
+          overflow: scroll;
           transition: all 0.3s ease;
         }
         
@@ -42,8 +42,8 @@
           font-size: 12px;
           white-space: pre-wrap;
           word-wrap: break-word;
-          min-height: 300px;
-          max-height: 300px;
+          /* min-height: 500px;
+          max-height: 500px; */
           overflow-y: scroll;
         }
                 .content-box-text p{
@@ -52,7 +52,7 @@
          }
                          .content-box-text div{
  
-              border-bottom: 1px solid #e5e7eb;
+              border-bottom: 1px solid #ebe5e5;
          }
 
 
@@ -227,7 +227,7 @@ width: 10px !important;
         .content-box-text-div-task p{
           width: 100%;
           font-size: 25px;
-           border-bottom: 1px solid #e5e7eb;
+           border-bottom: 1px dotted #f00909;
            cursor: pointer;
            position: relative;
         }

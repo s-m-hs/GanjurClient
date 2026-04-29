@@ -484,7 +484,7 @@ export default function Finance() {
 
 
                 <div className="col-12 col-lg-5 finance-accountA-div boxSh">
-                    <PersianContentCalendar Width={500} widthContent={250} />
+                    <PersianContentCalendar Width={500} height={600} widthContent={250} />
 
                     <hr />
 

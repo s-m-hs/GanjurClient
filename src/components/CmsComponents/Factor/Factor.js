@@ -18,7 +18,7 @@ import alertC from '../../../utils/AlertFunc/AlertC';
 import { Audio, Blocks, DNA } from 'react-loader-spinner'
 import SearchBox from '../SearchBox/SearchBox';
 import { FaRegCheckSquare } from "react-icons/fa";
-import { MdCheckBoxOutlineBlank } from "react-icons/md";
+import { MdCheckBoxOutlineBlank, MdRefresh } from "react-icons/md";
 import { InputNumber } from 'primereact/inputnumber';
 import { FloatLabel } from 'primereact/floatlabel';
 import { OverlayPanel } from 'primereact/overlaypanel';
@@ -30,9 +30,10 @@ import AlertError from '../../../utils/AlertFunc/AlertError';
 import scrollToElementAndCenter from '../../../utils/ScrollToElement';
 import FactorComponent from './FactorComponent';
 import PersianContentCalendar from '../../../utils/PersianContentCalendar';
-import { Google, Search, Web, WebAsset } from '@mui/icons-material';
+import { CloseFullscreen, CloseOutlined, CloseRounded, Google, Refresh, RefreshOutlined, RefreshSharp, Search, Web, WebAsset } from '@mui/icons-material';
 import { FaInternetExplorer, FaResearchgate, FaSearchengin } from 'react-icons/fa6';
 import { GoogleLogo } from '@phosphor-icons/react';
+import { CloseButton } from 'react-bootstrap';
 
 const Factor = (props) => {
     const cmsContext = useContext(CmsContext);
@@ -464,7 +465,9 @@ const Factor = (props) => {
                                                 /> :
                                                     <span>{xtOrderDetai?.userName}</span>
                                                 }
-
+                                                <span className='no-print'
+                                                    onClick={() => getcustomerItem()}
+                                                ><MdRefresh style={{ color: '#438efd', cursor: 'pointer' }} /></span>
                                             </div>
 
 
@@ -641,6 +644,14 @@ const Factor = (props) => {
                                             setProductsByCat([])
                                             setShow(true)
                                         }}>➕ اضافه کردن کالا</button> : null}
+                                        <span className='no-print'
+                                            onClick={() => {
+                                                getProCateegory(0, setParentCat)
+                                                getProCateegory(2, sethardWareCat)
+                                                getProCateegory(3, setaccesoryCat)
+                                            }
+                                            }
+                                        ><Refresh style={{ color: '#438efd', cursor: 'pointer' }} /></span>
 
                                         {orderItems.length === 0 && <p style={{ color: '#666', fontSize: '14px' }}>هیچ محصولی اضافه نشده</p>}
                                     </div>
@@ -769,12 +780,15 @@ const Factor = (props) => {
                                                             // classs={"categoryCodeForAdd"}
                                                             />
                                                             <button
+                                                                onClick={() => setShow(false)}
+                                                            ><CloseRounded /></button>
+                                                            {/* <button
                                                                 disabled
                                                                 onClick={
                                                                     scrollToElementAndCenter(
                                                                         `@@${xtSearchk}`,
                                                                     )
-                                                                }>بگرد</button>
+                                                                }>بگرد</button> */}
                                                         </div>
                                                     </div>
 
@@ -924,42 +938,43 @@ const Factor = (props) => {
 
                     <div className='col-lg-5 boxSh  centercc foctor-btn-section'>
 
-                        <PersianContentCalendar Width={500} widthContent={250} />
-                        <hr />
-
-                        {props.orderMode == 1 && <button className='btn btn-secondary'
-                            onClick={() => {
-                                setUserDateil([])
-                                setXtFactorNum(null)
-                                setOrderItems([])
-                                setXtOrderDetai([])
-                                setFlagShowFactor(false)
-                                setShowModalB(true)
-                            }}
-                        >
-                            فاکتورها
-                        </button>}
-
-
-                        <button
-                            type="button"
-                            onClick={() => {
-                                handlePrint()
-
-                            }}
-                            className="btn btn-warning no-print "
-                        >
-                            خروجی PDF
-                        </button>
+                        <PersianContentCalendar Width={500} height={600} widthContent={250} />
+                        <div className='centerrc'>
+                            {props.orderMode == 1 && <button className='btn btn-secondary'
+                                onClick={() => {
+                                    setUserDateil([])
+                                    setXtFactorNum(null)
+                                    setOrderItems([])
+                                    setXtOrderDetai([])
+                                    setFlagShowFactor(false)
+                                    setShowModalB(true)
+                                }}
+                            >
+                                فاکتورها
+                            </button>}
 
 
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    handlePrint()
 
-                        <button className="btn btn-danger"
-                            onClick={() => resetAllSatates()
-                            }>
-                            RESET
+                                }}
+                                className="btn btn-warning no-print "
+                            >
+                                PDF
+                            </button>
 
-                        </button>
+
+
+                            <button className="btn btn-danger"
+                                onClick={() => resetAllSatates()
+                                }>
+                                RESET
+
+                            </button>
+                        </div>
+
 
 
                     </div>

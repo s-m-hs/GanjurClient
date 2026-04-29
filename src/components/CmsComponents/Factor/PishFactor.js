@@ -18,7 +18,7 @@ import alertC from '../../../utils/AlertFunc/AlertC';
 import { Audio, Blocks, DNA } from 'react-loader-spinner'
 import SearchBox from '../SearchBox/SearchBox';
 import { FaRegCheckSquare } from "react-icons/fa";
-import { MdCheckBoxOutlineBlank } from "react-icons/md";
+import { MdCheckBoxOutlineBlank, MdRefresh } from "react-icons/md";
 import { InputNumber } from 'primereact/inputnumber';
 import { FloatLabel } from 'primereact/floatlabel';
 import { OverlayPanel } from 'primereact/overlaypanel';
@@ -28,7 +28,7 @@ import AllFactors from './AllFactor';
 import DateFormat from '../../../utils/DateFormat';
 import AlertError from '../../../utils/AlertFunc/AlertError';
 import scrollToElementAndCenter from '../../../utils/ScrollToElement';
-import { Add } from '@mui/icons-material';
+import { Add, Refresh } from '@mui/icons-material';
 
 const PishFactor = (props) => {
     const cmsContext = useContext(CmsContext);
@@ -478,16 +478,19 @@ const PishFactor = (props) => {
                                                 /> :
                                                     <span>{xtOrderDetai?.userName}</span>
                                                 }
+                                                <span className='no-print'
+                                                    onClick={() => getcustomerItem()}
+                                                ><MdRefresh style={{ color: '#438efd', cursor: 'pointer' }} /></span>
 
                                             </div>
 
 
-                                                <input
-                                            style={{border:'1px dotted',outline:'none'}}
-                                            type='number'
+                                            <input
+                                                style={{ border: '1px dotted', outline: 'none' }}
+                                                type='number'
                                                 className='header-row-minInput'
                                                 placeholder=" شماره فاکتور"
-/>
+                                            />
 
 
                                             <input className='no-print header-row-minInput' placeholder=" کد مشتری" value={!flagShowFactor ? userDateil?.currentUser?.partnerStatus : xtOrderDetai?.cyUserID} />
@@ -646,6 +649,14 @@ const PishFactor = (props) => {
                                             setProductsByCat([])
                                             setShow(true)
                                         }}>➕ اضافه کردن کالا</button> : null}
+                                        <span className='no-print'
+                                            onClick={() => {
+                                                getProCateegory(0, setParentCat)
+                                                getProCateegory(2, sethardWareCat)
+                                                getProCateegory(3, setaccesoryCat)
+                                            }
+                                            }
+                                        ><Refresh style={{ color: '#438efd', cursor: 'pointer' }} /></span>
 
                                         <button type='button' className="btn btn-primary no-print" onClick={() => {
                                             // setShow(true)
