@@ -604,11 +604,11 @@ const Factor = (props) => {
 
                                                         <td className='no-print' style={{ width: "100px" }}>
                                                             <button
-
                                                                 onClick={() => {
                                                                     const searchQuery = encodeURIComponent(item.PartNumber);
                                                                     window.open(`https://www.google.com/search?q=${searchQuery}`, '_blank');
                                                                 }}
+                                                                type="button"
                                                                 style={{
                                                                     padding: "2px 5px",
                                                                     cursor: "pointer",
@@ -782,13 +782,13 @@ const Factor = (props) => {
                                                             <button
                                                                 onClick={() => setShow(false)}
                                                             ><CloseRounded /></button>
-                                                            {/* <button
+                                                            <button className='m-1'
                                                                 disabled
                                                                 onClick={
                                                                     scrollToElementAndCenter(
                                                                         `@@${xtSearchk}`,
                                                                     )
-                                                                }>بگرد</button> */}
+                                                                }>بگرد</button>
                                                         </div>
                                                     </div>
 
