@@ -14,7 +14,7 @@ import apiUrl from '../utils/ApiConfig';
 import ApiGetX2 from "./ApiServicesX/ApiGetX2";
 import { HomeContext } from "../context/CmsContext";
 import ApiDeleteX2 from "./ApiServicesX/ApiDeleteX2";
-import { Close, CloseOutlined } from "@mui/icons-material";
+import { Close, CloseFullscreen, CloseOutlined } from "@mui/icons-material";
 const PersianContentCalendar = (props) => {
     let { userId } = useContext(HomeContext)
 
@@ -88,12 +88,18 @@ const PersianContentCalendar = (props) => {
         }
 
     }
+    const getAllTaskS = () => {
+        ApiGetX2('/api/Task/admin&UserTasks?show=true', setAllTask)
+    }
+
     const funcA = () => {
         alertA('حذف با موفقیت انجام شد')
         setIsGet(!isGet)
+        getAllTaskS()
     }
     const deletTask = (id) => {
         ApiDeleteX2(`/api/Task/deleteNote?taskId=${id}`, funcA)
+
     }
 
     useEffect(() => {
@@ -106,9 +112,8 @@ const PersianContentCalendar = (props) => {
     }, [expireDate, isGet])
 
     useEffect(() => {
-        ApiGetX2('/api/Task/admin&UserTasks?show=true', setAllTask)
+        getAllTaskS()
     }, [])
-    console.log(allTask)
 
     // state برای نگهداری مطالب هر روز
     const [contents, setContents] = useState({});
@@ -346,6 +351,7 @@ const PersianContentCalendar = (props) => {
                                 //     setShow(true)
                                 // }}
                                 >
+                                    <span className="persian-span-close" onClick={() => deletTask(item.id)}><CloseOutlined style={{ color: 'red', fontSize: '10px', cursor: "pointer" }} /></span>
                                     <span><DateFormat dateString={item.createDate} /> </span>
                                     {item.title}
                                 </p>

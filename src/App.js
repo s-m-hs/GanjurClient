@@ -101,7 +101,7 @@ export default function App() {
         <div className="App">
 
 
-          <span style={{ position: 'fixed', zIndex: '10000', bottom: '15px', opacity: '0.2' }}>v:{process.env.REACT_APP_VERSION} - {process.env.REACT_APP_BUILD_DATE} - {process.env.REACT_APP_COMMIT}</span>
+          <span style={{ position: 'fixed', zIndex: '10000', bottom: '15px', right: 0, opacity: '0.2' }}>v:{process.env.REACT_APP_VERSION} - {process.env.REACT_APP_BUILD_DATE} - {process.env.REACT_APP_COMMIT}</span>
 
           {router}</div>
       </HomeContext.Provider>

@@ -1,17 +1,14 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import "./Customer.css";
 import { CmsContext, HomeContext } from "../../../context/CmsContext";
-import { useForm as useFormA } from "react-hook-form";
-import { useForm as useFormB } from "react-hook-form";
-import { useForm as useFormC } from "react-hook-form";
 import { sha512 } from "js-sha512";
+import { useForm } from "react-hook-form";
 import BaseGrid from '../../Grid/BaseGrid';
 import SendIcon from "@mui/icons-material/Send";
 import Button from "@mui/material/Button";
 import DataTable from "../DataTable/DataTable";
 import Swal from "sweetalert2";
 import DotLoader from "react-spinners/DotLoader";
-import { useForm } from "react-hook-form";
 import apiUrl from "../../../utils/ApiConfig";
 import mode from "../../../utils/ModsB";
 import ApiPostX from "../../../utils/ApiServicesX/ApiPostX";
@@ -20,6 +17,7 @@ import ApiGetX2 from "../../../utils/ApiServicesX/ApiGetX2";
 import DateFormat from "../../../utils/DateFormat";
 import Modal from "react-bootstrap/Modal";
 import { useReactToPrint } from "react-to-print";
+import ApiPuX2 from "../../../utils/ApiServicesX/ApiPutX2";
 
 
 export default function Customer() {
@@ -33,6 +31,7 @@ export default function Customer() {
   const [orderDetails, setOrderDetails] = useState([])
   const cmsContext = useContext(CmsContext);
   const homeContext = useContext(HomeContext);
+  const [putId, setPutId] = useState(0)
   /////search state===>
   const [searchUser, setSearchUser] = useState("");
   const [searchUserB, setSearchUserB] = useState("");
@@ -47,13 +46,12 @@ export default function Customer() {
     reset,
     setValue,
     formState: { errors },
-  } = useFormA({
+  } = useForm({
     defaultValues: {},
   });
   const registerOptions = {
     userStatus: { required: "userStatus is required" },
     userUserType: { required: "userUserType is required" },
-    PartnerStatus: { required: "PartnerStatus is required" },
     UserName: { required: "UserName is required" },
   };
   ////////////////////////////
@@ -161,10 +159,10 @@ export default function Customer() {
     { field: "accountId", headerName: "AccountId", Width: 50 },
     { field: "userAddress", headerName: "آدرس" },
     {
-      headerName: 'عت', width: 200,
+      headerName: 'عملیات', width: 200,
       cellRenderer: (params) => (
         <>
-
+          <button className='btn btn-warning' style={{ width: "30px", height: "15px", margin: "1px", fontSize: "8px", padding: "1px" }} onClick={() => editCustomer(params.data)}>✏️</button>
           <button className='btn btn-danger' style={{ width: "30px", height: "15px", margin: "1px", fontSize: "8px", padding: "1px" }} onClick={() => deleteHandler(params.data.id)}>×</button>
         </>
       )
@@ -200,41 +198,59 @@ export default function Customer() {
     },
     { field: "id", headerName: "شناسه آیتم", Width: 200 },
   ])
-
+  const funcB = () => {
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "کاربر با موفقیت اضافه شد",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    reset(setValue(""));
+    setFlagUpdate(false)
+    getcustomerItem();
+  }
 
   const handleRegistration = (data) => {
-    // console.log(data)
+    let obj = {
+      id: !flagUpdate ? 0 : putId,
+      cyUsNm: !flagUpdate ? data.UserName : data.update.UserName,
+      userCodeA: !flagUpdate ? data.UserCodeA : data.update.UserCodeA,
+      mobile: !flagUpdate ? data.Mobile : data.update.Mobile,
+      phone: !flagUpdate ? data.Phone : data.update.Phone,
+      melliCode: !flagUpdate ? data.MelliCode : data.update.MelliCode,
+      userAddress: !flagUpdate ? data.UserAddress : data.update.UserAddress,
+      status: !flagUpdate ? Number(data.userStatus) : Number(data.update.userStatus),
+      userType: !flagUpdate ? Number(data.userUserType) : Number(data.update.userUserType),
+      partnerStatus: !flagUpdate ? Number(data.PartnerStatu) : Number(data.update.PartnerStatu)
+    };
     if (!flagUpdate) {
-      let obj = {
-        cyUsNm: data.UserName,
-        userCodeA: data.UserCodeA,
-        mobile: data.Mobile,
-        phone: data.Phone,
-        melliCode: data.MelliCode,
-        userAddress: data.UserAddress,
-        status: Number(data.userStatus),
-        userType: Number(data.userUserType),
-        partnerStatus: Number(data.PartnerStatu)
-      };
 
-      async function myAppPost() {
-        ApiPostX("/api/Customer/addUserB", obj, function () {
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "کاربر با موفقیت اضافه شد",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          reset(setValue(""));
-          getcustomerItem();
-        });
-      }
-      myAppPost();
+      ApiPostX("/api/Customer/addUserB", obj, funcB);
+
+    } else if (flagUpdate) {
+      ApiPuX2("/api/CyUsers/editUser", obj, funcB)
     }
+
   };
 
+  //////////////////
+  const editCustomer = (data) => {
+    setFlagUpdate(true)
+    setPutId(data.id)
+    setValue('update', {
+      userStatus: data.status,
+      userUserType: data.userType,
+      PartnerStatus: data.partnerStatus,
+      UserName: data.cyUsNm,
+      UserCodeA: data.userCodeA,
+      Mobile: data.mobile,
+      Phone: data.phone,
+      MelliCode: data.melliCode,
+      UserAddress: data.userAddress
 
+    })
+  }
   /////////////////////////////////
   const getcustomerItem = () => {
     async function myAppGetcustomer() {
@@ -490,7 +506,7 @@ export default function Customer() {
               endIcon={<SendIcon />}
             >
 
-              <span>افزودن</span>
+              {!flagUpdate ? "افزودن" : "ویرایش"}
 
             </Button>
           </form>
