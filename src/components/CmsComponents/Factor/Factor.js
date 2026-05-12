@@ -30,7 +30,7 @@ import AlertError from '../../../utils/AlertFunc/AlertError';
 import scrollToElementAndCenter from '../../../utils/ScrollToElement';
 import FactorComponent from './FactorComponent';
 import PersianContentCalendar from '../../../utils/PersianContentCalendar';
-import { CloseFullscreen, CloseOutlined, CloseRounded, Google, Refresh, RefreshOutlined, RefreshSharp, Search, Web, WebAsset } from '@mui/icons-material';
+import { Close, CloseFullscreen, CloseOutlined, CloseRounded, Google, Refresh, RefreshOutlined, RefreshSharp, Search, Web, WebAsset } from '@mui/icons-material';
 import { FaInternetExplorer, FaResearchgate, FaSearchengin } from 'react-icons/fa6';
 import { GoogleLogo } from '@phosphor-icons/react';
 import { CloseButton } from 'react-bootstrap';
@@ -780,8 +780,9 @@ const Factor = (props) => {
                                                             // classs={"categoryCodeForAdd"}
                                                             />
                                                             <button
-                                                                onClick={() => setShow(false)}
-                                                            ><CloseRounded /></button>
+                                                                className="btn btn-light btn-sm m-1"
+                                                                onClick={() => setShow(false)}>
+                                                                <Close style={{ color: "#524d4d", cursor: 'pointer', }} /></button>
                                                             <button className='m-1'
                                                                 disabled
                                                                 onClick={

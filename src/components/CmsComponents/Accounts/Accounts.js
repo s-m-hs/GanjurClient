@@ -23,6 +23,7 @@ import DateFormat from "../../../utils/DateFormat";
 import AlertError from '../../../utils/AlertFunc/AlertError';
 import BaseGrid from '../../Grid/BaseGrid';
 import { Modal } from 'react-bootstrap';
+import { Close } from '@mui/icons-material';
 export default function Accounts() {
   let { xtSearchI, setXtSearchI,
     xtSearchJ, setXtSearchJ, setResetSearchbox } = useContext(CmsContext)
@@ -318,6 +319,10 @@ export default function Accounts() {
           <div className="customerDetail-modal" style={{ height: "1000px" }}>
 
             <div className="customer-voucherTitle-B mt-1 ">
+              <button
+                className="btn btn-light btn-sm m-1"
+                onClick={() => setShow(false)}>
+                <Close style={{ color: "#524d4d", }} /></button>
               <span>{accountVouchur?.result?.balance?.toLocaleString()} ریال </span>
               <span>{accountVouchur?.result?.balanceStatus}</span>
             </div>

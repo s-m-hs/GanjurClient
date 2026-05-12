@@ -21,7 +21,7 @@ import UploadFileIcon from "@mui/icons-material/UploadFile";
 import BaseGrid from "../../Grid/BaseGrid";
 import DateFormat from "../../../utils/DateFormat";
 import ApiGetX2 from "../../../utils/ApiServicesX/ApiGetX2";
-import { ArrowBackSharp, ArrowCircleDown, ArrowCircleDownRounded, ArrowCircleLeftTwoTone, ArrowDropDownCircle, Refresh, RefreshOutlined, RefreshRounded, RefreshSharp } from "@mui/icons-material";
+import { ArrowBackSharp, ArrowCircleDown, ArrowCircleDownRounded, ArrowCircleLeftTwoTone, ArrowDropDownCircle, Close, Refresh, RefreshOutlined, RefreshRounded, RefreshSharp } from "@mui/icons-material";
 import { ArrowBendLeftDown } from "@phosphor-icons/react";
 
 export default function Product() {
@@ -1324,6 +1324,10 @@ export default function Product() {
             <Modal.Title id="example-modal-sizes-title-lg"></Modal.Title>
           </Modal.Header>
           <Modal.Body>
+            <button
+              className="btn btn-light btn-sm m-1"
+              onClick={() => setLgShow(false)}>
+              <Close style={{ color: "#524d4d", cursor: 'pointer', }} /></button>
             <div style={{ height: "1000px", }}>
               <BaseGrid rowData={kartex} colDefs={colDefsB} rtl={true} fontSize='18px' />
             </div>

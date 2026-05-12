@@ -18,6 +18,7 @@ import DateFormat from "../../../utils/DateFormat";
 import Modal from "react-bootstrap/Modal";
 import { useReactToPrint } from "react-to-print";
 import ApiPuX2 from "../../../utils/ApiServicesX/ApiPutX2";
+import { Close, CloseSharp, CloseTwoTone } from "@mui/icons-material";
 
 
 export default function Customer() {
@@ -565,14 +566,24 @@ export default function Customer() {
 
             <div className="customerDetail-modal" ref={printRef} style={{ height: "1000px" }}>
 
-              <div className="customer-voucherTitle-B mt-1 ">     <span>{userVouchur?.result?.balance?.toLocaleString()} ریال </span>
+              <div className="customer-voucherTitle-B mt-1 ">
+                <button
+                  className="btn btn-light btn-sm m-1"
+                  onClick={() => setShow(false)}>
+                  <Close style={{ color: "#524d4d", cursor: 'pointer', }} /></button>
+                <span>{userVouchur?.result?.balance?.toLocaleString()} ریال </span>
                 <span>{userVouchur?.result?.balanceStatus}</span></div>
               <BaseGrid rowData={userVouchur?.currentVouchurs} colDefs={colDefsB} rtl={true} />
 
               {orderDetails?.length != 0 &&
-                <div className="orderDetail-div boxSh">
-
+                <div className="orderDetail-div boxSh ">
                   <div className="orderDetail-div-B ">
+                    <button
+                      style={{ position: 'fixed', left: '30px' }}
+                      className="btn btn-light btn-sm m-1"
+                      onClick={() => setOrderDetails([])}>
+                      <Close /></button>
+
                     <table className="table table-dark">
                       <thead>
                         <tr>

@@ -159,16 +159,16 @@ td {
 .orderDetail-div{
   position: fixed;
   left: 20px;
-  top: 10px;
+  top: 20vh;
   z-index: 10000000;
-  width: 400px;
+  width: 500px;
   max-height: 800px;
   overflow: scroll;
   background-color: #fff;
 }
 
 .orderDetail-div-B{
-
+background-color: black;
 }
 
 
