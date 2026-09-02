@@ -51,7 +51,7 @@ export default function IndexH() {
 
     let obj = {
       un: data.userName,
-      pw: sha512(data.password),
+      pw: data.password,
     };
     // let obj = {
     //   un:data.userName ,
