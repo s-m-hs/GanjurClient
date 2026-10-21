@@ -57,7 +57,7 @@ const PishFactor = (props) => {
     const [flagA, setFlagA] = useState(true)
     const [flagB, setFlagB] = useState(true)
     const [value4, setValue4] = useState(new Date());
-
+    const [isShowCoulum, setIsShowCoulum] = useState(true)
     const [titleState, setTitleState] = useState(1)
 
     //   const handlePrint = useReactToPrint({
@@ -508,8 +508,8 @@ const PishFactor = (props) => {
                                                     <th className='no-print'>گروه</th>
                                                     <th>نام کالا</th>
                                                     <th className='factor-q-th'>تعداد</th>
-                                                    <th> واحد(ریال)</th>
-                                                    <th>مجموع(ریال)</th>
+                                                    <th className={isShowCoulum ? '' : 'hidden'}> واحد(ریال)</th>
+                                                    <th className={isShowCoulum ? '' : 'hidden'}>مجموع(ریال)</th>
                                                     <th className='no-print'>شرح</th>
                                                 </tr>
                                             </thead>
@@ -542,7 +542,7 @@ const PishFactor = (props) => {
                                                         </td>
 
 
-                                                        <td>
+                                                        <td className={isShowCoulum ? '' : 'hidden'}>
 
                                                             {!flagShowFactor ? <div className="mt-2 mb-2">
                                                                 <OverlayPanel ref={(el) => overlayRefs.current[item.ID] = el}>
@@ -625,7 +625,7 @@ const PishFactor = (props) => {
 
                                                         </td>
 
-                                                        <td>{!flagShowFactor ? (item.TotalPrice || 0).toLocaleString('fa-IR') : item?.totalPrice?.toLocaleString('fa-IR')}</td>
+                                                        <td className={isShowCoulum ? '' : 'hidden'}>{!flagShowFactor ? (item.TotalPrice || 0).toLocaleString('fa-IR') : item?.totalPrice?.toLocaleString('fa-IR')}</td>
 
 
 
@@ -764,6 +764,15 @@ const PishFactor = (props) => {
                                     </div>
 
 
+                                    {!flagShowFactor ?
+                                        <div className="footer-section centerrc">
+
+                                            <button className="submit-btn" type='submit'>💾 ثبت فاکتور</button>
+                                            <button className="no-print btn btn-light" type='button'
+                                                onClick={() => setIsShowCoulum(!isShowCoulum)}
+                                            >نمایش ستون قیمت</button>
+
+                                        </div> : null}
 
 
 
