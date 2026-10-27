@@ -5,6 +5,7 @@ import UsersDebitCredit from './UsersDebitCredit';
 import { CmsContext, HomeContext } from '../../../../context/CmsContext';
 import { Blocks } from 'react-loader-spinner';
 import ListProB from './ListProB';
+import TasviehDateOrder from './TasviehDateOrder';
 export default function UsersFinanceTabs() {
     const cmsContext = useContext(CmsContext)
 
@@ -62,6 +63,10 @@ export default function UsersFinanceTabs() {
                     </Tab>
                     <Tab eventKey="exell" title="گزارش اکسل" style={{ background: 'inherit' }}>
                         <ListProB state={false} setloading={setDnaflag} />
+                    </Tab>
+
+                    <Tab eventKey="exell_tasviehDate" title="سررسید فاکتورها" style={{ background: 'inherit' }}>
+                        <TasviehDateOrder state={false} setloading={setDnaflag} />
                     </Tab>
 
 

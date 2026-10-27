@@ -62,7 +62,9 @@ const Factor = (props) => {
     const [dnaflag, setDnaflag] = useState(false)
     const [flagA, setFlagA] = useState(true)
     const [flagB, setFlagB] = useState(true)
+    const [flagC, setFlagC] = useState(true)
     const [value4, setValue4] = useState(new Date());
+    const [value5, setValue5] = useState(new Date());
     const [isShowCoulum, setIsShowCoulum] = useState(true)
 
     const handlePrint = useReactToPrint({
@@ -72,6 +74,10 @@ const Factor = (props) => {
 
     function handleChange(value) {
         setValue4(value && value.toDate());
+        // console.log(value.format());   /// convert  to persian format
+    }
+    function handleChangeB(value) {
+        setValue5(value && value.toDate());
         // console.log(value.format());   /// convert  to persian format
     }
     const resetAllSatates = () => {
@@ -309,7 +315,8 @@ const Factor = (props) => {
             taxes: totals.tax, ///مالیات
             discount: totals.discount, ///تخفیف 
             cost: totals.cost, ///هزینه
-            orderItems: orderItems
+            orderItems: orderItems,
+            tasviehDate: value5
         }
         async function myApp() {
             const res = await fetch(`${apiUrl}/api/CyOrders/addOrder?ordermode=${props.orderMode}`, {
@@ -662,6 +669,42 @@ const Factor = (props) => {
                                     <div className='factor-footerBox'>
 
                                         <div className='centerc'>
+
+                                            <span className={flagC ? "centerr" : 'no-print centerr'}>
+
+                                                <span onClick={() => setFlagC(!flagC)} className='no-print'>
+                                                    {flagC ? <FaRegCheckSquare /> : <MdCheckBoxOutlineBlank />
+                                                    }
+                                                </span>
+
+
+                                                <h6> تاریخ تسویه فاکتور :</h6 >
+                                                <div>
+                                                    <span >
+                                                        {!flagShowFactor ?
+                                                            <DatePicker
+                                                                className="custom-input"
+
+                                                                calendar={persian}
+                                                                locale={persian_fa}
+                                                                calendarPosition="bottom-right"
+                                                                value={value5}
+                                                                onChange={handleChangeB}
+                                                                animations={[
+
+                                                                    opacity(),
+                                                                    transition({ from: 35, duration: 800 }),
+                                                                ]}
+                                                                render={<InputIcon />}
+                                                            />
+                                                            : <DateFormat dateString={xtOrderDetai?.creatDate} />
+                                                        }
+                                                    </span>
+                                                </div>
+
+                                            </span>
+                                            <hr />
+
                                             <span onClick={() => setFlagA(!flagA)} className={flagA ? "" : 'no-print'}>
 
                                                 <span className='no-print'>

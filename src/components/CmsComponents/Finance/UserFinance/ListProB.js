@@ -26,7 +26,7 @@ export default function ListProB() {
             const url = window.URL.createObjectURL(blob);
             const link = document.createElement("a");
             link.href = url;
-            link.download = "Products.xlsx"; // نام فایل دانلودی
+            link.download = "مانده کاربران.xlsx"; // نام فایل دانلودی
             document.body.appendChild(link);
             link.click();
 
