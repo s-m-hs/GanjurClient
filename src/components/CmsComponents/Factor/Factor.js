@@ -62,7 +62,7 @@ const Factor = (props) => {
     const [dnaflag, setDnaflag] = useState(false)
     const [flagA, setFlagA] = useState(true)
     const [flagB, setFlagB] = useState(true)
-    const [flagC, setFlagC] = useState(true)
+    const [flagC, setFlagC] = useState(false)
     const [value4, setValue4] = useState(new Date());
     const [value5, setValue5] = useState(new Date());
     const [isShowCoulum, setIsShowCoulum] = useState(true)
