@@ -316,7 +316,8 @@ const Factor = (props) => {
             discount: totals.discount, ///تخفیف 
             cost: totals.cost, ///هزینه
             orderItems: orderItems,
-            tasviehDate: value5
+            tasviehDate: flagC ? value5 : null,
+            istasvieh: flagC ? false : true
         }
         async function myApp() {
             const res = await fetch(`${apiUrl}/api/CyOrders/addOrder?ordermode=${props.orderMode}`, {

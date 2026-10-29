@@ -19,6 +19,8 @@ import Modal from "react-bootstrap/Modal";
 import { useReactToPrint } from "react-to-print";
 import ApiPuX2 from "../../../utils/ApiServicesX/ApiPutX2";
 import { Close, CloseSharp, CloseTwoTone } from "@mui/icons-material";
+import { FaRegCheckSquare } from "react-icons/fa";
+import { MdCheckBoxOutlineBlank } from "react-icons/md";
 
 
 export default function Customer() {
@@ -33,6 +35,7 @@ export default function Customer() {
   const cmsContext = useContext(CmsContext);
   const homeContext = useContext(HomeContext);
   const [putId, setPutId] = useState(0)
+  const [isTasvieh, setIsTasvieh] = useState(false)
   /////search state===>
   const [searchUser, setSearchUser] = useState("");
   const [searchUserB, setSearchUserB] = useState("");
@@ -138,7 +141,6 @@ export default function Customer() {
       cellRenderer: (params) => (
         <>
           <button className='btn btn-info' style={{ width: "60px", height: "30px", margin: "1px", fontSize: "15px", padding: "1px" }} onClick={() => {
-            console.log(params)
             setUserVouchur([])
             setShow(true)
             showUserVouchur(params.data.accountId)
@@ -234,6 +236,10 @@ export default function Customer() {
     }
 
   };
+
+  const IsTasviehHandler = (factorNum) => {
+    ApiGetX2(`/api/CyOrders/isTasvieh?factorNum=${factorNum}`, setIsTasvieh)
+  }
 
   //////////////////
   const editCustomer = (data) => {
@@ -578,11 +584,21 @@ export default function Customer() {
               {orderDetails?.length != 0 &&
                 <div className="orderDetail-div boxSh ">
                   <div className="orderDetail-div-B ">
+
+
+                    <span className="btn btn-success btn-sm m-1" style={{ position: 'fixed', left: '80px', }} onClick={() => {
+                      IsTasviehHandler(orderDetails?.factorNumber)
+                      setOrderDetails([])
+                    }} >
+                      {orderDetails?.isTasvieh ? <FaRegCheckSquare size={22} /> : <MdCheckBoxOutlineBlank size={22} />
+                      }
+                    </span>
                     <button
                       style={{ position: 'fixed', left: '30px' }}
                       className="btn btn-light btn-sm m-1"
                       onClick={() => setOrderDetails([])}>
-                      <Close /></button>
+                      <Close />
+                    </button>
 
                     <table className="table table-dark">
                       <thead>

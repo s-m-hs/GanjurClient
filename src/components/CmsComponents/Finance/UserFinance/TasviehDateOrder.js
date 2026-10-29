@@ -21,7 +21,7 @@ export default function TasviehDateOrder() {
             cellRenderer: (params) => <DateFormat dateString={params.value} />,
         },
         { field: "orderMount", headerName: "مبلغ سفارش", Width: 150 },
-        { field: "orderId", headerName: "شماره سفارش", Width: 150 },
+        { field: "factorNumber", headerName: "شماره سفارش", Width: 150 },
     ])
 
     const downloadExcel = async () => {
@@ -61,7 +61,6 @@ export default function TasviehDateOrder() {
     };
 
     const getTasviehDateOrders = () => {
-        console.log("getTasviehDateOrders")
         ApiGetX2(`/api/Account/getTasviehDate`, setTasviehDateOrders)
     }
 
